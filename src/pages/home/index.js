@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
-import { tmpl } from "./main.tmpl.js";
+import { tmpl } from "./home.tmpl.js";
 
-export const Main = () => {
+export const Home = () => {
   return Handlebars.compile(tmpl)({});
 };

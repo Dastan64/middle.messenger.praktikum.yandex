@@ -1,6 +1,15 @@
 .not-found {
   text-align: center;
 
+  &__image {
+    object-fit: cover;
+
+    @media screen and (max-width: 576px) {
+      width: auto;
+      height: auto;
+    }
+  }
+
   &__title {
     margin-bottom: 32px;
     font-size: 3rem;

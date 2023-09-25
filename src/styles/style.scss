@@ -18,7 +18,6 @@ body {
 }
 
 img {
-  width: auto;
   max-width: 100%;
 }
 
@@ -35,5 +34,3 @@ img {
 
 @import "sections/auth";
 @import "sections/registration";
-@import "sections/not-found";
-@import "sections/profile";

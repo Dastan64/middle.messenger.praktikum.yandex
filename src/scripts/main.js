@@ -4,10 +4,10 @@ import "../styles/style.scss";
 import { NotFound } from "../pages/not-found/index.js";
 import { ErrorPage } from "../pages/error-page/index.js";
 import { Profile } from "../pages/profile/index.js";
-import { Main } from "../pages/main/index.js";
+import { Home } from "../pages/home/index.js";
 
 const ROUTES = {
-  "/": Main(),
+  "/": Home(),
   "/404": NotFound(),
   "/505": ErrorPage(),
   "/profile": Profile(),
