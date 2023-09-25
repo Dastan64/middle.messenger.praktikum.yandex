@@ -1,5 +1,5 @@
 export const tmpl = `
-    <div class="registration">
+    <section class="registration">
         <div class="registration__container">
             <h3 class="registration__title">Регистрация аккаунта</h3>
             <div class="registration__fields">
@@ -50,5 +50,5 @@ export const tmpl = `
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 `;

@@ -1,10 +1,16 @@
 .login {
-  max-width: 512px;
-  margin: 0 auto;
-  padding: 48px 56px;
-  border-radius: 16px;
-  background-color: #1E1F22;
-  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    max-width: 512px;
+    padding: 48px 56px;
+    border-radius: 16px;
+    background-color: #1E1F22;
+    color: #fff;
+  }
 
   &__title {
     margin-bottom: 40px;
