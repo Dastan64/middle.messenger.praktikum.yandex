@@ -15,6 +15,7 @@
 
 body {
   min-height: 100vh;
+  background-color: var(--color-background);
 }
 
 img {
@@ -26,6 +27,8 @@ a {
 }
 
 #app {
+  max-width: 1440px;
+  margin: 0 auto;
   min-height: 100vh;
   color: var(--color-text);
   background-color: var(--color-background);
