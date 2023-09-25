@@ -2,7 +2,7 @@ export const tmpl = `
     <section class="chats">
         <div class="chats__container">
             <div class="chats__left">
-                <a class="chats__profile-link" href="/profile">Профиль</a>
+                {{{profileLink}}}
                 <h2>Список чатов</h2>
             </div>
             <div class="chats__right">

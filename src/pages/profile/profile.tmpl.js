@@ -40,8 +40,8 @@ export const tmpl = `
         </div>
     </form>
     <div class="profile__links">
-        <a href="/" class="button profile__link">Изменить данные</a>
-        <a href="/" class="button profile__link">Изменить пароль</a>
+        {{{changeProfileDataLink}}}
+        {{{changePasswordLink}}}
     </div>
     </section>
 `;
