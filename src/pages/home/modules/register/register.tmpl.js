@@ -43,8 +43,7 @@ export const tmpl = `
     
                     </div>
                     <div class="form__buttons">
-                        <button class="form__button form__button_type_sign-in" type="submit">Зарегистрироваться
-                        </button>
+                        {{{registerBtn}}}
                         {{{mainPageLink}}}
                     </div>
                 </form>
