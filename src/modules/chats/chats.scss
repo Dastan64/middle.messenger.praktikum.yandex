@@ -1,0 +1,24 @@
+.chats {
+  height: 100%;
+
+  &__container {
+    display: flex;
+    height: 100%;
+  }
+
+  &__left {
+    flex-basis: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--primary);
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+}
