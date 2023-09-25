@@ -1,0 +1,65 @@
+.profile {
+  &__visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  &__avatar-input {
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    left: -100%;
+  }
+
+  &__change-button {
+    border-radius: 8px;
+    padding: 8px 16px;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__info {
+    margin: 24px 0 48px 0;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__line {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__role {
+      color: #888;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 40px;
+    border-radius: 8px;
+    background-color: #1E78FF;
+    color: #fff;
+    text-decoration: none;
+  }
+}

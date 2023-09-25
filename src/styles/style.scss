@@ -1,0 +1,39 @@
+:root {
+  --primary: #1E78FF;
+  --color-text: #fff;
+  --color-background: #18191B;
+  --color-background-secondary: #000;
+
+  font-family: 'Rubik', "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  width: auto;
+  max-width: 100%;
+}
+
+#app {
+  height: 100vh;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+@import "utils/normalize";
+@import "utils/input";
+@import "utils/button";
+
+
+@import "sections/auth";
+@import "sections/registration";
+@import "sections/not-found";
+@import "sections/profile";

@@ -1,0 +1,17 @@
+.not-found {
+  text-align: center;
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 3rem;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 16px 64px;
+    border-radius: 8px;
+    background-color: #1E78FF;
+    color: #fff;
+    text-decoration: none;
+  }
+}

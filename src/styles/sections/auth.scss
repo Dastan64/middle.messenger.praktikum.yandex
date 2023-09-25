@@ -1,0 +1,74 @@
+.auth {
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 48px 56px;
+  border-radius: 16px;
+  background-color: #1E1F22;
+  color: #fff;
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .form {
+
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__label {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      color: #888;
+    }
+
+    &__input {
+      padding: 16px 24px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background-color: #18191B;
+      color: #fff;
+      font-size: 1rem;
+
+      &:focus-visible {
+        outline: 1px solid #1E78FF;
+        outline-offset: 2px;
+      }
+    }
+
+    &__buttons {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__button {
+      padding: 16px 0;
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &_type_sign-in {
+        background-color: #1E78FF;
+        color: #fff;
+      }
+
+      &_type_sign-up {
+        color: #1E78FF;
+      }
+    }
+  }
+}
