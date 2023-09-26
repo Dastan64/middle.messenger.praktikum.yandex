@@ -5,18 +5,12 @@ export const tmpl = `
         </div>
         <h3>Дастан Жамекешев</h3>
         <form class="password__form">
-            <div class="password__input-container">
-                <label for="oldPassword" class="password__label">Старый пароль:</label>
-                <input class="password__input input" type="password" name="oldPassword" id="oldPassword">
-            </div>
-            <div class="password__input-container">
-                <label for="new-password" class="password__label">Новый пароль:</label>
-                <input class="password__input input" type="password" name="newPassword" id="new-password">
-            </div>
-            <div class="password__input-container">
-                <label for="confirm-new-password" class="password__label">Подтвердите новый пароль:</label>
-                <input class="password__input input" type="password" name="newPassword" id="confirm-new-password">
-            </div>
+            {{#each fields}}
+                <div class="password__input-container">
+                    <label for="{{for}}" class="password__label">{{label}}</label>
+                    {{{input}}}
+                </div>
+            {{/each}}
             {{{saveBtn}}}
         </form>
     </section>
