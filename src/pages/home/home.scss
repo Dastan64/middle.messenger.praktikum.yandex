@@ -9,6 +9,11 @@
     margin: 0 0 24px;
   }
 
+  &__links {
+    display: flex;
+    gap: 8px;
+  }
+
   &__link {
     padding: 8px 16px;
   }

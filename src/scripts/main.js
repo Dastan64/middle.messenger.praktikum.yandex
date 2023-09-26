@@ -4,7 +4,6 @@ import { NotFound } from '../pages/not-found/index.js';
 import { ErrorPage } from '../pages/error-page/index.js';
 import { Profile } from '../pages/profile/index.js';
 import { Home } from '../pages/home/index.js';
-
 import { Chats } from '../modules/chats/index.js';
 import { Login } from '../pages/home/modules/login/index.js';
 import { Register } from '../pages/home/modules/register/index.js';

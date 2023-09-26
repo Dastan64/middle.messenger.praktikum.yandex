@@ -1,5 +1,9 @@
 .link {
   border-radius: 8px;
-  background-color: var(--primary);
-  color: var(--color-text);
+  color: var(--primary);
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
