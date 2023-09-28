@@ -18,14 +18,14 @@
 
 ## Ссылки проекта:
 
-* `/login` - окно авторизации
-* `/register` - окно регистрации
-* `/404` - страница "Не найдено"
-* `/505` - страница с 5XX ошибкой
-* `/profile` - профиль
-* `/change-profile-data` - изменение данных профиля
-* `/change-password`: изменение пароля
-* `/chats` - список чатов и переписка
+* https://luminous-fudge-423881.netlify.app//login - окно авторизации
+* https://luminous-fudge-423881.netlify.app//register - окно регистрации
+* https://luminous-fudge-423881.netlify.app//404 - страница "Не найдено"
+* https://luminous-fudge-423881.netlify.app//505 - страница с 5XX ошибкой
+* https://luminous-fudge-423881.netlify.app//profile - профиль
+* https://luminous-fudge-423881.netlify.app//change-profile-data - изменение данных профиля
+* https://luminous-fudge-423881.netlify.app//change-password - изменение пароля
+* https://luminous-fudge-423881.netlify.app//chats - список чатов и переписка
 
 ---
 
