@@ -4,9 +4,11 @@ import "./profile.scss";
 import { Link } from "../../components/link/index.js";
 import { Avatar } from "../../components/avatar/index.js";
 
+import avatar from "../../assets/images/avatar.jpeg";
+
 export const Profile = () => {
   return Handlebars.compile(tmpl)({
-    avatar: Avatar({}),
+    avatar: Avatar({ url: avatar }),
     changeProfileDataLink: Link({
       to: "/change-profile-data",
       text: "Изменить данные",

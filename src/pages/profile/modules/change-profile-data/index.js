@@ -6,9 +6,11 @@ import { Button } from "../../../../components/button/index.js";
 import { Input } from "../../../../components/input/index.js";
 import { Avatar } from "../../../../components/avatar/index.js";
 
+import avatar from "../../../../assets/images/avatar.jpeg";
+
 export const ChangeProfileData = () => {
   return Handlebars.compile(tmpl)({
-    avatar: Avatar({}),
+    avatar: Avatar({ url: avatar }),
     changeAvatarButton: Button({
       type: "button",
       className: "data__change-avatar-btn",
