@@ -1,6 +1,19 @@
 .data {
   padding: 16px;
 
+  &__change-avatar-btn {
+    padding: 8px 16px;
+  }
+
+  &__avatar-input {
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    left: -100%;
+  }
+
   &__form {
     display: grid;
     grid-template-columns: repeat(2, 300px);

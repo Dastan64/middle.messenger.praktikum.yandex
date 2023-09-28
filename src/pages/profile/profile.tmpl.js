@@ -1,14 +1,7 @@
 export const tmpl = `
     <section class="profile">
         <div class="wrapper">
-            <div class="profile__visual">
-                <img class="profile__avatar" width="130" height="130"
-                     src="https://w.forfun.com/fetch/11/11a048e1dc27122485346049cd6d7c4f.jpeg"
-                     alt="">
-                <button class="profile__change-button button">Изменить фото профиля</button>
-                <input class="profile__avatar-input" type="file" name="avatar">
-                <h3 class="profile__name">Дастан Жамекешев</h3>
-            </div>
+            {{{avatar}}}
             <form class="profile__info info">
                 <div class="info__line">
                     <span class="info__role">Логин</span>

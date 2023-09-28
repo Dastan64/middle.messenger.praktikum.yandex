@@ -1,0 +1,12 @@
+.user {
+  &__avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+}

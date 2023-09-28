@@ -1,9 +1,8 @@
 export const tmpl = `
     <section class="data">
-        <div class="data__avatar-container">
-            <img class="avatar" width="130" height="130" src="https://w.forfun.com/fetch/11/11a048e1dc27122485346049cd6d7c4f.jpeg" alt="">
-        </div>
-        <h3>Дастан Жамекешев</h3>
+        {{{avatar}}}
+        <input class="data__avatar-input" type="file" name="avatar">
+        {{{changeAvatarButton}}}
         <form class="data__form">
             {{#each fields}}
                 <div class="data__input-container">
@@ -15,4 +14,4 @@ export const tmpl = `
             {{{saveBtn}}}
         </form>
     </section>
-`
+`;
