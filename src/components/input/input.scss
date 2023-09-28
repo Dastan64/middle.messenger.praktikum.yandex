@@ -3,9 +3,4 @@
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: 1rem;
-
-  &:focus-visible {
-    outline: 1px solid var(--primary);
-    outline-offset: 2px;
-  }
 }
