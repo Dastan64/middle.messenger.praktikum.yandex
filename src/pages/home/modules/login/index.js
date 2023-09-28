@@ -1,19 +1,20 @@
 import Handlebars from "handlebars";
 import { tmpl } from "./login.tmpl.js";
 import "./login.scss";
+
 import { Button } from "../../../../components/button/index.js";
+import { Link } from "../../../../components/link/index.js";
 
 export const Login = () => {
   return Handlebars.compile(tmpl)({
     loginBtn: Button({
       text: "Войти",
       type: "submit",
-      className: "form__button form__button_type_sign-in",
+      className: "form__sign-in-button",
     }),
-    registerBtn: Button({
+    registerLink: Link({
       text: "Зарегистрироваться",
-      type: "button",
-      className: "form__button form__button_type_sign-up",
+      to: "/register",
     }),
   });
 };

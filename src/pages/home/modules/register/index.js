@@ -15,7 +15,7 @@ export const Register = () => {
     registerBtn: Button({
       text: "Зарегистрироваться",
       type: "button",
-      className: "form__button form__button_type_sign-up",
+      className: "form__sign-up-button",
     }),
   });
 };

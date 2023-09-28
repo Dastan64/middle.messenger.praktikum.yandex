@@ -15,7 +15,7 @@ export const tmpl = `
                 </div>
                 <div class="form__buttons">
                     {{{loginBtn}}}
-                    {{{registerBtn}}}
+                    {{{registerLink}}}
                 </div>
             </form>
         </div>

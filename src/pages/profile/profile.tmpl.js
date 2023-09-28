@@ -2,7 +2,8 @@ export const tmpl = `
     <section class="profile">
         <div class="wrapper">
             {{{avatar}}}
-            <form class="profile__info info">
+            
+            <div class="profile__info info">
                 <div class="info__line">
                     <span class="info__role">Логин</span>
                     <span class="info__value">@dastan64</span>
@@ -32,7 +33,7 @@ export const tmpl = `
                     <span class="info__role">Телефон</span>
                     <span class="info__value">+7-123-456-78-90</span>
                 </div>
-            </form>
+            </div>
             <div class="profile__links">
                 {{{changeProfileDataLink}}}
                 {{{changePasswordLink}}}

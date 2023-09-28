@@ -1,10 +1,13 @@
+@import "utils/normalize";
+
 :root {
-  --primary: #1E78FF;
+  --color-accent: #1E78FF;
   --color-text: #fff;
-  --color-text-secondary: #888;
+  --color-label: #888;
   --color-background: #18191B;
-  --color-background-secondary: #000;
-  --color-border: #1E1F22;
+  --color-background-secondary: #1E1F22;
+  --color-black: #000;
+  --color-input-border-bottom: var(--color-background-secondary);
 
   font-family: 'Rubik', "Segoe UI", sans-serif;
 }
@@ -39,5 +42,3 @@ a {
 .wrapper {
   padding: 0 16px;
 }
-
-@import "utils/normalize";
