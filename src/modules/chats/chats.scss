@@ -1,0 +1,30 @@
+.chats {
+  min-height: 100vh;
+
+  &__container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  &__left {
+    flex-basis: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--color-accent);
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__profile-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 14px 40px;
+  }
+}

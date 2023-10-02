@@ -1,0 +1,44 @@
+@import "utils/normalize";
+
+:root {
+  --color-accent: #1E78FF;
+  --color-text: #fff;
+  --color-label: #888;
+  --color-background: #18191B;
+  --color-background-secondary: #1E1F22;
+  --color-black: #000;
+  --color-input-border-bottom: var(--color-background-secondary);
+
+  font-family: 'Rubik', "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.wrapper {
+  padding: 0 16px;
+}

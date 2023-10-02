@@ -1,0 +1,22 @@
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-size: 20rem;
+    font-weight: 900;
+    color: var(--color-accent);
+  }
+
+  &__message {
+    margin-bottom: 32px;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
