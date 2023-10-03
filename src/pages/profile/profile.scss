@@ -2,46 +2,58 @@
   padding: 32px 0;
 
   &__info {
-    margin: 24px 0 48px 0;
+    margin: 24px 0 48px;
   }
 
   .info {
     display: grid;
+
     grid-template-columns: repeat(2, 300px);
-    column-gap: 48px;
+
     row-gap: 24px;
+    column-gap: 48px;
 
     &__line {
       display: flex;
+
       flex-direction: column;
+
       gap: 8px;
     }
 
     &__role {
-      color: var(--color-label);
       font-size: 0.875rem;
       font-weight: 300;
+      color: var(--color-label);
     }
 
     &__value {
       display: inline-block;
-      border-radius: 8px;
+
       padding: 16px 0 16px 24px;
-      background-color: var(--color-background-secondary);
+
       font-size: 1rem;
+
+      background-color: var(--color-background-secondary);
+      border-radius: 8px;
     }
   }
 
   &__links {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 16px;
   }
 
   &__link {
     display: flex;
-    align-items: center;
+
     gap: 8px;
+
+    align-items: center;
+
     border-radius: 8px;
   }
 }

@@ -6,24 +6,32 @@
   }
 
   &__avatar-input {
-    appearance: none;
     position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
     left: -100%;
+
+    overflow: hidden;
+
+    visibility: hidden;
+
+    opacity: 0;
+    appearance: none;
   }
 
   &__form {
     display: grid;
+
     grid-template-columns: repeat(2, 300px);
+
     gap: 24px;
+
     margin-top: 24px;
   }
 
   &__label {
     display: inline-block;
+
     margin-bottom: 8px;
+
     font-size: 0.875rem;
     font-weight: 300;
     color: var(--color-label);
@@ -31,19 +39,22 @@
 
   &__input {
     display: block;
+
     width: 100%;
+
     border: none;
-    border-radius: 0;
     border-bottom: 2px solid var(--color-input-border-bottom);
+    border-radius: 0;
 
     &:focus-visible {
-      outline: none;
       border-color: var(--color-accent);
+      outline: none;
     }
   }
 
   &__save-btn {
     justify-self: start;
+
     padding: 16px 40px;
   }
 }

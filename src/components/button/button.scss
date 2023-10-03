@@ -1,8 +1,10 @@
 .button {
+  font-weight: 700;
+  color: var(--color-text);
+
+  cursor: pointer;
+
+  background-color: var(--color-accent);
   border: none;
   border-radius: 8px;
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  font-weight: 700;
-  cursor: pointer;
 }
