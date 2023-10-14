@@ -29,12 +29,14 @@ export class ChangeProfileData extends Block {
         type: 'text',
         name: 'login',
         id: 'login',
+        label: 'Новый пароль',
       }),
       new Input({
         className: 'data__input',
         type: 'password',
         name: 'password',
         id: 'password',
+        label: 'Подтвердите пароль',
       }),
     ];
 
