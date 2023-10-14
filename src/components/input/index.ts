@@ -1,6 +1,21 @@
-import Handlebars from 'handlebars';
-import { tmpl } from './input.tmpl.ts';
 import './input.scss';
 import { InputProps } from './types.ts';
+import Block from '../../core/Block.ts';
 
-export const Input = (props: InputProps): string => Handlebars.compile(tmpl)(props);
+export class Input extends Block {
+  constructor(props: InputProps) {
+    super('input', props);
+  }
+
+  init() {
+    const element = this.element as HTMLInputElement;
+    element.classList.add(this.props.className);
+    element.id = this.props.id;
+    element.name = this.props.name;
+    element!.type = this.props.type;
+  }
+
+  render() {
+    return this.compile('', this.props);
+  }
+}

@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars';
-import { tmpl } from './change-profile-data.tmpl.ts';
 import './change-profile-data.scss';
 
 import { Button } from '../../../../components/button/index.ts';
@@ -7,79 +5,66 @@ import { Input } from '../../../../components/input/index.ts';
 import { Avatar } from '../../../../components/avatar/index.ts';
 
 import avatar from '../../../../assets/images/avatar.jpeg';
+import Block from '../../../../core/Block.ts';
 
-export const ChangeProfileData = (): string => Handlebars.compile(tmpl)({
-  avatar: Avatar({ url: avatar }),
-  changeAvatarButton: Button({
-    type: 'button',
-    className: 'data__change-avatar-btn',
-    text: 'Изменить фото профиля',
-  }),
-  fields: [
-    {
-      label: 'Логин:',
-      for: 'login',
-      input: Input({
+export class ChangeProfileData extends Block {
+  constructor() {
+    super('main', {});
+  }
+
+  init() {
+    this.children.avatar = new Avatar({
+      url: avatar,
+    });
+
+    this.children.changeAvatarButton = new Button({
+      type: 'button',
+      className: 'data__change-avatar-btn',
+      text: 'Изменить фото профиля',
+    });
+
+    this.children.fields = [
+      new Input({
         className: 'data__input',
         type: 'text',
         name: 'login',
         id: 'login',
       }),
-    },
-    {
-      label: 'E-mail:',
-      for: 'email',
-      input: Input({
+      new Input({
         className: 'data__input',
-        type: 'email',
-        name: 'email',
-        id: 'email',
+        type: 'password',
+        name: 'password',
+        id: 'password',
       }),
-    },
-    {
-      label: 'Имя:',
-      for: 'first_name',
-      input: Input({
-        className: 'data__input',
-        type: 'text',
-        name: 'first_name',
-        id: 'first_name',
-      }),
-    },
-    {
-      label: 'Фамилия:',
-      for: 'second_name',
-      input: Input({
-        className: 'data__input',
-        type: 'text',
-        name: 'second_name',
-        id: 'second_name',
-      }),
-    },
-    {
-      label: 'Номер телефона:',
-      for: 'phone',
-      input: Input({
-        className: 'data__input',
-        type: 'tel',
-        name: 'phone',
-        id: 'phone',
-      }),
-    },
-    {
-      label: 'Имя в чате:',
-      for: 'display_name',
-      input: Input({
-        className: 'data__input',
-        type: 'text',
-        name: 'display_name',
-        id: 'display_name',
-      }),
-    },
-  ],
-  saveBtn: Button({
-    type: 'submit',
-    className: 'data__save-btn',
-    text: 'Сохранить',
-  }),
-});
+    ];
+
+    this.children.saveBtn = new Button({
+      type: 'submit',
+      className: 'data__save-btn',
+      text: 'Сохранить',
+    });
+  }
+
+  render() {
+    return this.compile(
+      `
+      <section class="data">
+        {{{avatar}}}
+        <input class="data__avatar-input" type="file" name="avatar">
+        {{{changeAvatarButton}}}
+        <form class="data__form">
+            {{#each fields}}
+<!--                <div class="data__input-container">-->
+<!--                    <label for="{{for}}" class="data__label">{{label}}</label>-->
+                    {{{this}}}
+<!--                </div>-->
+            {{/each}}
+
+            {{{saveBtn}}}
+        </form>
+      </section>
+    `,
+      {},
+    );
+  }
+}

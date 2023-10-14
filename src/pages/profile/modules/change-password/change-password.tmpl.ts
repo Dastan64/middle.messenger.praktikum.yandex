@@ -3,10 +3,7 @@ export const tmpl = `
         {{{avatar}}}
         <form class="password__form">
             {{#each fields}}
-                <div class="password__input-container">
-                    <label for="{{for}}" class="password__label">{{label}}</label>
-                    {{{input}}}
-                </div>
+                {{{this}}}
             {{/each}}
             {{{saveBtn}}}
         </form>

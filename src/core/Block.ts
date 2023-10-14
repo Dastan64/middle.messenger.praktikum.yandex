@@ -14,7 +14,7 @@ class Block<P extends Record<string, any> = any> {
 
   protected props: P;
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
 
@@ -22,7 +22,7 @@ class Block<P extends Record<string, any> = any> {
 
   private readonly _meta: { props: P; tagName: string };
 
-  constructor(propsWithChildren: P, tagName = 'div') {
+  constructor(tagName = 'div', propsWithChildren: P) {
     const eventBus = new EventBus();
 
     const { children, props } = this._getChildrenAndProps(propsWithChildren);
@@ -98,8 +98,13 @@ class Block<P extends Record<string, any> = any> {
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach((child) => {
+      if (Array.isArray(child)) {
+        child.forEach((c) => c.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -136,27 +141,37 @@ class Block<P extends Record<string, any> = any> {
 
   protected compile(template: string, context: any) {
     const contextAndStubs = { ...context };
-
     Object.entries(this.children).forEach(([name, component]) => {
-      contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      if (Array.isArray(component)) {
+        contextAndStubs[name] = component.map((comp) => `<div data-id="${comp.id}"></div>`);
+      } else {
+        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      }
     });
 
     const html = Handlebars.compile(template)(contextAndStubs);
-
     const temp = document.createElement('template');
-
     temp.innerHTML = html;
 
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      if (Array.isArray(component)) {
+        const stubs = component.map((comp) => temp.content.querySelector(`[data-id="${comp.id}"]`));
+        if (!stubs.length) {
+          return;
+        }
+        stubs.forEach((stub, index) => {
+          component[index].getContent()?.append(...Array.from(stub!.childNodes));
+          stub!.replaceWith(component[index].getContent()!);
+        });
+      } else {
+        const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+        if (!stub) {
+          return;
+        }
+        component.getContent()?.append(...Array.from(stub.childNodes));
 
-      if (!stub) {
-        return;
+        stub.replaceWith(component.getContent()!);
       }
-
-      component.getContent()?.append(...Array.from(stub.childNodes));
-
-      stub.replaceWith(component.getContent()!);
     });
 
     return temp.content;

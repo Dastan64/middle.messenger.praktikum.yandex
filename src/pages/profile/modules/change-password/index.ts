@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars';
 import { tmpl } from './change-password.tmpl.ts';
 import './change-password.scss';
 
@@ -7,39 +6,41 @@ import { Input } from '../../../../components/input/index.ts';
 import { Avatar } from '../../../../components/avatar/index.ts';
 
 import avatar from '../../../../assets/images/avatar.jpeg';
-import { Field } from './types.ts';
+import Block from '../../../../core/Block.ts';
 
-export const ChangePassword = (): string => {
-  const fields: Field[] = [
-    {
-      label: 'Старый пароль:',
-      for: 'oldPassword',
-      input: Input({
+export class ChangePassword extends Block {
+  constructor() {
+    super('main', {});
+  }
+
+  init() {
+    this.children.avatar = new Avatar({
+      url: avatar,
+    });
+
+    this.children.fields = [
+      new Input({
         className: 'password__input',
         type: 'password',
         name: 'oldPassword',
         id: 'oldPassword',
       }),
-    },
-    {
-      label: 'Новый пароль:',
-      for: 'newPassword',
-      input: Input({
+      new Input({
         className: 'password__input',
         type: 'password',
         name: 'newPassword',
         id: 'newPassword',
       }),
-    },
-  ];
+    ];
 
-  return Handlebars.compile(tmpl)({
-    avatar: Avatar({ url: avatar }),
-    fields,
-    saveBtn: Button({
+    this.children.saveBtn = new Button({
       type: 'submit',
       className: 'password__save-btn',
       text: 'Сохранить',
-    }),
-  });
-};
+    });
+  }
+
+  render() {
+    return this.compile(tmpl, {});
+  }
+}

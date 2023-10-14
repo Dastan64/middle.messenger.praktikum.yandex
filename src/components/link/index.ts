@@ -1,6 +1,22 @@
-import Handlebars from 'handlebars';
-import { tmpl } from './link.tmpl.ts';
 import './link.scss';
 import { LinkProps } from './types.ts';
+import Block from '../../core/Block.ts';
 
-export const Link = (props: LinkProps): string => Handlebars.compile(tmpl)(props);
+export class Link extends Block {
+  constructor(props: LinkProps) {
+    super('a', props);
+  }
+
+  init() {
+    const element = this.element as HTMLLinkElement;
+    element.className = 'link';
+    if (this.props.className) {
+      element.classList.add(this.props.className);
+    }
+    element!.href = this.props.to;
+  }
+
+  render() {
+    return this.compile('{{text}}', this.props);
+  }
+}
