@@ -4,7 +4,7 @@ import './login.scss';
 import { Button } from '../../../../components/button/index.ts';
 import { Link } from '../../../../components/link/index.ts';
 import Block from '../../../../core/Block.ts';
-import { Input } from '../../../../components/input/index.ts';
+import { InputContainer } from '../../../../components/input-container/index.ts';
 
 export class Login extends Block {
   constructor() {
@@ -12,18 +12,18 @@ export class Login extends Block {
   }
 
   init() {
-    this.children.fields = [
-      new Input({
+    this.children.inputs = [
+      new InputContainer({
         id: 'login',
+        label: 'Логин',
         name: 'login',
         type: 'text',
-        label: 'Логин',
       }),
-      new Input({
+      new InputContainer({
         id: 'password',
+        label: 'Пароль',
         name: 'password',
         type: 'password',
-        label: 'Пароль',
       }),
     ];
 
@@ -40,6 +40,6 @@ export class Login extends Block {
   }
 
   render() {
-    return this.compile(tmpl, {});
+    return this.compile(tmpl);
   }
 }

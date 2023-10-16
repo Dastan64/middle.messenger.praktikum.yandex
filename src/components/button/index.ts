@@ -17,6 +17,6 @@ export class Button extends Block {
   }
 
   render() {
-    return this.compile('{{text}}', this.props);
+    return this.compile('{{text}}');
   }
 }

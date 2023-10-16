@@ -20,7 +20,6 @@ export class Avatar extends Block {
       </div>
       <h1 class="user__name">{{userName}}</h1>
     `,
-      this.props,
     );
   }
 }

@@ -24,6 +24,6 @@ export class HomePage extends Block {
   }
 
   render() {
-    return this.compile(tmpl, this.props);
+    return this.compile(tmpl);
   }
 }

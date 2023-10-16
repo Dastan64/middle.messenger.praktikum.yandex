@@ -17,6 +17,6 @@ export class Chats extends Block {
   }
 
   render() {
-    return this.compile(tmpl, {});
+    return this.compile(tmpl);
   }
 }

@@ -72,6 +72,6 @@ export class Register extends Block {
   }
 
   render() {
-    return this.compile(tmpl, {});
+    return this.compile(tmpl);
   }
 }

@@ -66,7 +66,6 @@ export class ChangeProfileData extends Block {
         </form>
       </section>
     `,
-      {},
     );
   }
 }

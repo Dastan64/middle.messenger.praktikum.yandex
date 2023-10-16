@@ -41,6 +41,6 @@ export class ChangePassword extends Block {
   }
 
   render() {
-    return this.compile(tmpl, {});
+    return this.compile(tmpl);
   }
 }

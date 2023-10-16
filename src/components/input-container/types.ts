@@ -1,5 +1,4 @@
-export interface InputProps {
-  className?: string;
+export interface InputContainerProps {
   events?: {
     blur?: (event: FocusEvent) => void;
     focus?: () => void;

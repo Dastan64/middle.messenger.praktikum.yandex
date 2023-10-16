@@ -72,7 +72,6 @@ export class Profile extends Block {
         </div>
     </section>
     `,
-      {},
     );
   }
 }
