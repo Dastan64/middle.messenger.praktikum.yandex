@@ -12,6 +12,7 @@ export class InputContainer extends Block {
   init() {
     const validation = new FormValidation();
     this.children.input = new Input({
+      className: this.props.className ?? '',
       id: this.props.id,
       name: this.props.name,
       type: this.props.type,
@@ -23,9 +24,6 @@ export class InputContainer extends Block {
 
     const element = this.element as HTMLDivElement;
     element.className = 'input-container';
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
   }
 
   render() {

@@ -2,11 +2,11 @@ import { tmpl } from './change-password.tmpl.ts';
 import './change-password.scss';
 
 import { Button } from '../../../../components/button/index.ts';
-import { Input } from '../../../../components/input/index.ts';
 import { Avatar } from '../../../../components/avatar/index.ts';
 
 import avatar from '../../../../assets/images/avatar.jpeg';
 import Block from '../../../../core/Block.ts';
+import { InputContainer } from '../../../../components/input-container';
 
 export class ChangePassword extends Block {
   constructor() {
@@ -19,17 +19,19 @@ export class ChangePassword extends Block {
     });
 
     this.children.fields = [
-      new Input({
+      new InputContainer({
         className: 'password__input',
         type: 'password',
         name: 'oldPassword',
         id: 'oldPassword',
+        label: 'Старый пароль:',
       }),
-      new Input({
+      new InputContainer({
         className: 'password__input',
         type: 'password',
         name: 'newPassword',
         id: 'newPassword',
+        label: 'Новый пароль:',
       }),
     ];
 

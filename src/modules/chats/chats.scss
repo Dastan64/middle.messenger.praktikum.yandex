@@ -1,37 +1,260 @@
 .chats {
+  min-height: 100dvh;
+
+  color: var(--color-text);
+}
+
+.container {
+  display: flex;
+
   min-height: 100vh;
+}
 
-  &__container {
-    display: flex;
+.chat {
+  display: flex;
 
-    min-height: 100vh;
+  flex: 1;
+  flex-direction: column;
+
+  padding-bottom: 20px;
+
+  background-color: var(--color-background);
+}
+
+.top {
+  padding: 16px 32px;
+
+  background-color: var(--color-background-secondary);
+}
+
+.top-info {
+  display: flex;
+
+  gap: 8px;
+
+  align-items: center;
+}
+
+.talker-name {
+  font-size: 1rem;
+}
+
+.talker-status {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--color-label);
+}
+
+.settings-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+
+  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+}
+
+.conversation {
+  padding: 24px 32px 42px;
+}
+
+.messages {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+
+  padding: 16px 24px;
+  margin-top: auto;
+  margin-right: 32px;
+  margin-left: 32px;
+
+  background-color: var(--color-background-secondary);
+  border-radius: 8px;
+}
+
+.attach-btn, .send-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+}
+
+.message-input {
+  display: block;
+
+  width: 100%;
+  min-height: 24px;
+
+  font-size: 1rem;
+  color: var(--color-text);
+
+  background-color: var(--color-background-secondary);
+  border: none;
+  outline: none;
+}
+
+/* Стили панели чатов */
+
+.chats-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding-top: 10px;
+}
+
+.chat-link-wrapper {
+  display: flex;
+
+  gap: 14px;
+
+  align-items: center;
+
+  padding: 8px 24px;
+
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-background-secondary);
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+
+  aspect-ratio: 1/1;
+
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text)
+}
+
+.msg {
+  max-width: 190px;
+  overflow: hidden;
+
+  font-size: 0.875rem;
+  color: var(--color-label);
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.info, .extra {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.etime {
+  font-size: calc(10rem / 16);
+}
+
+.notification {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+  padding: 0 8px;
+
+  font-size: calc(12rem / 16);
+  font-weight: 700;
+  color: var(--color-text);
+
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* Стили поиска чатов */
+
+.sidebar {
+  max-width: 338px;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  background-color: var(--color-background-3);
+  border-right: 1px solid var(--color-background-4);
+  border-left: 1px solid var(--color-background-4);
+
+  &::-webkit-scrollbar {
+    width: 3px;
   }
 
-  &__left {
-    display: flex;
-
-    flex-basis: 310px;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    border-right: 1px solid var(--color-accent);
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
 
-  &__right {
-    display: flex;
-
-    flex: 1;
-
-    align-items: center;
-    justify-content: center;
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-label);
+    border-radius: 60px;
   }
+}
 
-  &__profile-link {
-    display: inline-block;
+.search-container {
+  padding: 28px 28px 12px;
 
-    padding: 14px 40px;
-    margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-background-4);
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 10px 16px 48px;
+
+  font-size: 1rem;
+  color: var(--color-text);
+
+  background-color: var(--color-background-secondary);
+  background-image: url("/src/assets/images/loupe.svg");
+  background-repeat: no-repeat;
+  background-position: 16px 50%;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+
+  &::placeholder {
+    font-size: 0.875rem;
+    color: var(--color-label);
   }
+}
+
+
+.panel {
+  padding: 24px 16px;
+
+  background-color: var(--color-background-3);
 }
