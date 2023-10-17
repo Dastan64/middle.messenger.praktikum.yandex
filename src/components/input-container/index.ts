@@ -1,8 +1,9 @@
 import './input-container.scss';
 import Block from '../../core/Block.ts';
 import { Input } from '../input/index.ts';
+import { Error } from '../error/index.ts';
 import { InputContainerProps } from './types.ts';
-import { FormValidation } from '../../utils/FormValidation.ts';
+import { validate } from '../../utils/validate.ts';
 
 export class InputContainer extends Block {
   constructor(props: InputContainerProps) {
@@ -10,15 +11,22 @@ export class InputContainer extends Block {
   }
 
   init() {
-    const validation = new FormValidation();
+    this.children.error = new Error({
+      text: '',
+    });
     this.children.input = new Input({
+      ...this.props,
       className: this.props.className ?? '',
-      id: this.props.id,
-      name: this.props.name,
-      type: this.props.type,
-      label: this.props.label,
       events: {
-        blur: validation.validate.bind(validation),
+        blur: (event) => {
+          const target = event.target as HTMLInputElement;
+          const errors = validate({
+            [this.props.name]: target.value,
+          });
+          (this.children.error as Block).setProps({
+            text: errors[this.props.name],
+          });
+        },
       },
     });
 
@@ -30,6 +38,7 @@ export class InputContainer extends Block {
     return this.compile(`
       <label class="label" for="{{id}}">{{label}}</label>
       {{{input}}}
+      {{{error}}}
     `);
   }
 }

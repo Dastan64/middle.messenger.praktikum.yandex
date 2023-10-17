@@ -4,8 +4,8 @@ import './register.scss';
 import { Link } from '../../../../components/link/index.ts';
 import { Button } from '../../../../components/button/index.ts';
 import Block from '../../../../core/Block.ts';
-import { Input } from '../../../../components/input/index.ts';
 import { InputProps } from '../../../../components/input/types.ts';
+import { InputContainer } from '../../../../components/input-container/index.ts';
 
 const fields: InputProps[] = [
   {
@@ -58,16 +58,16 @@ export class Register extends Block {
   }
 
   init() {
-    this.children.fields = fields.map((field) => new Input(field));
+    this.children.fields = fields.map((field) => new InputContainer(field));
     this.children.mainPageLink = new Link({
       to: '/',
       text: 'На главную',
-      className: 'form__link',
+      className: 'registration-form__link',
     });
     this.children.registerBtn = new Button({
       text: 'Зарегистрироваться',
       type: 'submit',
-      className: 'form__sign-up-button',
+      className: 'registration-form__sign-up-button',
     });
   }
 

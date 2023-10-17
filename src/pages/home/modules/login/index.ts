@@ -30,7 +30,7 @@ export class Login extends Block {
     this.children.loginBtn = new Button({
       text: 'Войти',
       type: 'submit',
-      className: 'form__sign-in-button',
+      className: 'login-form__sign-in-button',
     });
 
     this.children.registerLink = new Link({

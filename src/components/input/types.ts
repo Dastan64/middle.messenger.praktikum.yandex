@@ -2,7 +2,6 @@ export interface InputProps {
   className?: string;
   events?: {
     blur?: (event: FocusEvent) => void;
-    focus?: () => void;
   };
   id: string;
   label: string;
