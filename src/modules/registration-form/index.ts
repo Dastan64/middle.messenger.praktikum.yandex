@@ -2,16 +2,10 @@ import './registration-form.scss';
 import Block from '../../core/Block.ts';
 import { tmpl } from './registration-form.tmpl.ts';
 import { validateFormSubmit } from '../../utils/validateFormSubmit.ts';
-
-interface FormProps {
-  className?: string;
-  inputs: Block[];
-  link: Block;
-  submitButton: Block;
-}
+import { RegistrationFormProps } from './types.ts';
 
 export class RegistrationForm extends Block {
-  constructor(props: FormProps) {
+  constructor(props: RegistrationFormProps) {
     super('form', {
       ...props,
       events: {
@@ -25,8 +19,11 @@ export class RegistrationForm extends Block {
 
   init() {
     const element = this.element as HTMLFormElement;
-    element.className = this.props.className;
+    element.className = 'registration-form';
     this.children.inputs = this.props.inputs;
+    if (this.props.className) {
+      element.classList.add(this.props.className);
+    }
   }
 
   render() {

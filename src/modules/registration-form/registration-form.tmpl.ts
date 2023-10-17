@@ -1,7 +1,11 @@
 export const tmpl = `
-  {{#each inputs}}
-    {{{this}}}
-  {{/each}}
-  {{{submitButton}}}
-  {{{link}}}
+  <div class="registration-form__fields">
+    {{#each inputs}}
+        {{{this}}}
+    {{/each}}
+  </div>
+  <div class='registration-form__controls'>
+    {{{submitButton}}}
+    {{{link}}}
+  </div>
 `;

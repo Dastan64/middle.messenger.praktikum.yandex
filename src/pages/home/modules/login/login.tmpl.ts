@@ -1,7 +1,7 @@
 export const tmpl = `
   <section class="login">
       <div class="login__container">
-          <h3 class="login__title">Вход</h3>
+          <h2 class="login__title">Вход</h2>
           {{{loginForm}}}
       </div>
   </section>
