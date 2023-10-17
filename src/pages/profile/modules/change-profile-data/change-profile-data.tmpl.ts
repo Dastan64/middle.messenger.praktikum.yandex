@@ -1,17 +1,9 @@
 export const tmpl = `
-    <section class="data">
+    <section class="user-info">
+      <label class="user-info__label">
         {{{avatar}}}
-        <input class="data__avatar-input" type="file" name="avatar">
-        {{{changeAvatarButton}}}
-        <form class="data__form">
-            {{#each fields}}
-                <div class="data__input-container">
-                    <label for="{{for}}" class="data__label">{{label}}</label>
-                    {{{input}}}
-                </div>
-            {{/each}}
-            
-            {{{saveBtn}}}
-        </form>
+        <input class="user-info__input" type="file" name="avatar">
+      </label>
+      {{{editProfileForm}}}
     </section>
 `;

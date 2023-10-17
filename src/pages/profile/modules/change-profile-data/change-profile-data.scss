@@ -1,11 +1,19 @@
-.data {
+.user-info {
   padding: 16px;
 
-  &__change-avatar-btn {
-    padding: 8px 16px;
+  &__label {
+    display: inline-block;
+
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+
+      opacity: 0.7;
+    }
   }
 
-  &__avatar-input {
+  &__input {
     position: absolute;
     left: -100%;
 
@@ -15,46 +23,5 @@
 
     opacity: 0;
     appearance: none;
-  }
-
-  &__form {
-    display: grid;
-
-    grid-template-columns: repeat(2, 300px);
-
-    gap: 24px;
-
-    margin-top: 24px;
-  }
-
-  &__label {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    font-size: 0.875rem;
-    font-weight: 300;
-    color: var(--color-label);
-  }
-
-  &__input {
-    display: block;
-
-    width: 100%;
-
-    border: none;
-    border-bottom: 2px solid var(--color-input-border-bottom);
-    border-radius: 0;
-
-    &:focus-visible {
-      border-color: var(--color-accent);
-      outline: none;
-    }
-  }
-
-  &__save-btn {
-    justify-self: start;
-
-    padding: 16px 40px;
   }
 }

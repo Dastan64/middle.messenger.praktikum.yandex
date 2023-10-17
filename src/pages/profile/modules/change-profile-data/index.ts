@@ -1,11 +1,15 @@
 import './change-profile-data.scss';
 
 import { Button } from '../../../../components/button/index.ts';
-import { Input } from '../../../../components/input/index.ts';
 import { Avatar } from '../../../../components/avatar/index.ts';
+import { InputContainer } from '../../../../components/input-container/index.ts';
 
 import avatar from '../../../../assets/images/avatar.jpeg';
 import Block from '../../../../core/Block.ts';
+import { EditProfileForm } from '../../../../modules/edit-profile-form/index.ts';
+import { InputContainerProps } from '../../../../components/input-container/types.ts';
+import { fields } from './change-profile-data.fields.ts';
+import { tmpl } from './change-profile-data.tmpl.ts';
 
 export class ChangeProfileData extends Block {
   constructor() {
@@ -17,55 +21,17 @@ export class ChangeProfileData extends Block {
       url: avatar,
     });
 
-    this.children.changeAvatarButton = new Button({
-      type: 'button',
-      className: 'data__change-avatar-btn',
-      text: 'Изменить фото профиля',
-    });
-
-    this.children.fields = [
-      new Input({
-        className: 'data__input',
-        type: 'text',
-        name: 'login',
-        id: 'login',
-        label: 'Новый пароль',
+    this.children.editProfileForm = new EditProfileForm({
+      inputs: fields.map((field) => new InputContainer(field as InputContainerProps)),
+      submitButton: new Button({
+        type: 'submit',
+        className: 'profile-form__button',
+        text: 'Сохранить',
       }),
-      new Input({
-        className: 'data__input',
-        type: 'password',
-        name: 'password',
-        id: 'password',
-        label: 'Подтвердите пароль',
-      }),
-    ];
-
-    this.children.saveBtn = new Button({
-      type: 'submit',
-      className: 'data__save-btn',
-      text: 'Сохранить',
     });
   }
 
   render() {
-    return this.compile(
-      `
-      <section class="data">
-        {{{avatar}}}
-        <input class="data__avatar-input" type="file" name="avatar">
-        {{{changeAvatarButton}}}
-        <form class="data__form">
-            {{#each fields}}
-<!--                <div class="data__input-container">-->
-<!--                    <label for="{{for}}" class="data__label">{{label}}</label>-->
-                    {{{this}}}
-<!--                </div>-->
-            {{/each}}
-
-            {{{saveBtn}}}
-        </form>
-      </section>
-    `,
-    );
+    return this.compile(tmpl);
   }
 }

@@ -7,6 +7,7 @@ interface validateParams {
 }
 
 enum NAMES {
+  DISPLAY_NAME = 'display_name',
   EMAIL = 'email',
   FIRST_NAME = 'first_name',
   LOGIN = 'login',
@@ -90,6 +91,9 @@ export const validate = (input: validateParams) => {
         break;
       case NAMES.MESSAGE:
         errors[name] = validateMessage(value);
+        break;
+      case NAMES.DISPLAY_NAME:
+        errors[name] = validateLogin(value);
         break;
       default:
         break;

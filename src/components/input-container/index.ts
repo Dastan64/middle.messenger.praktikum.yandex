@@ -16,7 +16,6 @@ export class InputContainer extends Block {
     });
     this.children.input = new Input({
       ...this.props,
-      className: this.props.className ?? '',
       events: {
         blur: (event) => {
           const target = event.target as HTMLInputElement;

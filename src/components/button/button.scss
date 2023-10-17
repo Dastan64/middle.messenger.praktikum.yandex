@@ -7,4 +7,8 @@
   background-color: var(--color-accent);
   border: none;
   border-radius: 8px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
