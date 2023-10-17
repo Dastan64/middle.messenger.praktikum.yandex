@@ -3,17 +3,7 @@ export const tmpl = `
         <div class="registration__container">
             <h3 class="registration__title">Регистрация аккаунта</h3>
             <div class="registration__fields">
-                <form class="registration__form registration-form">
-                    <div class="registration-form__fields">
-                        {{#each fields}}
-                          {{{this}}}
-                        {{/each}}
-                    </div>
-                    <div class="registration-form__buttons">
-                        {{{registerBtn}}}
-                        {{{mainPageLink}}}
-                    </div>
-                </form>
+                {{{registrationForm}}}
             </div>
         </div>
     </section>

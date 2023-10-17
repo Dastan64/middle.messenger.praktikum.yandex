@@ -1,11 +1,12 @@
 import { tmpl } from './register.tmpl.ts';
 import './register.scss';
+import Block from '../../../../core/Block.ts';
+import { InputProps } from '../../../../components/input/types.ts';
 
 import { Link } from '../../../../components/link/index.ts';
 import { Button } from '../../../../components/button/index.ts';
-import Block from '../../../../core/Block.ts';
-import { InputProps } from '../../../../components/input/types.ts';
 import { InputContainer } from '../../../../components/input-container/index.ts';
+import { RegistrationForm } from '../../../../modules/registration-form/index.ts';
 
 const fields: InputProps[] = [
   {
@@ -58,16 +59,19 @@ export class Register extends Block {
   }
 
   init() {
-    this.children.fields = fields.map((field) => new InputContainer(field));
-    this.children.mainPageLink = new Link({
-      to: '/',
-      text: 'На главную',
-      className: 'registration-form__link',
-    });
-    this.children.registerBtn = new Button({
-      text: 'Зарегистрироваться',
-      type: 'submit',
-      className: 'registration-form__sign-up-button',
+    this.children.registrationForm = new RegistrationForm({
+      className: 'registration__form registration-form',
+      inputs: fields.map((field) => new InputContainer(field)),
+      submitButton: new Button({
+        type: 'submit',
+        className: 'registration-form__sign-up-button',
+        text: 'Зарегистрироваться',
+      }),
+      link: new Link({
+        to: '/',
+        text: 'На главную',
+        className: 'registration-form__link',
+      }),
     });
   }
 

@@ -32,6 +32,7 @@ export class InputContainer extends Block {
 
     const element = this.element as HTMLDivElement;
     element.className = 'input-container';
+    element.dataset.name = this.props.name;
   }
 
   render() {

@@ -7,11 +7,6 @@ export class Input extends Block {
     super('input', props);
   }
 
-  get isValid(): boolean {
-    const element = this.element as HTMLInputElement;
-    return element.value.length > 2;
-  }
-
   init() {
     const element = this.element as HTMLInputElement;
     element.className = 'input';

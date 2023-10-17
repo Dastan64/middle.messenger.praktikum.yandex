@@ -25,6 +25,7 @@ const validateLogin = (value: string) => {
 };
 
 const validateEmail = (value: string) => {
+  // eslint-disable-next-line max-len
   const pattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
   if (!pattern.test(value)) {
     return 'Некорректный e-mail';
