@@ -5,6 +5,7 @@ import { Button } from '../../../../components/button/index.ts';
 import { Link } from '../../../../components/link/index.ts';
 import Block from '../../../../core/Block.ts';
 import { InputContainer } from '../../../../components/input-container/index.ts';
+import { LoginForm } from '../../../../modules/login-form/index.ts';
 
 export class Login extends Block {
   constructor() {
@@ -12,30 +13,30 @@ export class Login extends Block {
   }
 
   init() {
-    this.children.inputs = [
-      new InputContainer({
-        id: 'login',
-        label: 'Логин',
-        name: 'login',
-        type: 'text',
+    this.children.loginForm = new LoginForm({
+      inputs: [
+        new InputContainer({
+          id: 'login',
+          name: 'login',
+          type: 'text',
+          label: 'Логин:',
+        }),
+        new InputContainer({
+          id: 'password',
+          name: 'password',
+          type: 'password',
+          label: 'Пароль:',
+        }),
+      ],
+      submitButton: new Button({
+        type: 'submit',
+        className: 'login-form__button',
+        text: 'Войти',
       }),
-      new InputContainer({
-        id: 'password',
-        label: 'Пароль',
-        name: 'password',
-        type: 'password',
+      link: new Link({
+        to: '/',
+        text: 'Зарегистрироваться',
       }),
-    ];
-
-    this.children.loginBtn = new Button({
-      text: 'Войти',
-      type: 'submit',
-      className: 'login-form__sign-in-button',
-    });
-
-    this.children.registerLink = new Link({
-      text: 'Зарегистрироваться',
-      to: '/register',
     });
   }
 
