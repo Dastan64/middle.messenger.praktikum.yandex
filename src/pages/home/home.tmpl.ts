@@ -1,11 +1,12 @@
 export const tmpl = `
-    <main class="main">
-        <h1 class="main__title">Привет, добро пожаловать в чат!</h1>
-        <nav class="main__nav">
-            <ul class="main__list">
-                <li class="main__list-item">{{{profileLink}}}</li>
-                <li class="main__list-item">{{{chatsLink}}}</li>
-            </ul>
-        </nav>
-    </main>
+  <section class="home">
+    <h1 class="home__title">Привет, добро пожаловать в чат!</h1>
+    <nav class="home__nav">
+        <ul class="home__list">
+            {{#each links}}
+                <li>{{{this}}}</li>
+            {{/each}}
+        </ul>
+    </nav>
+  </section>
 `;
