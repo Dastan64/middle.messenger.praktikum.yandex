@@ -66,7 +66,8 @@ const validatePassword = (value: string) => {
 };
 
 const validateMessage = (value: string) => {
-  if (value.length === 0) {
+  const hasOnlySpacesPattern = /^\s*$/;
+  if (value.length === 0 || hasOnlySpacesPattern.test(value)) {
     return 'Сообщение не может быть пустым';
   }
   return '';
