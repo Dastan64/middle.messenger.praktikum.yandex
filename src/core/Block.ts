@@ -14,6 +14,7 @@ class Block<P extends Record<string, any> = any> {
 
   protected props: P;
 
+  // eslint-disable-next-line no-use-before-define
   public children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
@@ -113,13 +114,13 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  private _componentDidUpdate(oldProps: P, newProps: P) {
-    if (this.componentDidUpdate(oldProps, newProps)) {
+  private _componentDidUpdate() {
+    if (this.componentDidUpdate()) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate() {
     return true;
   }
 

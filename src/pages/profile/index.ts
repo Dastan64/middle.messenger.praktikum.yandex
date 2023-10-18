@@ -14,6 +14,7 @@ export class Profile extends Block {
   init() {
     this.children.avatar = new Avatar({
       url: avatar,
+      username: 'Дастан Жамекешев',
     });
     this.children.changeProfileDataLink = new Link({
       to: '/change-profile-data',
