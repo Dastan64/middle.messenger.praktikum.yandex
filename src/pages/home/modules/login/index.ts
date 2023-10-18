@@ -34,7 +34,7 @@ export class Login extends Block {
         text: 'Войти',
       }),
       link: new Link({
-        to: '/',
+        to: '/register',
         text: 'Зарегистрироваться',
       }),
     });

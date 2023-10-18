@@ -18,7 +18,7 @@ export class Avatar extends Block {
       <div class="user__avatar-container">
           <img width="130" height="130" src="{{url}}" alt="Фото профиля" class="user__avatar">
       </div>
-      <h1 class="user__name">{{userName}}</h1>
+      <h1 class="user__name">{{username}}</h1>
     `,
     );
   }

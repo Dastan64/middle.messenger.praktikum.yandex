@@ -19,6 +19,7 @@ export class ChangeProfileData extends Block {
   init() {
     this.children.avatar = new Avatar({
       url: avatar,
+      username: 'Дастан Жамекешев',
     });
 
     this.children.editProfileForm = new EditProfileForm({
