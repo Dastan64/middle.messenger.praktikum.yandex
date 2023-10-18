@@ -7,11 +7,14 @@ interface validateParams {
 }
 
 enum NAMES {
+  CONFIRM_PASSWORD = 'confirm-password',
   DISPLAY_NAME = 'display_name',
   EMAIL = 'email',
   FIRST_NAME = 'first_name',
   LOGIN = 'login',
   MESSAGE = 'message',
+  NEW_PASSWORD = 'newPassword',
+  OLD_PASSWORD = 'oldPassword',
   PASSWORD = 'password',
   PHONE = 'phone',
   SECOND_NAME = 'second_name',
@@ -85,6 +88,22 @@ export const validate = (input: validateParams) => {
         break;
       case NAMES.PASSWORD:
         errors[name] = validatePassword(value);
+        break;
+      case NAMES.CONFIRM_PASSWORD:
+        if (input[NAMES.PASSWORD]) {
+          if (value !== input[NAMES.PASSWORD]) {
+            errors[name] = 'Пароли не совпадают';
+          }
+        }
+        break;
+      case NAMES.OLD_PASSWORD:
+        break;
+      case NAMES.NEW_PASSWORD:
+        if (value.length === 0) {
+          errors[name] = 'Пустое поле';
+        } else if (value === input[NAMES.OLD_PASSWORD]) {
+          errors[name] = 'Новый пароль не может быть старым паролем';
+        }
         break;
       case NAMES.PHONE:
         errors[name] = validatePhone(value);

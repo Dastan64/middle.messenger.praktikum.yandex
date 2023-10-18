@@ -22,6 +22,7 @@ export class InputContainer extends Block {
           const errors = validate({
             [this.props.name]: target.value,
           });
+          console.log(errors);
           (this.children.error as Block).setProps({
             text: errors[this.props.name],
           });

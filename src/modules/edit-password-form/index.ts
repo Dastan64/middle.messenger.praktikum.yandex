@@ -1,11 +1,11 @@
-import './edit-profile-form.scss';
+import './edit-password-form.scss';
 import Block from '../../core/Block.ts';
+import { tmpl } from './edit-password-form-tmpl.ts';
 import { validateFormSubmit } from '../../utils/validateFormSubmit.ts';
-import { EditProfileFormProps } from './types.ts';
-import { tmpl } from './edit-profile-form-tmpl.ts';
+import { EditPasswordFormProps } from './types.ts';
 
-export class EditProfileForm extends Block {
-  constructor(props: EditProfileFormProps) {
+export class EditPasswordForm extends Block {
+  constructor(props: EditPasswordFormProps) {
     super('form', {
       ...props,
       events: {
@@ -19,7 +19,7 @@ export class EditProfileForm extends Block {
 
   init() {
     const element = this.element as HTMLFormElement;
-    element.className = 'profile-form';
+    element.className = 'password-form';
     this.children.inputs = this.props.inputs;
     if (this.props.className) {
       element.classList.add(this.props.className);
