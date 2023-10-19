@@ -1,5 +1,5 @@
 import Block from '../../../../core/Block.ts';
-import './chat-message-form.scss';
+import styles from './chat-message-form.module.scss';
 import { tmpl } from './chat-message-form-tmpl.ts';
 import { ChatMessageFormProps } from './types.ts';
 import { validateFormSubmit } from '../../../../utils/validateFormSubmit.ts';
@@ -19,9 +19,7 @@ export class ChatMessageForm extends Block {
 
   init() {
     const element = this.element as HTMLFormElement;
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
+    element.className = styles.form;
     this.children.inputs = this.props.inputs;
   }
 

@@ -1,5 +1,4 @@
 export interface ButtonProps {
-  className: string;
   events?: {
     click: () => void;
   };

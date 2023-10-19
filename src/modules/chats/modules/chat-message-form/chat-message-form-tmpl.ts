@@ -1,7 +1,9 @@
+import styles from './chat-message-form.module.scss';
+
 export const tmpl = `
-  <label class="file-input-label" for="file"></label>
+  <label class=${styles.label} for="file"></label>
   {{#each inputs}}
     {{{this}}}
   {{/each}}
-  <button class="send-btn" type="submit"></button>
+  <button class=${styles.button} type="submit"></button>
 `;

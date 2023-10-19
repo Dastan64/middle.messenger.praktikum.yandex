@@ -1,10 +1,9 @@
 import { tmpl } from './chats.tmpl.ts';
-import './chats.scss';
 import Block from '../../core/Block.ts';
 import { Link } from '../../components/link/index.ts';
 import { Message } from './components/message/index.ts';
-import { ChatMessageForm } from './modules/chat-message-form';
-import { Input } from '../../components/input';
+import { ChatMessageForm } from './modules/chat-message-form/index.ts';
+import { Input } from '../../components/input/index.ts';
 
 export class Chats extends Block {
   constructor() {
@@ -14,7 +13,6 @@ export class Chats extends Block {
   init() {
     this.children.profileLink = new Link({
       to: '/profile',
-      className: 'chats__profile-link',
       text: 'Профиль',
     });
 
@@ -30,20 +28,16 @@ export class Chats extends Block {
     ];
 
     this.children.form = new ChatMessageForm({
-      className: 'chat-message-form',
       inputs: [
         new Input({
-          className: 'message-input',
+          placeholder: 'Написать сообщение...',
           name: 'message',
           id: 'message',
-          label: 'Написать сообщение...',
           type: 'text',
         }),
         new Input({
-          className: 'file-input',
           name: 'file',
           id: 'file',
-          label: 'Прикрепить файлы',
           type: 'file',
         }),
       ],

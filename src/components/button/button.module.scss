@@ -1,4 +1,6 @@
 .button {
+  padding: 16px 64px;
+
   font-weight: 700;
   color: var(--color-text);
 
@@ -10,5 +12,9 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &_compact {
+    padding: 16px 40px;
   }
 }

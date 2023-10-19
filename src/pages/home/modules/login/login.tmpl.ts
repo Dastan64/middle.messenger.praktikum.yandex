@@ -1,7 +1,9 @@
+import styles from './login.module.scss';
+
 export const tmpl = `
-  <section class="login">
-      <div class="login__container">
-          <h2 class="login__title">Вход</h2>
+  <section class=${styles.login}>
+      <div class=${styles.container}>
+          <h2 class=${styles.title}>Вход</h2>
           {{{loginForm}}}
       </div>
   </section>

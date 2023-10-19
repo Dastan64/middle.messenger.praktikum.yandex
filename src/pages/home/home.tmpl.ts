@@ -1,8 +1,10 @@
+import styles from './home.module.scss';
+
 export const tmpl = `
-  <section class="home">
-    <h1 class="home__title">Привет, добро пожаловать в чат!</h1>
-    <nav class="home__nav">
-        <ul class="home__list">
+  <section class=${styles.home}>
+    <h1 class=${styles.title}>Привет, добро пожаловать в чат!</h1>
+    <nav>
+        <ul class=${styles.list}>
             {{#each links}}
                 <li>{{{this}}}</li>
             {{/each}}

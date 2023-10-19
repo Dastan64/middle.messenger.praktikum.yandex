@@ -1,5 +1,5 @@
 import { tmpl } from './message.tmpl.ts';
-import './message.scss';
+import styles from './message.module.scss';
 import Block from '../../../../core/Block.ts';
 import { MessageProps } from './types.ts';
 
@@ -10,7 +10,7 @@ export class Message extends Block {
 
   init() {
     const element = this.element as HTMLLIElement;
-    element.className = 'message';
+    element.className = styles.message;
   }
 
   render() {

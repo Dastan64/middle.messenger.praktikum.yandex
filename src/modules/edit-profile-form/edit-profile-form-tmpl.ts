@@ -1,10 +1,12 @@
+import styles from './edit-profile-form.module.scss';
+
 export const tmpl = `
-  <div class="profile-form__fields">
+  <div class=${styles.fields}>
     {{#each inputs}}
         {{{this}}}
     {{/each}}
   </div>
-  <div class='profile-form__controls'>
+  <div class=${styles.controls}>
     {{{submitButton}}}
   </div>
 `;

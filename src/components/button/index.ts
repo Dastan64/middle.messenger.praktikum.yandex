@@ -1,4 +1,4 @@
-import './button.scss';
+import styles from './button.module.scss';
 import { ButtonProps } from './types.ts';
 import Block from '../../core/Block.ts';
 
@@ -9,10 +9,7 @@ export class Button extends Block {
 
   init() {
     const element = this.element as HTMLButtonElement;
-    element.className = 'button';
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
+    element.className = styles.button;
     element.type = this.props.type;
   }
 

@@ -1,9 +1,10 @@
-import './input-container.scss';
+import styles from './input-container.module.scss';
 import Block from '../../core/Block.ts';
 import { Input } from '../input/index.ts';
 import { Error } from '../error/index.ts';
 import { InputContainerProps } from './types.ts';
 import { validate } from '../../utils/validate.ts';
+import { tmpl } from './input-container-tmpl.ts';
 
 export class InputContainer extends Block {
   constructor(props: InputContainerProps) {
@@ -30,15 +31,11 @@ export class InputContainer extends Block {
     });
 
     const element = this.element as HTMLDivElement;
-    element.className = 'input-container';
+    element.className = styles.container;
     element.dataset.name = this.props.name;
   }
 
   render() {
-    return this.compile(`
-      <label class="label" for="{{id}}">{{label}}</label>
-      {{{input}}}
-      {{{error}}}
-    `);
+    return this.compile(tmpl);
   }
 }

@@ -1,265 +1,265 @@
+import styles from './chats.module.scss';
+
 export const tmpl = `
-  <section class="chats">
-      <div class="container">
-        <div class="panel">
+  <section class=${styles.section}>
+        <div class=${styles.container}>
+        <div class=${styles.panel}>
             <img width="48" height="48"
                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg" alt=""
-                 class="avatar">
-            <nav class="panel-nav">
-                <ul></ul>
-            </nav>
+                 class=${styles.avatar}>
         </div>
-        <div class="sidebar">
-            <div class="search-container">
-                <input class="search-input" type="text" aria-label="Поиск" placeholder="Поиск...">
+        <div class=${styles.sidebar}>
+            <div class=${styles.searchContainer}>
+                <input class=${styles.searchInput} type="text" aria-label="Поиск" placeholder="Поиск..."/>
             </div>
-            <ul class="chats-list">
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+            <ul class=${styles.chats}>
+
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
-                <li class="chats-list-chat">
-                    <a class="chat-link-wrapper" href="#">
-                        <div class="avatar-container">
-                            <img width="48" height="48" class="avatar"
+                <li class=${styles.chat}>
+                    <a class=${styles.wrapper} href="#">
+                        <div>
+                            <img width="48" height="48" class=${styles.avatar}
                                  src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg"
                                  alt="">
                         </div>
-                        <div class="info">
-                            <span class="name">Джонни Депп</span>
-                            <span class="msg">Привет, Эмбер! Помнишь меня?</span>
+                        <div class=${styles.info}>
+                            <span class=${styles.name}>Джонни Депп</span>
+                            <span class=${styles.msg}>Привет, Эмбер! Помнишь меня?</span>
                         </div>
-                        <div class="extra">
-                            <span class="etime">1:38</span>
-                            <span class="notification">13</span>
+                        <div class=${styles.extra}>
+                            <span class=${styles.etime}>1:38</span>
+                            <span class=${styles.notification}>13</span>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="chat">
-            <div class="top">
-                <div class="top-info">
-                    <span class="talker-name">Даниил</span>
-                    <span class="talker-status">Был в сети 6 минут назад</span>
-                    <button class="settings-btn">
+        <div class=${styles.current}>
+            <div class=${styles.top}>
+                <div class=${styles.topInfo}>
+                    <span class=${styles.talkerName}>Даниил</span>
+                    <span class=${styles.status}>Был в сети 6 минут назад</span>
+                    <button class=${styles.settingsBtn}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none">
                             <path d="M17 12C17 12.5523 17.4477 13 18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523
@@ -275,8 +275,8 @@ export const tmpl = `
                     </button>
                 </div>
             </div>
-            <div class="conversation">
-                <ul class="messages">
+            <div class=${styles.conversation}>
+                <ul class=${styles.messages}>
                   {{#each messages}}
                     {{{this}}}
                   {{/each}}

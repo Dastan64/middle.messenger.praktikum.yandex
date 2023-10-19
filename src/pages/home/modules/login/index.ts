@@ -1,5 +1,4 @@
 import { tmpl } from './login.tmpl.ts';
-import './login.scss';
 
 import { Button } from '../../../../components/button/index.ts';
 import { Link } from '../../../../components/link/index.ts';
@@ -30,7 +29,6 @@ export class Login extends Block {
       ],
       submitButton: new Button({
         type: 'submit',
-        className: 'login-form__button',
         text: 'Войти',
       }),
       link: new Link({

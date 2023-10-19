@@ -1,0 +1,27 @@
+.section {
+  padding: 48px 32px 32px;
+}
+
+.label {
+  display: inline-block;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+
+    opacity: 0.7;
+  }
+}
+
+.input {
+  position: absolute;
+  left: -100%;
+
+  overflow: hidden;
+
+  visibility: hidden;
+
+  opacity: 0;
+  appearance: none;
+}

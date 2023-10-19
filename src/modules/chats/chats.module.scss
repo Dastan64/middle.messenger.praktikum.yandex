@@ -1,4 +1,4 @@
-.chats {
+.section {
   min-height: 100dvh;
 
   color: var(--color-text);
@@ -10,7 +10,7 @@
   min-height: 100vh;
 }
 
-.chat {
+.current {
   display: flex;
 
   flex: 1;
@@ -27,7 +27,7 @@
   background-color: var(--color-background-secondary);
 }
 
-.top-info {
+.topInfo {
   display: flex;
 
   gap: 8px;
@@ -35,17 +35,17 @@
   align-items: center;
 }
 
-.talker-name {
+.talkerName {
   font-size: 1rem;
 }
 
-.talker-status {
+.status {
   font-size: 0.875rem;
   font-weight: 300;
   color: var(--color-label);
 }
 
-.settings-btn {
+.settingsBtn {
   display: flex;
 
   align-items: center;
@@ -73,7 +73,7 @@
 
 /* Стили панели чатов */
 
-.chats-list {
+.chats {
   display: flex;
 
   flex-direction: column;
@@ -83,7 +83,7 @@
   padding-top: 10px;
 }
 
-.chat-link-wrapper {
+.wrapper {
   display: flex;
 
   gap: 14px;
@@ -180,13 +180,13 @@
   }
 }
 
-.search-container {
+.searchContainer {
   padding: 28px 28px 12px;
 
   border-bottom: 1px solid var(--color-background-4);
 }
 
-.search-input {
+.searchInput {
   width: 100%;
   padding: 16px 10px 16px 48px;
 

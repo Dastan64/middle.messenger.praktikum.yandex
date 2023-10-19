@@ -1,10 +1,12 @@
+import styles from './login-form.module.scss';
+
 export const tmpl = `
-  <div class="login-form__fields">
+  <div class=${styles.fields}>
     {{#each inputs}}
         {{{this}}}
     {{/each}}
   </div>
-  <div class="login-form__buttons">
+  <div class=${styles.controls}>
     {{{submitButton}}}
     {{{link}}}
   </div>

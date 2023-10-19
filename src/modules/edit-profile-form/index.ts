@@ -1,4 +1,3 @@
-import './edit-profile-form.scss';
 import Block from '../../core/Block.ts';
 import { validateFormSubmit } from '../../utils/validateFormSubmit.ts';
 import { EditProfileFormProps } from './types.ts';
@@ -18,12 +17,7 @@ export class EditProfileForm extends Block {
   }
 
   init() {
-    const element = this.element as HTMLFormElement;
-    element.className = 'profile-form';
     this.children.inputs = this.props.inputs;
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
   }
 
   render() {

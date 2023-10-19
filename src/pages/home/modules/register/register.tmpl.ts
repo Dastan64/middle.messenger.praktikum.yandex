@@ -1,7 +1,9 @@
+import styles from './register.module.scss';
+
 export const tmpl = `
-  <section class="registration">
-      <div class="registration__container">
-          <h2 class="registration__title">Регистрация аккаунта</h2>
+  <section class=${styles.registration}>
+      <div class=${styles.container}>
+          <h2 class=${styles.title}>Регистрация аккаунта</h2>
           {{{registrationForm}}}
       </div>
   </section>

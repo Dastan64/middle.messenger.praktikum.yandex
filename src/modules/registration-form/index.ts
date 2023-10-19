@@ -1,4 +1,3 @@
-import './registration-form.scss';
 import Block from '../../core/Block.ts';
 import { tmpl } from './registration-form.tmpl.ts';
 import { validateFormSubmit } from '../../utils/validateFormSubmit.ts';
@@ -18,12 +17,7 @@ export class RegistrationForm extends Block {
   }
 
   init() {
-    const element = this.element as HTMLFormElement;
-    element.className = 'registration-form';
     this.children.inputs = this.props.inputs;
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
   }
 
   render() {
