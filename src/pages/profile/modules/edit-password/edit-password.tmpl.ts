@@ -2,7 +2,9 @@ import styles from './edit-password.module.scss';
 
 export const tmpl = `
     <section class=${styles.section}>
-        {{{avatar}}}
-        {{{editPasswordForm}}}
+        <div class="wrapper">
+            {{{avatar}}}
+            {{{editPasswordForm}}}
+        </div>
     </section>
 `;

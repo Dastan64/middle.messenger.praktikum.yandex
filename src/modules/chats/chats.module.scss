@@ -119,28 +119,6 @@
   border-bottom: 1px solid var(--color-background-4);
 }
 
-.searchInput {
-  width: 100%;
-  padding: 16px 10px 16px 48px;
-
-  font-size: 1rem;
-  color: var(--color-text);
-
-  background-color: var(--color-background-secondary);
-  background-image: url("/src/assets/images/loupe.svg");
-  background-repeat: no-repeat;
-  background-position: 16px 50%;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-
-  &::placeholder {
-    font-size: 0.875rem;
-    color: var(--color-label);
-  }
-}
-
-
 .panel {
   padding: 24px 16px;
 

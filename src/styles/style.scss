@@ -40,9 +40,7 @@ ul, ol {
 }
 
 #app {
-  max-width: 1440px;
   min-height: 100vh;
-  margin: 0 auto;
 
   color: var(--color-text);
 
@@ -50,5 +48,7 @@ ul, ol {
 }
 
 .wrapper {
+  max-width: 1440px;
   padding: 0 16px;
+  margin: 0 auto;
 }

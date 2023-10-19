@@ -1,6 +1,5 @@
 import { tmpl } from './chats.tmpl.ts';
 import Block from '../../core/Block.ts';
-import { Link } from '../../components/link/index.ts';
 import { Message } from './components/message/index.ts';
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 import { Input } from '../../components/input/index.ts';
@@ -13,11 +12,6 @@ export class Chats extends Block {
   }
 
   init() {
-    this.children.profileLink = new Link({
-      to: '/profile',
-      text: 'Профиль',
-    });
-
     this.children.messages = [
       new Message({
         text: 'Друзья, у меня для вас особенный выпуск новостей!',
@@ -28,6 +22,13 @@ export class Chats extends Block {
         time: '23:46',
       }),
     ];
+
+    this.children.input = new Input({
+      placeholder: 'Поиск...',
+      id: 'search',
+      name: 'search',
+      type: 'text',
+    });
 
     this.children.chats = [
       new ChatThumb({

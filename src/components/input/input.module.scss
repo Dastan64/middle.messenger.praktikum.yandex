@@ -57,4 +57,19 @@
       outline: none;
     }
   }
+
+  &.type_search {
+    padding: 16px 10px 16px 48px;
+
+    background-color: var(--color-background-secondary);
+    background-image: url("/src/assets/images/loupe.svg");
+    background-repeat: no-repeat;
+    background-position: 16px 50%;
+    outline: none;
+
+    &::placeholder {
+      font-size: 0.875rem;
+      color: var(--color-label);
+    }
+  }
 }

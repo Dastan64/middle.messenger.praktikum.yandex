@@ -10,7 +10,7 @@ export const tmpl = `
         </div>
         <div class=${styles.sidebar}>
             <div class=${styles.searchContainer}>
-                <input class=${styles.searchInput} type="text" aria-label="Поиск" placeholder="Поиск..."/>
+                {{{input}}}
             </div>
             <ul class=${styles.chats}>
               {{#each chats}}

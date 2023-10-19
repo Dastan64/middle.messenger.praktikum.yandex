@@ -12,6 +12,7 @@
         "em"
       ]
     },
+    "selector-class-pattern": null,
     "declaration-empty-line-before": [
       "always",
       {

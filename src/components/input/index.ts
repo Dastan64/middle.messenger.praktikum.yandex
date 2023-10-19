@@ -19,6 +19,9 @@ export class Input extends Block {
     if (this.props.name === 'message') {
       element.classList.add(styles.type_message);
     }
+    if (this.props.name === 'search') {
+      element.classList.add(styles.type_search);
+    }
     element.type = this.props.type;
     element.name = this.props.name;
     if (this.props.placeholder) {
