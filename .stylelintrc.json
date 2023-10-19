@@ -9,7 +9,8 @@
     "declaration-property-unit-allowed-list": {
       "font-size": [
         "rem",
-        "em"
+        "em",
+        "%"
       ]
     },
     "selector-class-pattern": null,

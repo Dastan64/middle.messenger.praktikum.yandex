@@ -37,6 +37,13 @@
       "error",
       120
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "no-console": "off",
     "sort-destructure-keys/sort-destructure-keys": 2,
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
