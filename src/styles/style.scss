@@ -35,6 +35,10 @@ a {
   text-decoration: none;
 }
 
+ul, ol {
+  list-style: none;
+}
+
 #app {
   max-width: 1440px;
   min-height: 100vh;
