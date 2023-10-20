@@ -1,0 +1,75 @@
+.thumb {
+  display: flex;
+
+  gap: 14px;
+
+  align-items: center;
+
+  padding: 8px 24px;
+
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-background-secondary);
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+
+  aspect-ratio: 1/1;
+
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text)
+}
+
+.message {
+  max-width: 190px;
+  overflow: hidden;
+
+  font-size: 0.875rem;
+  color: var(--color-label);
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.info, .extra {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.time {
+  font-size: calc(10rem / 16);
+}
+
+.numberOfMessages {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+  padding: 0 8px;
+
+  font-size: calc(12rem / 16);
+  font-weight: 700;
+  color: var(--color-text);
+
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}

@@ -8,6 +8,6 @@ const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.listen(PORT, function () {
-    console.log(`Приложение открылось на порту: ${PORT}!`);
+app.listen(PORT, () => {
+  console.log(`Приложение открылось на порту: ${PORT}!`);
 });

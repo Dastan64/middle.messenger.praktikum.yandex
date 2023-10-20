@@ -1,0 +1,9 @@
+.link {
+  color: var(--color-accent);
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
