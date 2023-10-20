@@ -16,50 +16,40 @@ type Options = {
   timeout?: number;
 };
 
+type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
+
 export class HTTPTransport {
-  get(url: string, options: Options): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.GET,
-      },
-      options.timeout,
-    );
-  }
+  get: HTTPMethod = (url, options = { method: METHODS.GET }) => this.request(
+    url,
+    {
+      ...options,
+    },
+    options.timeout,
+  );
 
-  post(url: string, options: Options): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.POST,
-      },
-      options.timeout,
-    );
-  }
+  post: HTTPMethod = (url, options = { method: METHODS.POST }) => this.request(
+    url,
+    {
+      ...options,
+    },
+    options.timeout,
+  );
 
-  put(url: string, options: Options): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.PUT,
-      },
-      options.timeout,
-    );
-  }
+  put: HTTPMethod = (url, options = { method: METHODS.PUT }) => this.request(
+    url,
+    {
+      ...options,
+    },
+    options.timeout,
+  );
 
-  delete(url: string, options: Options): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.DELETE,
-      },
-      options.timeout,
-    );
-  }
+  delete: HTTPMethod = (url, options = { method: METHODS.DELETE }) => this.request(
+    url,
+    {
+      ...options,
+    },
+    options.timeout,
+  );
 
   request(url: string, options: Options, timeout: number = 5000): Promise<XMLHttpRequest> {
     const { data, headers, method } = options;
