@@ -8,7 +8,7 @@ enum METHODS {
 }
 
 type Options = {
-  data?: never;
+  data?: any;
   headers?: {
     [headerName: string]: string;
   };
@@ -16,37 +16,51 @@ type Options = {
   timeout?: number;
 };
 
-type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
+type OptionsWithoutMethod = Omit<Options, 'method'>;
+
+type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHttpRequest>;
 
 export class HTTPTransport {
-  get: HTTPMethod = (url, options = { method: METHODS.GET }) => this.request(
-    url,
+  protected API_URL = 'https://ya-praktikum.tech/api/v2';
+
+  protected endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = `${this.API_URL}${endpoint}`;
+  }
+
+  get: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
     {
       ...options,
+      method: METHODS.GET,
     },
     options.timeout,
   );
 
-  post: HTTPMethod = (url, options = { method: METHODS.POST }) => this.request(
-    url,
+  post: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
     {
       ...options,
+      method: METHODS.POST,
     },
     options.timeout,
   );
 
-  put: HTTPMethod = (url, options = { method: METHODS.PUT }) => this.request(
-    url,
+  put: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
     {
       ...options,
+      method: METHODS.PUT,
     },
     options.timeout,
   );
 
-  delete: HTTPMethod = (url, options = { method: METHODS.DELETE }) => this.request(
-    url,
+  delete: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
     {
       ...options,
+      method: METHODS.DELETE,
     },
     options.timeout,
   );

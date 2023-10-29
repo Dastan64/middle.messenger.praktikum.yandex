@@ -35,7 +35,7 @@
   "rules": {
     "max-len": [
       "error",
-      120
+      150
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -52,6 +52,7 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "no-constructor-return": "off",
+    "arrow-body-style": ["error", "as-needed"],
     "no-use-before-define": "off",
     "no-param-reassign": [
       "error",
