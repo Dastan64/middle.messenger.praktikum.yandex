@@ -2,29 +2,31 @@ import Block from './Block.ts';
 import { Route } from './Route.ts';
 
 export class Router {
-  routes: Route[];
+  private routes: Route[] = [];
 
-  private readonly _rootQuery: string;
+  private static _instance: Router;
 
-  private _currentRoute: null | Route;
+  private readonly _rootQuery: string = '';
 
-  protected history: History;
+  private _currentRoute: null | Route = null;
+
+  private history = window.history;
 
   constructor(rootQuery: string) {
-    // if (Router._instance) {
-    //   return Router._instance;
-    // }
+    if (Router._instance) {
+      return Router._instance;
+    }
     this.routes = [];
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
 
-    // Router._instance = this;
+    Router._instance = this;
   }
 
-  use(pathname: string, block: new () => Block) {
+  public use(pathname: string, block: new () => Block) {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
-    this.routes?.push(route);
+    this.routes.push(route);
     return this;
   }
 
