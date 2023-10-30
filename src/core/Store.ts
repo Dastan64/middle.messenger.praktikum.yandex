@@ -2,18 +2,17 @@ import { EventBus } from './EventBus.ts';
 import { UserInfo } from '../types/types.ts';
 import { set } from '../utils/set.ts';
 
-interface State {
+export interface State {
   user?: UserInfo;
 }
 
-enum StoreEvents {
+export enum StoreEvents {
   Updated = 'Updated',
 }
 
 class Store extends EventBus {
   private state: State = {};
 
-  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -22,7 +21,7 @@ class Store extends EventBus {
     return this.state;
   }
 
-  set(path: string, value: any) {
+  set(path: string, value: unknown) {
     set(this.state, path, value);
 
     this.emit(StoreEvents.Updated, this.state);

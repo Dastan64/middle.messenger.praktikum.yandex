@@ -1,40 +1,49 @@
 import '../styles/style.scss';
-// import Block from '../core/Block.ts';
-// import { render } from '../core/render.ts';
 // Pages
 import { HomePage } from '../pages/home/index.ts';
-import { ChangePassword } from '../pages/profile/modules/edit-password/index.ts';
+import router from '../core/Router.ts';
 import { Login } from '../pages/home/modules/login/index.ts';
-import { Chats } from '../modules/chats/index.ts';
 import { Register } from '../pages/home/modules/register/index.ts';
+import { Chats } from '../modules/chats/index.ts';
+import { ChangePassword } from '../pages/profile/modules/edit-password/index.ts';
 import { ChangeProfileData } from '../pages/profile/modules/edit-profile/index.ts';
 import { Profile } from '../pages/profile/index.ts';
-import router from '../core/Router.ts';
-//
-// const ROUTES: Record<string, Block> = {
-//   '/': new HomePage(),
-//   '/404': new ErrorPage({
-//     statusCode: '404',
-//     message: 'Упс, не туда попали',
-//   }),
-//   '/500': new ErrorPage({
-//     statusCode: '500',
-//     message: 'Упс, ошибка, уже фиксим',
-//   }),
-//   '/profile': new Profile(),
-//   '/edit-profile': new ChangeProfileData(),
-//   '/edit-password': new ChangePassword(),
-//   '/chats': new Chats(),
-//   '/login': new Login(),
-//   '/register': new Register(),
-// };
+import { Routes } from '../types/types.ts';
+import { AuthController } from '../controllers/AuthController.ts';
 
-router
-  .use('/', HomePage)
-  .use('/login', Login)
-  .use('/register', Register)
-  .use('/chats', Chats)
-  .use('/edit-password', ChangePassword)
-  .use('/edit-profile', ChangeProfileData)
-  .use('/profile', Profile)
-  .start();
+window.addEventListener('DOMContentLoaded', async () => {
+  router
+    .use(Routes.Home, HomePage)
+    .use(Routes.Login, Login)
+    .use(Routes.Register, Register)
+    .use(Routes.Chats, Chats)
+    .use(Routes.EditPassword, ChangePassword)
+    .use(Routes.EditProfile, ChangeProfileData)
+    .use(Routes.Profile, Profile);
+
+  let isProtectedRoute = true;
+
+  // eslint-disable-next-line default-case
+  switch (window.location.pathname) {
+    case Routes.Home:
+    case Routes.Register:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+    await AuthController.fetchUser();
+    router.start();
+
+    if (!isProtectedRoute) {
+      router.go(Routes.Profile);
+    }
+  } catch (error) {
+    console.log(error);
+    router.start();
+
+    if (isProtectedRoute) {
+      router.go(Routes.Home);
+    }
+  }
+});

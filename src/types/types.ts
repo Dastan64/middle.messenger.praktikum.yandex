@@ -22,3 +22,15 @@ export interface UserInfo {
   phone: string;
   second_name: string;
 }
+
+export enum Routes {
+  Chats = '/chats',
+  EditPassword = '/edit-password',
+  EditProfile = '/edit-profile',
+  Error = '/500',
+  Home = '/',
+  Login = '/login',
+  NotFound = '/404',
+  Profile = '/profile',
+  Register = '/register'
+}

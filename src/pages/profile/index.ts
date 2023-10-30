@@ -4,10 +4,15 @@ import { Avatar } from '../../components/avatar/index.ts';
 import avatar from '../../assets/images/avatar.jpeg';
 import Block from '../../core/Block.ts';
 import { tmpl } from './profile.tmpl.ts';
+import { AuthController } from '../../controllers/AuthController.ts';
 
 export class Profile extends Block {
   constructor() {
     super('main', {});
+  }
+
+  protected componentDidMount() {
+    AuthController.fetchUser();
   }
 
   init() {
