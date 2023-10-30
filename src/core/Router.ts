@@ -1,7 +1,7 @@
 import Block from './Block.ts';
 import { Route } from './Route.ts';
 
-export class Router {
+class Router {
   private routes: Route[] = [];
 
   private static _instance: Router;
@@ -65,3 +65,5 @@ export class Router {
     return this.routes.find((route) => route.match(pathname))!;
   }
 }
+
+export default new Router('#app');

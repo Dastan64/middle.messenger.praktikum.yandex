@@ -54,15 +54,9 @@
     "no-constructor-return": "off",
     "arrow-body-style": ["error", "as-needed"],
     "no-use-before-define": "off",
-    "no-param-reassign": [
-      "error",
-      {
-        "props": true,
-        "ignorePropertyModificationsFor": [
-          "target"
-        ]
-      }
-    ],
+    "no-param-reassign": "off",
+    "no-continue": "off",
+    "no-prototype-builtins": "off",
     "default-param-last": "off",
     "no-shadow": "off",
     "@typescript-eslint/no-unused-vars": [

@@ -65,8 +65,8 @@ export class HTTPTransport {
     options.timeout,
   );
 
-  request(url: string, options: Options, timeout: number = 5000): Promise<XMLHttpRequest> {
-    const { data, headers, method } = options;
+  request(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<XMLHttpRequest> {
+    const { data, headers = { 'Content-Type': 'application/json' }, method } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();

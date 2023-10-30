@@ -2,6 +2,8 @@ import Block from '../../core/Block.ts';
 import { tmpl } from './login-form-tmpl.ts';
 import { validateFormSubmit } from '../../utils/validateFormSubmit.ts';
 import { LoginFormProps } from './types.ts';
+import { SignInData } from '../../types/types.ts';
+import { AuthController } from '../../controllers/AuthController.ts';
 
 export class LoginForm extends Block {
   constructor(props: LoginFormProps) {
@@ -10,7 +12,14 @@ export class LoginForm extends Block {
       events: {
         submit: (event: SubmitEvent) => {
           event.preventDefault();
-          validateFormSubmit(event.target as HTMLFormElement, this.children.inputs as Block[]);
+          const data = validateFormSubmit(event.target as HTMLFormElement, this.children.inputs as Block[]);
+          if (data) {
+            const signInData: SignInData = {
+              login: data.login,
+              password: data.password,
+            };
+            AuthController.signin(signInData);
+          }
         },
       },
     });
