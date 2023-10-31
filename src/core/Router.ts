@@ -24,7 +24,7 @@ class Router {
     Router._instance = this;
   }
 
-  public use(pathname: string, block: new () => Block) {
+  public use(pathname: string, block: typeof Block) {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
     this.routes.push(route);
     return this;
@@ -62,7 +62,7 @@ class Router {
   }
 
   getRoute(pathname: string): Route {
-    return this.routes.find((route) => route.match(pathname))!;
+    return this.routes.find((route) => { return route.match(pathname); })!;
   }
 }
 

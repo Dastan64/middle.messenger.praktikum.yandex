@@ -5,8 +5,10 @@ import avatar from '../../assets/images/avatar.jpeg';
 import Block from '../../core/Block.ts';
 import { tmpl } from './profile.tmpl.ts';
 import { AuthController } from '../../controllers/AuthController.ts';
+import { withStore } from '../../hocs/withStore.ts';
+import { State } from '../../core/Store.ts';
 
-export class Profile extends Block {
+export class BaseProfile extends Block {
   constructor() {
     super('main', {});
   }
@@ -34,3 +36,10 @@ export class Profile extends Block {
     return this.compile(tmpl);
   }
 }
+
+const mapStateToProps = (state: State) => {
+  console.log(state);
+  return { ...state.user };
+};
+
+export const Profile = withStore(mapStateToProps)(BaseProfile);

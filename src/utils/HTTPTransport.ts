@@ -18,7 +18,7 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHttpRequest>;
+type HTTPMethod<T> = (url: string, options?: OptionsWithoutMethod) => Promise<T>;
 
 export class HTTPTransport {
   protected API_URL = 'https://ya-praktikum.tech/api/v2';
@@ -29,43 +29,51 @@ export class HTTPTransport {
     this.endpoint = `${this.API_URL}${endpoint}`;
   }
 
-  get: HTTPMethod = (url, options = {}) => this.request(
-    this.endpoint + url,
-    {
-      ...options,
-      method: METHODS.GET,
-    },
-    options.timeout,
-  );
+  get: HTTPMethod<Response> = (url, options = {}) => {
+    return this.request(
+      this.endpoint + url,
+      {
+        ...options,
+        method: METHODS.GET,
+      },
+      options.timeout,
+    );
+  };
 
-  post: HTTPMethod = (url, options = {}) => this.request(
-    this.endpoint + url,
-    {
-      ...options,
-      method: METHODS.POST,
-    },
-    options.timeout,
-  );
+  post: HTTPMethod<Response> = (url, options = {}) => {
+    return this.request(
+      this.endpoint + url,
+      {
+        ...options,
+        method: METHODS.POST,
+      },
+      options.timeout,
+    );
+  };
 
-  put: HTTPMethod = (url, options = {}) => this.request(
-    this.endpoint + url,
-    {
-      ...options,
-      method: METHODS.PUT,
-    },
-    options.timeout,
-  );
+  put: HTTPMethod<Response> = (url, options = {}) => {
+    return this.request(
+      this.endpoint + url,
+      {
+        ...options,
+        method: METHODS.PUT,
+      },
+      options.timeout,
+    );
+  };
 
-  delete: HTTPMethod = (url, options = {}) => this.request(
-    this.endpoint + url,
-    {
-      ...options,
-      method: METHODS.DELETE,
-    },
-    options.timeout,
-  );
+  delete: HTTPMethod<Response> = (url, options = {}) => {
+    return this.request(
+      this.endpoint + url,
+      {
+        ...options,
+        method: METHODS.DELETE,
+      },
+      options.timeout,
+    );
+  };
 
-  request(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<XMLHttpRequest> {
+  request<Response>(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<Response> {
     const { data, headers = { 'Content-Type': 'application/json' }, method } = options;
 
     return new Promise((resolve, reject) => {
@@ -82,7 +90,7 @@ export class HTTPTransport {
       }
 
       xhr.onload = () => {
-        resolve(xhr);
+        resolve(JSON.parse(xhr.response));
       };
 
       xhr.onabort = reject;
@@ -92,6 +100,7 @@ export class HTTPTransport {
       xhr.ontimeout = reject;
 
       if (isGet || !data) {
+        xhr.withCredentials = true;
         xhr.send();
       } else {
         xhr.send(JSON.stringify(data));
