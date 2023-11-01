@@ -9,11 +9,11 @@ import { ChangeProfileData } from '../pages/profile/modules/edit-profile/index.t
 import { Routes } from '../types/types.ts';
 import { AuthController } from '../controllers/AuthController.ts';
 import { Profile } from '../pages/profile/index.ts';
-import { HomePage } from '../pages/home/index.ts';
+// import { HomePage } from '../pages/home/index.ts';
 
 window.addEventListener('DOMContentLoaded', async () => {
   router
-    .use(Routes.Home, HomePage)
+    .use(Routes.Home, Login)
     .use(Routes.Login, Login)
     .use(Routes.Register, Register)
     .use(Routes.Chats, Chats)
@@ -34,14 +34,11 @@ window.addEventListener('DOMContentLoaded', async () => {
   try {
     await AuthController.fetchUser();
     router.start();
-
     if (!isProtectedRoute) {
       router.go(Routes.Profile);
     }
   } catch (error) {
-    console.log(error);
     router.start();
-
     if (isProtectedRoute) {
       router.go(Routes.Home);
     }

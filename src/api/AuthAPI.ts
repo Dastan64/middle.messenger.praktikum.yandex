@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI.ts';
-import { SignInData, SignUpData } from '../types/types.ts';
+import { SignInData, SignUpData, UserInfo } from '../types/types.ts';
 
 class AuthAPI extends BaseAPI {
   constructor() {
@@ -14,7 +14,7 @@ class AuthAPI extends BaseAPI {
     return this.http.post('/signin', { data });
   }
 
-  getUserInfo() {
+  getUserInfo(): Promise<UserInfo> {
     return this.http.get('/user');
   }
 

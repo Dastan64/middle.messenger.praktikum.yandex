@@ -18,7 +18,7 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-type HTTPMethod<T> = (url: string, options?: OptionsWithoutMethod) => Promise<T>;
+type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<any>;
 
 export class HTTPTransport {
   protected API_URL = 'https://ya-praktikum.tech/api/v2';
@@ -29,7 +29,7 @@ export class HTTPTransport {
     this.endpoint = `${this.API_URL}${endpoint}`;
   }
 
-  get: HTTPMethod<Response> = (url, options = {}) => {
+  get: HTTPMethod = (url, options = {}) => {
     return this.request(
       this.endpoint + url,
       {
@@ -40,7 +40,7 @@ export class HTTPTransport {
     );
   };
 
-  post: HTTPMethod<Response> = (url, options = {}) => {
+  post: HTTPMethod = (url, options = {}) => {
     return this.request(
       this.endpoint + url,
       {
@@ -51,7 +51,7 @@ export class HTTPTransport {
     );
   };
 
-  put: HTTPMethod<Response> = (url, options = {}) => {
+  put: HTTPMethod = (url, options = {}) => {
     return this.request(
       this.endpoint + url,
       {
@@ -62,7 +62,7 @@ export class HTTPTransport {
     );
   };
 
-  delete: HTTPMethod<Response> = (url, options = {}) => {
+  delete: HTTPMethod = (url, options = {}) => {
     return this.request(
       this.endpoint + url,
       {
@@ -89,8 +89,14 @@ export class HTTPTransport {
         });
       }
 
-      xhr.onload = () => {
-        resolve(JSON.parse(xhr.response));
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
+        }
       };
 
       xhr.onabort = reject;
@@ -98,9 +104,10 @@ export class HTTPTransport {
 
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
+      xhr.withCredentials = true;
+      xhr.responseType = 'json';
 
       if (isGet || !data) {
-        xhr.withCredentials = true;
         xhr.send();
       } else {
         xhr.send(JSON.stringify(data));

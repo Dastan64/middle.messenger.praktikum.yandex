@@ -1,5 +1,6 @@
 import { Link } from '../../components/link/index.ts';
 import { Avatar } from '../../components/avatar/index.ts';
+import { Button } from '../../components/button/index.ts';
 
 import avatar from '../../assets/images/avatar.jpeg';
 import Block from '../../core/Block.ts';
@@ -30,6 +31,15 @@ export class BaseProfile extends Block {
       to: '/edit-password',
       text: 'Изменить пароль',
     });
+    this.children.logoutButton = new Button({
+      type: 'button',
+      text: 'Выйти',
+      events: {
+        click: () => {
+          return AuthController.logout();
+        },
+      },
+    });
   }
 
   render() {
@@ -38,7 +48,6 @@ export class BaseProfile extends Block {
 }
 
 const mapStateToProps = (state: State) => {
-  console.log(state);
   return { ...state.user };
 };
 

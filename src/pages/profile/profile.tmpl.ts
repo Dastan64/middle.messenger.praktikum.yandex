@@ -40,6 +40,7 @@ export const tmpl = `
               {{{editProfileLink}}}
               {{{editPasswordLink}}}
           </div>
+          {{{logoutButton}}}
       </div>
   </section>
 `;
