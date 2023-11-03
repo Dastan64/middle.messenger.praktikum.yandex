@@ -12,7 +12,10 @@ export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMes
   });
 
   const fieldsValidationErrors: Record<string, string> = validate(formFields);
-  const areAllFieldsValid = Object.values(fieldsValidationErrors).every((value) => value === '');
+  const areAllFieldsValid = Object.values(fieldsValidationErrors).every((value) => {
+    return value === '';
+  });
+
   if (areAllFieldsValid) {
     if (formFields['confirm-password']) {
       delete formFields['confirm-password'];
@@ -20,6 +23,7 @@ export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMes
     console.log(formFields);
     return formFields;
   }
+
   inputs.forEach((input) => {
     if (!isMessage) {
       (input.children.error as Block).setProps({

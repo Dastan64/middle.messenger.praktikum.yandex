@@ -1,5 +1,4 @@
 import Block from './Block.ts';
-import { isEqual } from '../utils/isEqual.ts';
 import { render } from './render.ts';
 
 export class Route {
@@ -34,7 +33,7 @@ export class Route {
   }
 
   match(pathname: string) {
-    return isEqual(pathname, this._pathname);
+    return pathname === this._pathname;
   }
 
   render() {

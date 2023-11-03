@@ -98,6 +98,9 @@ export const validate = (input: validateParams) => {
         }
         break;
       case NAMES.OLD_PASSWORD:
+        if (value.length === 0) {
+          errors[name] = 'Пустое поле';
+        }
         break;
       case NAMES.NEW_PASSWORD:
         if (value.length === 0) {

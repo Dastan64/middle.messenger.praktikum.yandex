@@ -23,6 +23,25 @@ export interface UserInfo {
   second_name: string;
 }
 
+export interface ProfileData {
+  display_name: string;
+  email: string;
+  first_name: string;
+  login: string;
+  phone: string;
+  second_name: string;
+}
+
+export interface ExtendedProfileData extends ProfileData {
+  avatar: string;
+  id: string;
+}
+
+export interface PasswordData {
+  newPassword: string;
+  oldPassword: string;
+}
+
 export enum Routes {
   Chats = '/chats',
   EditPassword = '/edit-password',
@@ -32,5 +51,5 @@ export enum Routes {
   Login = '/login',
   NotFound = '/404',
   Profile = '/profile',
-  Register = '/register'
+  Register = '/register',
 }

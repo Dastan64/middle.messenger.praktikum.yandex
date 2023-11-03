@@ -15,8 +15,9 @@ export class ChangePassword extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      url: avatar,
-      username: 'Дастан Жамекешев',
+      avatar,
+      first_name: 'Дастан',
+      second_name: 'Жамекешев',
     });
 
     this.children.editPasswordForm = new EditPasswordForm({

@@ -74,8 +74,7 @@ export class HTTPTransport {
   };
 
   request<Response>(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<Response> {
-    const { data, headers = { 'Content-Type': 'application/json' }, method } = options;
-
+    const { data, headers = {}, method } = options;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
@@ -87,6 +86,10 @@ export class HTTPTransport {
         Object.keys(headers).forEach((key) => {
           xhr.setRequestHeader(key, headers[key]);
         });
+      }
+
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
       }
 
       xhr.onreadystatechange = () => {
@@ -110,7 +113,7 @@ export class HTTPTransport {
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+        xhr.send(data instanceof FormData ? data : JSON.stringify(data));
       }
     });
   }
