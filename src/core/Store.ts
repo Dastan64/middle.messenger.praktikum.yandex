@@ -1,8 +1,9 @@
 import { EventBus } from './EventBus.ts';
-import { UserInfo } from '../types/types.ts';
+import { Chat, UserInfo } from '../types/types.ts';
 import { set } from '../utils/set.ts';
 
 export interface State {
+  chats?: Chat[];
   user?: UserInfo;
 }
 

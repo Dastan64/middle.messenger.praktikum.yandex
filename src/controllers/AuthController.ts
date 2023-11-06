@@ -37,6 +37,5 @@ export class AuthController {
   static async fetchUser() {
     const user = await authAPI.getUserInfo();
     store.set('user', user as UserInfo);
-    console.log(store);
   }
 }

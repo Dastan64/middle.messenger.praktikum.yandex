@@ -66,6 +66,16 @@
 }
 
 .conversation {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
   padding: 24px 32px 42px;
 }
 

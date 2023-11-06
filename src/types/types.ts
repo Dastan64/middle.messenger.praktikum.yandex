@@ -53,3 +53,25 @@ export enum Routes {
   Profile = '/profile',
   Register = '/register',
 }
+
+export interface Chat {
+  avatar: string;
+  created_by: number;
+  id: number;
+  last_message: LastMessage;
+  title: string;
+  unread_count: number;
+}
+
+export interface LastMessage {
+  content: string;
+  time: string;
+  user: {
+    avatar: string;
+    email: string;
+    first_name: string;
+    login: string;
+    phone: string;
+    second_name: string;
+  };
+}

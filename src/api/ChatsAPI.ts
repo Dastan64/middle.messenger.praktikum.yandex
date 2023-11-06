@@ -6,7 +6,11 @@ class ChatsAPI extends BaseAPI {
   }
 
   create(title: string) {
-    return this.http.post('/', { data: title });
+    return this.http.post('/', {
+      data: {
+        title,
+      },
+    });
   }
 
   getChatsList() {

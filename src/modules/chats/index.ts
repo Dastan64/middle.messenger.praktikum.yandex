@@ -1,28 +1,23 @@
 import { tmpl } from './chats.tmpl.ts';
 import Block from '../../core/Block.ts';
-import { Message } from './components/message/index.ts';
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 import { Input } from '../../components/input/index.ts';
+import { Button } from '../../components/button/index.ts';
+import { CreateChatForm } from './modules/create-chat-form/index.ts';
+import { InputContainer } from '../../components/input-container/index.ts';
+import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
+import { withStore } from '../../hocs/withStore.ts';
+import { State } from '../../core/Store.ts';
+import { ChatsController } from '../../controllers/ChatsController.ts';
 import { ChatThumb } from './components/chat-thumb/index.ts';
-import avatar from '../../assets/images/avatar.jpeg';
+import { Chat } from '../../types/types.ts';
 
-export class Chats extends Block {
+export class BaseChats extends Block {
   constructor() {
     super({});
   }
 
   init() {
-    this.children.messages = [
-      new Message({
-        text: 'Друзья, у меня для вас особенный выпуск новостей!',
-        time: '23:45',
-      }),
-      new Message({
-        text: 'Делись!',
-        time: '23:46',
-      }),
-    ];
-
     this.children.input = new Input({
       placeholder: 'Поиск...',
       id: 'search',
@@ -30,24 +25,7 @@ export class Chats extends Block {
       type: 'text',
     });
 
-    this.children.chats = [
-      new ChatThumb({
-        url: '#',
-        name: 'Джонни Депп',
-        avatar,
-        message: 'Привет, Дастан! Просто хотел предупредить',
-        messagesNumber: 13,
-        time: '13:45',
-      }),
-      new ChatThumb({
-        url: '#',
-        name: 'Эмбер Хёрд',
-        avatar,
-        message: 'Привет, Дастан!',
-        messagesNumber: 13,
-        time: '13:46',
-      }),
-    ];
+    this.children.chats = [];
 
     this.children.form = new ChatMessageForm({
       inputs: [
@@ -64,9 +42,68 @@ export class Chats extends Block {
         }),
       ],
     });
+
+    this.children.popup = new CreateChatPopup({
+      form: new CreateChatForm({
+        inputs: [
+          new InputContainer({
+            label: 'Название чата',
+            name: 'new-chat',
+            id: 'new-chat',
+            type: 'text',
+          }),
+        ],
+        submitButton: new Button({
+          type: 'submit',
+          text: 'Создать',
+        }),
+      }),
+      button: new Button({
+        type: 'button',
+        text: 'Закрыть',
+        events: {
+          click: () => {
+            this.setProps({
+              isCreateChatPopupOpen: false,
+            });
+          },
+        },
+      }),
+    });
+
+    this.children.button = new Button({
+      text: 'Создать чат',
+      type: 'button',
+      events: {
+        click: () => {
+          this.setProps({
+            isCreateChatPopupOpen: true,
+          });
+        },
+      },
+    });
+  }
+
+  componentDidUpdate() {
+    this.children.chats = this.props.chats.map((chat: Chat) => {
+      return new ChatThumb({ chat });
+    });
+    return true;
+  }
+
+  componentDidMount() {
+    ChatsController.getChatsList();
   }
 
   render() {
     return this.compile(tmpl);
   }
 }
+
+const mapStateToProps = (state: State) => {
+  return {
+    chats: state.chats,
+  };
+};
+
+export const Chats = withStore(mapStateToProps)(BaseChats);

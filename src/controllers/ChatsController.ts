@@ -1,9 +1,11 @@
 import chatsAPI from '../api/ChatsAPI.ts';
+import store from '../core/Store.ts';
 
 export class ChatsController {
   static async create(title: string) {
     try {
       await chatsAPI.create(title);
+      await this.getChatsList();
     } catch (error) {
       console.log(error, 'chat create error');
     }
@@ -11,9 +13,10 @@ export class ChatsController {
 
   static async getChatsList() {
     try {
-      await chatsAPI.getChatsList();
+      const chats = await chatsAPI.getChatsList();
+      store.set('chats', chats);
     } catch (error) {
-      console.log(error, 'chat create error');
+      console.log(error, 'get chats list error');
     }
   }
 
@@ -29,7 +32,7 @@ export class ChatsController {
     try {
       await chatsAPI.deleteUsers([userId], chatId);
     } catch (error) {
-      console.log(error, 'add user to chat error');
+      console.log(error, 'delete user from chat error');
     }
   }
 }
