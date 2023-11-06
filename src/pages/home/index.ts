@@ -5,7 +5,7 @@ import { links } from './home.links.ts';
 
 export class HomePage extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {

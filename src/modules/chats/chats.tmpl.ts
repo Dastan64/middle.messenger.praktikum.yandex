@@ -1,7 +1,8 @@
 import styles from './chats.module.scss';
 
 export const tmpl = `
-  <section class=${styles.section}>
+  <main>
+    <section class=${styles.section}>
         <div class=${styles.container}>
         <div class=${styles.panel}>
             <img width="48" height="48"
@@ -37,4 +38,5 @@ export const tmpl = `
         </div>
       </div>
   </section>
+  </main>
 `;

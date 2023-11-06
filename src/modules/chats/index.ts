@@ -8,7 +8,7 @@ import avatar from '../../assets/images/avatar.jpeg';
 
 export class Chats extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {

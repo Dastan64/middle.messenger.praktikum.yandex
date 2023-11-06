@@ -9,12 +9,14 @@ import { fields } from './register.fields.ts';
 
 export class Register extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {
     this.children.registrationForm = new RegistrationForm({
-      inputs: fields.map((field) => new InputContainer(field as InputContainerProps)),
+      inputs: fields.map((field) => {
+        return new InputContainer(field as InputContainerProps);
+      }),
       submitButton: new Button({
         type: 'submit',
         text: 'Зарегистрироваться',

@@ -7,7 +7,7 @@ import { AuthController } from '../../controllers/AuthController.ts';
 
 export class LoginForm extends Block {
   constructor(props: LoginFormProps) {
-    super('form', {
+    super({
       ...props,
       events: {
         submit: (event: SubmitEvent) => {

@@ -13,7 +13,7 @@ import { UserController } from '../../../../controllers/UserController.ts';
 
 export class ChangeProfileData extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {

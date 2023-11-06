@@ -4,19 +4,10 @@ import Block from '../../core/Block.ts';
 
 export class Link extends Block {
   constructor(props: LinkProps) {
-    super('a', props);
-  }
-
-  init() {
-    const element = this.element as HTMLLinkElement;
-    element.className = styles.link;
-    if (this.props.className) {
-      element.classList.add(this.props.className);
-    }
-    element!.href = this.props.to;
+    super(props);
   }
 
   render() {
-    return this.compile('{{text}}');
+    return this.compile(`<a className="${styles.link} {{className}}" href={{to}}>{{text}}</a>`);
   }
 }

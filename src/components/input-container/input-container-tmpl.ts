@@ -1,7 +1,9 @@
 import styles from './input-container.module.scss';
 
 export const tmpl = `
-  <label class=${styles.label} for="{{id}}">{{label}}</label>
-  {{{input}}}
-  {{{error}}}
+  <div class=${styles.container} data-name="{{name}}">
+    <label class=${styles.label} for="{{id}}">{{label}}</label>
+    {{{input}}}
+    {{{error}}}
+  </div>
 `;

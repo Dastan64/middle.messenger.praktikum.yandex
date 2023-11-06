@@ -4,7 +4,7 @@ import { tmpl } from './chat-thumb-tmpl.ts';
 
 export class ChatThumb extends Block {
   constructor(props: ChatThumbProps) {
-    super('li', props);
+    super(props);
   }
 
   render() {

@@ -7,6 +7,6 @@ export const tmpl = `
           <h2 class=${styles.title}>Вход</h2>
           {{{loginForm}}}
       </div>
-  </section>
+    </section>
   </main>
 `;

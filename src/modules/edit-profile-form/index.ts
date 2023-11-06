@@ -7,7 +7,7 @@ import { ProfileData } from '../../types/types.ts';
 
 export class EditProfileForm extends Block {
   constructor(props: EditProfileFormProps) {
-    super('form', {
+    super({
       ...props,
       events: {
         submit: (event: SubmitEvent) => {

@@ -1,7 +1,7 @@
 import styles from './avatar-input.module.scss';
 
 export const tmpl = `
-  <div>
+  <div class=${styles.container}>
     {{{avatar}}}
     <label class=${styles.label}>
       <span class=${styles.caption}>Поменять фото профиля</span>

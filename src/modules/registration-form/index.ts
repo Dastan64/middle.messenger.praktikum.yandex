@@ -7,7 +7,7 @@ import { SignUpData } from '../../types/types.ts';
 
 export class RegistrationForm extends Block {
   constructor(props: RegistrationFormProps) {
-    super('form', {
+    super({
       ...props,
       events: {
         submit: (event: SubmitEvent) => {

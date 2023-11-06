@@ -5,7 +5,7 @@ import { tmpl } from './error-page.tmpl.ts';
 
 export class ErrorPage extends Block {
   constructor(props: ErrorPageProps) {
-    super('main', props);
+    super(props);
   }
 
   init() {

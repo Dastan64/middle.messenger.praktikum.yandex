@@ -10,7 +10,7 @@ import Block from '../../../../core/Block.ts';
 
 export class ChangePassword extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {

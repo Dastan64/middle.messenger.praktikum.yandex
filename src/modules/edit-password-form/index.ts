@@ -7,7 +7,7 @@ import { PasswordData } from '../../types/types.ts';
 
 export class EditPasswordForm extends Block {
   constructor(props: EditPasswordFormProps) {
-    super('form', {
+    super({
       ...props,
       events: {
         submit: (event: SubmitEvent) => {
