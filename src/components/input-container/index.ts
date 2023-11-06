@@ -8,7 +8,7 @@ import { tmpl } from './input-container-tmpl.ts';
 
 export class InputContainer extends Block {
   constructor(props: InputContainerProps) {
-    super('div', props);
+    super(props);
   }
 
   init() {

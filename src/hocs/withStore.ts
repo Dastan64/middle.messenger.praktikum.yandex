@@ -5,7 +5,7 @@ export const withStore = (mapStateToProps: (state: State) => any) => {
   return (Component: typeof Block) => {
     return class extends Component {
       constructor(props: any) {
-        super('', { ...props, ...mapStateToProps(store.getState()) });
+        super({ ...props, ...mapStateToProps(store.getState()) });
 
         store.on(StoreEvents.Updated, () => {
           const propsFromState = mapStateToProps(store.getState());

@@ -11,7 +11,7 @@ import { State } from '../../core/Store.ts';
 
 export class BaseProfile extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   protected componentDidMount() {

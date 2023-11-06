@@ -5,7 +5,7 @@ import { AvatarInputProps } from './types.ts';
 
 export class AvatarInput extends Block {
   constructor(props: AvatarInputProps) {
-    super('div', props);
+    super(props);
   }
 
   init() {

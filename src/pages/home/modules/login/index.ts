@@ -8,7 +8,7 @@ import { LoginForm } from '../../../../modules/login-form/index.ts';
 
 export class Login extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {

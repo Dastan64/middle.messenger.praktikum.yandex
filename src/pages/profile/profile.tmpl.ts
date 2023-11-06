@@ -1,7 +1,8 @@
 import styles from './profile.module.scss';
 
 export const tmpl = `
-  <section class=${styles.section}>
+  <main>
+    <section class=${styles.section}>
       <div class="wrapper">
           {{{avatar}}}
 
@@ -43,4 +44,5 @@ export const tmpl = `
           {{{logoutButton}}}
       </div>
   </section>
+  </main>
 `;

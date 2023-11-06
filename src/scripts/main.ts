@@ -2,14 +2,13 @@ import '../styles/style.scss';
 // Pages
 import router from '../core/Router.ts';
 import { Login } from '../pages/home/modules/login/index.ts';
+import { Routes } from '../types/types.ts';
+import { AuthController } from '../controllers/AuthController.ts';
 import { Register } from '../pages/home/modules/register/index.ts';
 import { Chats } from '../modules/chats/index.ts';
 import { ChangePassword } from '../pages/profile/modules/edit-password/index.ts';
 import { ChangeProfileData } from '../pages/profile/modules/edit-profile/index.ts';
-import { Routes } from '../types/types.ts';
-import { AuthController } from '../controllers/AuthController.ts';
 import { Profile } from '../pages/profile/index.ts';
-// import { HomePage } from '../pages/home/index.ts';
 
 window.addEventListener('DOMContentLoaded', async () => {
   router

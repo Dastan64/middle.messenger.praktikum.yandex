@@ -6,7 +6,7 @@ import { State } from '../../core/Store.ts';
 
 export class BaseAvatar extends Block {
   constructor(props: AvatarProps) {
-    super('div', props);
+    super(props);
   }
 
   render() {

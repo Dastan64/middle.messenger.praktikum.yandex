@@ -4,15 +4,10 @@ import { ErrorProps } from './types.ts';
 
 export class Error extends Block {
   constructor(props: ErrorProps) {
-    super('span', props);
-  }
-
-  init() {
-    const element = this.element as HTMLSpanElement;
-    element.className = styles.error;
+    super(props);
   }
 
   render() {
-    return this.compile('{{text}}');
+    return this.compile(`<span class=${styles.error}>{{text}}</span`);
   }
 }
