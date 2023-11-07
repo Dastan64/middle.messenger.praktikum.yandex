@@ -21,23 +21,36 @@ export const tmpl = `
               </ul>
           </div>
           <div class=${styles.current}>
-              <!--<div class=${styles.top}>
+            {{#if selectedChat}}
+                <div class=${styles.top}>
                   <div class=${styles.topInfo}>
-                      <span class=${styles.talkerName}>Даниил</span>
-                      <span class=${styles.status}>Был в сети 6 минут назад</span>
+                      <span class=${styles.talkerName}>{{selectedChat.title}}</span>
+                      <span class=${styles.status}>В сети</span>
                       <button class=${styles.settingsBtn}></button>
+                      <div class=${styles.options}>
+                        {{{addUserButton}}}
+                        {{{deleteUserButton}}}
+                      </div>
                   </div>
-              </div>-->
+                </div>
+            {{/if}}
               <div class=${styles.conversation}>
-                  <p>Выбери чат, чтобы отправить сообщение</p>
-                  <img width="120" height="120" src=${chat} alt="">
-                  <p>...или создай новый</p>
-                  {{{button}}}
+                  {{#unless selectedChat}}
+                    <p>Выбери чат, чтобы отправить сообщение</p>
+                    <img width="120" height="120" src=${chat} alt="">
+                    <p>...или создай новый</p>
+                    {{{button}}}
+                  {{/unless}}
                   {{#if isCreateChatPopupOpen}}
-                    {{{popup}}}
+                    {{{createChatPopup}}}
+                  {{/if}}
+                  {{#if isAddUserPopupOpen}}
+                    {{{addUserPopup}}}
                   {{/if}}
               </div>
-<!--              {{{form}}}-->
+              {{#if selectedChat}}
+                {{{form}}}
+              {{/if}}
           </div>
       </div>
   </section>

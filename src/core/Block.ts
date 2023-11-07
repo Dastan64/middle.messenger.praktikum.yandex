@@ -155,7 +155,6 @@ class Block<P extends Record<string, any> = any> {
     const html = Handlebars.compile(template)(contextAndStubs);
     const temp = document.createElement('template');
     temp.innerHTML = html;
-
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
         const stubs = component.map((comp) => {

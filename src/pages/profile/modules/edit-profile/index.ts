@@ -33,7 +33,6 @@ export class ChangeProfileData extends Block {
         change: (event: Event) => {
           const formData = new FormData();
           const target = event.target as HTMLInputElement;
-          console.log(target);
           if (target.files && target.files.length !== 0) {
             const file = target.files[0];
             formData.append('avatar', file);

@@ -4,6 +4,7 @@ import { set } from '../utils/set.ts';
 
 export interface State {
   chats?: Chat[];
+  selectedChat?: Chat;
   user?: UserInfo;
 }
 

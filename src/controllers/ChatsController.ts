@@ -35,4 +35,8 @@ export class ChatsController {
       console.log(error, 'delete user from chat error');
     }
   }
+
+  static selectChat(id: number) {
+    store.set('selectedChat', id);
+  }
 }

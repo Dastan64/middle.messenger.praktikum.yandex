@@ -7,10 +7,11 @@ import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { InputContainer } from '../../components/input-container/index.ts';
 import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
 import { withStore } from '../../hocs/withStore.ts';
-import { State } from '../../core/Store.ts';
+import store, { State } from '../../core/Store.ts';
 import { ChatsController } from '../../controllers/ChatsController.ts';
 import { ChatThumb } from './components/chat-thumb/index.ts';
 import { Chat } from '../../types/types.ts';
+import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
 
 export class BaseChats extends Block {
   constructor() {
@@ -43,7 +44,7 @@ export class BaseChats extends Block {
       ],
     });
 
-    this.children.popup = new CreateChatPopup({
+    this.children.createChatPopup = new CreateChatPopup({
       form: new CreateChatForm({
         inputs: [
           new InputContainer({
@@ -71,6 +72,41 @@ export class BaseChats extends Block {
       }),
     });
 
+    this.children.addUserPopup = new AddUserPopup({
+      button: new Button({
+        type: 'button',
+        text: 'Закрыть',
+        events: {
+          click: () => {
+            this.setProps({
+              isAddUserPopupOpen: false,
+            });
+          },
+        },
+      }),
+      input: new Input({
+        id: 'add-user-to-chat',
+        name: 'add-user-to-chat',
+        type: 'text',
+      }),
+    });
+
+    this.children.addUserButton = new Button({
+      text: 'Добавить пользователя',
+      type: 'button',
+      events: {
+        click: () => {
+          this.setProps({
+            isAddUserPopupOpen: true,
+          });
+        },
+      },
+    });
+    this.children.deleteUserButton = new Button({
+      text: 'Удалить пользователя',
+      type: 'button',
+    });
+
     this.children.button = new Button({
       text: 'Создать чат',
       type: 'button',
@@ -86,7 +122,17 @@ export class BaseChats extends Block {
 
   componentDidUpdate() {
     this.children.chats = this.props.chats.map((chat: Chat) => {
-      return new ChatThumb({ chat });
+      return new ChatThumb({
+        chat,
+        onClick: (id: number) => {
+          ChatsController.selectChat(id);
+          this.setProps({
+            selectedChat: store.getState().chats?.find((chat) => {
+              return chat.id === id;
+            }),
+          });
+        },
+      });
     });
     return true;
   }
@@ -103,6 +149,7 @@ export class BaseChats extends Block {
 const mapStateToProps = (state: State) => {
   return {
     chats: state.chats,
+    selectedChat: state.selectedChat,
   };
 };
 

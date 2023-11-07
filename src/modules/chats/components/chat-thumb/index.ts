@@ -4,7 +4,14 @@ import { tmpl } from './chat-thumb-tmpl.ts';
 
 export class ChatThumb extends Block {
   constructor(props: ChatThumbProps) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click: () => {
+          this.props.onClick(this.props.chat.id);
+        },
+      },
+    });
   }
 
   render() {
