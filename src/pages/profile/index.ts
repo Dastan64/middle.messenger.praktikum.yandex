@@ -24,21 +24,25 @@ export class BaseProfile extends Block {
       first_name: 'Дастан',
       second_name: 'Жамекешев',
     });
-    this.children.editProfileLink = new Link({
-      to: '/edit-profile',
-      text: 'Изменить данные',
-    });
-    this.children.editPasswordLink = new Link({
-      to: '/edit-password',
-      text: 'Изменить пароль',
-    });
+    this.children.links = [
+      new Link({
+        to: '/edit-profile',
+        text: 'Изменить данные',
+      }),
+      new Link({
+        to: '/edit-password',
+        text: 'Изменить пароль',
+      }),
+      new Link({
+        to: '/chats',
+        text: 'К чатам',
+      }),
+    ];
     this.children.logoutButton = new Button({
       type: 'button',
       text: 'Выйти',
       events: {
-        click: () => {
-          return AuthController.logout();
-        },
+        click: () => AuthController.logout(),
       },
     });
   }
@@ -48,8 +52,6 @@ export class BaseProfile extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => {
-  return { ...state.user };
-};
+const mapStateToProps = (state: State) => ({ ...state.user });
 
 export const Profile = withStore(mapStateToProps)(BaseProfile);

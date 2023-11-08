@@ -42,8 +42,9 @@ export const tmpl = `
               </div>
           </div>
           <div class=${styles.links}>
-              {{{editProfileLink}}}
-              {{{editPasswordLink}}}
+                {{#each links}}
+                  {{{this}}}
+                {{/each}}
           </div>
           {{{logoutButton}}}
       </div>

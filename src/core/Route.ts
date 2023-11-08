@@ -43,6 +43,6 @@ export class Route {
       return;
     }
 
-    this._block.show();
+    this._block.show(this._props.rootQuery, render);
   }
 }

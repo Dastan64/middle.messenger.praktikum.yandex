@@ -29,9 +29,7 @@ class Block<P extends Record<string, any> = any> {
     this.children = children;
     this.props = this._makePropsProxy(props);
 
-    this.eventBus = () => {
-      return eventBus;
-    };
+    this.eventBus = () => eventBus;
 
     this._registerEvents(eventBus);
 
@@ -95,9 +93,7 @@ class Block<P extends Record<string, any> = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     Object.values(this.children).forEach((child) => {
       if (Array.isArray(child)) {
-        child.forEach((c) => {
-          return c.dispatchComponentDidMount();
-        });
+        child.forEach((c) => c.dispatchComponentDidMount());
       } else {
         child.dispatchComponentDidMount();
       }
@@ -144,9 +140,7 @@ class Block<P extends Record<string, any> = any> {
     const contextAndStubs = { ...this.props } as Record<string, any>;
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map((comp) => {
-          return `<div data-id="${comp.id}"></div>`;
-        });
+        contextAndStubs[name] = component.map((comp) => `<div data-id="${comp.id}"></div>`);
       } else {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
@@ -157,9 +151,7 @@ class Block<P extends Record<string, any> = any> {
     temp.innerHTML = html;
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
-        const stubs = component.map((comp) => {
-          return temp.content.querySelector(`[data-id="${comp.id}"]`);
-        });
+        const stubs = component.map((comp) => temp.content.querySelector(`[data-id="${comp.id}"]`));
         if (!stubs.length) {
           return;
         }
@@ -211,12 +203,13 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  show() {
-    this.getContent()!.style.display = 'block';
+  show(query: string, render: (query: string, block: Block) => void) {
+    this.eventBus().emit(Block.EVENTS.INIT);
+    render(query, this);
   }
 
   hide() {
-    this.getContent()!.style.display = 'none';
+    this.getContent()!.remove();
   }
 }
 

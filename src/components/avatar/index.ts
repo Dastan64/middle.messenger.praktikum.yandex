@@ -14,10 +14,8 @@ export class BaseAvatar extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => {
-  return {
-    avatar: state.user?.avatar || '',
-  };
-};
+const mapStateToProps = (state: State) => ({
+  avatar: state.user?.avatar || '',
+});
 
 export const Avatar = withStore(mapStateToProps)(BaseAvatar);
