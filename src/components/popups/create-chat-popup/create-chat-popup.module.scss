@@ -15,6 +15,14 @@
 }
 
 .content {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
   padding: 48px 56px;
 
   background-color: var(--color-background-secondary);
@@ -22,7 +30,5 @@
 }
 
 .title {
-  margin-bottom: 24px;
-  
   text-align: center;
 }

@@ -12,6 +12,8 @@ import { ChatsController } from '../../controllers/ChatsController.ts';
 import { ChatThumb } from './components/chat-thumb/index.ts';
 import { Chat } from '../../types/types.ts';
 import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
+import { ClosePopupButton } from '../../components/close-popup-button';
+import { DeleteUserPopup } from '../../components/popups/delete-user-popup';
 
 export class BaseChats extends Block {
   constructor() {
@@ -59,9 +61,7 @@ export class BaseChats extends Block {
           text: 'Создать',
         }),
       }),
-      button: new Button({
-        type: 'button',
-        text: 'Закрыть',
+      button: new ClosePopupButton({
         events: {
           click: () => {
             this.setProps({
@@ -71,11 +71,8 @@ export class BaseChats extends Block {
         },
       }),
     });
-
     this.children.addUserPopup = new AddUserPopup({
-      button: new Button({
-        type: 'button',
-        text: 'Закрыть',
+      button: new ClosePopupButton({
         events: {
           click: () => {
             this.setProps({
@@ -88,6 +85,42 @@ export class BaseChats extends Block {
         id: 'add-user-to-chat',
         name: 'add-user-to-chat',
         type: 'text',
+        placeholder: 'ID пользователя',
+      }),
+      submitButton: new Button({
+        text: 'Добавить',
+        type: 'button',
+        events: {
+          click: () => {
+            console.log('Add');
+          },
+        },
+      }),
+    });
+    this.children.deleteUserPopup = new DeleteUserPopup({
+      button: new ClosePopupButton({
+        events: {
+          click: () => {
+            this.setProps({
+              isDeleteUserPopupOpen: false,
+            });
+          },
+        },
+      }),
+      input: new Input({
+        id: 'delete-user-from-chat',
+        name: 'delete-user-from-chat',
+        type: 'text',
+        placeholder: 'ID пользователя',
+      }),
+      submitButton: new Button({
+        text: 'Удалить',
+        type: 'button',
+        events: {
+          click: () => {
+            console.log('Delete');
+          },
+        },
       }),
     });
 
@@ -105,9 +138,16 @@ export class BaseChats extends Block {
     this.children.deleteUserButton = new Button({
       text: 'Удалить пользователя',
       type: 'button',
+      events: {
+        click: () => {
+          this.setProps({
+            isDeleteUserPopupOpen: true,
+          });
+        },
+      },
     });
 
-    this.children.button = new Button({
+    this.children.createChatButton = new Button({
       text: 'Создать чат',
       type: 'button',
       events: {

@@ -39,13 +39,19 @@ export const tmpl = `
                     <p>Выбери чат, чтобы отправить сообщение</p>
                     <img width="120" height="120" src=${chat} alt="">
                     <p>...или создай новый</p>
-                    {{{button}}}
+                    {{{createChatButton}}}
                   {{/unless}}
+
                   {{#if isCreateChatPopupOpen}}
                     {{{createChatPopup}}}
                   {{/if}}
+
                   {{#if isAddUserPopupOpen}}
                     {{{addUserPopup}}}
+                  {{/if}}
+
+                  {{#if isDeleteUserPopupOpen}}
+                    {{{deleteUserPopup}}}
                   {{/if}}
               </div>
               {{#if selectedChat}}
