@@ -7,10 +7,6 @@ export class Link extends Block {
     super(props);
   }
 
-  protected componentDidMount() {
-    console.log('Link component mount');
-  }
-
   render() {
     return this.compile(`<a className="${styles.link} {{className}}" href={{to}}>{{text}}</a>`);
   }

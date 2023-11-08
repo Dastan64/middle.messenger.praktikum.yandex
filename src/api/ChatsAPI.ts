@@ -5,7 +5,7 @@ class ChatsAPI extends BaseAPI {
     super('/chats');
   }
 
-  create(title: string) {
+  createChat(title: string) {
     return this.http.post('/', {
       data: {
         title,
@@ -13,12 +13,12 @@ class ChatsAPI extends BaseAPI {
     });
   }
 
-  getChatsList() {
+  getChats() {
     return this.http.get('/');
   }
 
   addUsers(users: number[], chatId: number) {
-    return this.http.put('/users', {
+    return this.http.delete('/users', {
       data: {
         users,
         chatId,

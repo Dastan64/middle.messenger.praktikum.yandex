@@ -4,7 +4,7 @@ import store from '../core/Store.ts';
 export class ChatsController {
   static async create(title: string) {
     try {
-      await chatsAPI.create(title);
+      await chatsAPI.createChat(title);
       await this.getChatsList();
     } catch (error) {
       console.log(error, 'chat create error');
@@ -13,24 +13,26 @@ export class ChatsController {
 
   static async getChatsList() {
     try {
-      const chats = await chatsAPI.getChatsList();
+      const chats = await chatsAPI.getChats();
       store.set('chats', chats);
     } catch (error) {
       console.log(error, 'get chats list error');
     }
   }
 
-  static async addUserToChat(chatId: number, userId: number) {
+  static async addUserToChat(chatId: number, userId: number[]) {
     try {
-      await chatsAPI.addUsers([userId], chatId);
+      await chatsAPI.addUsers(userId, chatId);
+      await this.getChatsList();
     } catch (error) {
       console.log(error, 'add user to chat error');
     }
   }
 
-  static async deleteUserFromChat(chatId: number, userId: number) {
+  static async deleteUserFromChat(chatId: number, userId: number[]) {
     try {
-      await chatsAPI.deleteUsers([userId], chatId);
+      await chatsAPI.deleteUsers(userId, chatId);
+      await this.getChatsList();
     } catch (error) {
       console.log(error, 'delete user from chat error');
     }

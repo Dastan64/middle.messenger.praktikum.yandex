@@ -1,19 +1,26 @@
+// Core
 import { tmpl } from './chats.tmpl.ts';
 import Block from '../../core/Block.ts';
-import { ChatMessageForm } from './modules/chat-message-form/index.ts';
+import { withStore } from '../../hocs/withStore.ts';
+import { ChatsController } from '../../controllers/ChatsController.ts';
+import store, { State } from '../../core/Store.ts';
+import { Chat } from '../../types/types.ts';
+
+// Components
 import { Input } from '../../components/input/index.ts';
 import { Button } from '../../components/button/index.ts';
-import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { InputContainer } from '../../components/input-container/index.ts';
 import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
-import { withStore } from '../../hocs/withStore.ts';
-import store, { State } from '../../core/Store.ts';
-import { ChatsController } from '../../controllers/ChatsController.ts';
 import { ChatThumb } from './components/chat-thumb/index.ts';
-import { Chat } from '../../types/types.ts';
 import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
-import { ClosePopupButton } from '../../components/close-popup-button';
-import { DeleteUserPopup } from '../../components/popups/delete-user-popup';
+import { ClosePopupButton } from '../../components/close-popup-button/index.ts';
+import { DeleteUserPopup } from '../../components/popups/delete-user-popup/index.ts';
+
+// Modules
+import { ChatMessageForm } from './modules/chat-message-form/index.ts';
+import { CreateChatForm } from './modules/create-chat-form/index.ts';
+import { AddUserForm } from './modules/add-user-form/index.ts';
+import { DeleteUserForm } from './modules/delete-user-form/index.ts';
 
 export class BaseChats extends Block {
   constructor() {
@@ -81,19 +88,23 @@ export class BaseChats extends Block {
           },
         },
       }),
-      input: new Input({
-        id: 'add-user-to-chat',
-        name: 'add-user-to-chat',
-        type: 'text',
-        placeholder: 'ID пользователя',
-      }),
-      submitButton: new Button({
-        text: 'Добавить',
-        type: 'button',
-        events: {
-          click: () => {
-            console.log('Add');
-          },
+      form: new AddUserForm({
+        inputs: [
+          new InputContainer({
+            label: 'ID пользователя (если несколько, укажите через запятую)',
+            name: 'user-id',
+            id: 'user-id',
+            type: 'text',
+          }),
+        ],
+        submitButton: new Button({
+          type: 'submit',
+          text: 'Добавить',
+        }),
+        onClose: () => {
+          this.setProps({
+            isAddUserPopupOpen: false,
+          });
         },
       }),
     });
@@ -107,19 +118,23 @@ export class BaseChats extends Block {
           },
         },
       }),
-      input: new Input({
-        id: 'delete-user-from-chat',
-        name: 'delete-user-from-chat',
-        type: 'text',
-        placeholder: 'ID пользователя',
-      }),
-      submitButton: new Button({
-        text: 'Удалить',
-        type: 'button',
-        events: {
-          click: () => {
-            console.log('Delete');
-          },
+      form: new DeleteUserForm({
+        inputs: [
+          new InputContainer({
+            label: 'ID пользователя (если несколько, укажите через запятую)',
+            name: 'user-id',
+            id: 'user-id',
+            type: 'text',
+          }),
+        ],
+        submitButton: new Button({
+          type: 'submit',
+          text: 'Удалить',
+        }),
+        onClose: () => {
+          this.setProps({
+            isDeleteUserPopupOpen: false,
+          });
         },
       }),
     });

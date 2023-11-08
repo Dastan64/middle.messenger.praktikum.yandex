@@ -19,6 +19,7 @@ enum NAMES {
   PASSWORD = 'password',
   PHONE = 'phone',
   SECOND_NAME = 'second_name',
+  USER_ID = 'user-id',
 }
 
 const validateLogin = (value: string) => {
@@ -122,6 +123,11 @@ export const validate = (input: validateParams) => {
       case NAMES.NEW_CHAT:
         if (value.length === 0) {
           errors[name] = 'Название чата не может быть пустым';
+        }
+        break;
+      case NAMES.USER_ID:
+        if (value.length === 0) {
+          errors[name] = 'ID пользователя не может быть пустым';
         }
         break;
       default:

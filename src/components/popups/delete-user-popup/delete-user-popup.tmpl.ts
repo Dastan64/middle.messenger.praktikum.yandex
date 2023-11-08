@@ -4,9 +4,8 @@ export const tmpl = `
   <div class=${styles.popup}>
     <div class=${styles.content}>
         <h2 class=${styles.title}>Удалить пользователя</h2>
-        {{{input}}}
+        {{{form}}}
         {{{button}}}
-        {{{submitButton}}}
     </div>
   </div>
 `;
