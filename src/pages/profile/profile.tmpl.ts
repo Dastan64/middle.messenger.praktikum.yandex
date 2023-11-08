@@ -29,7 +29,11 @@ export const tmpl = `
 
               <div class=${styles.line}>
                   <span class=${styles.role}>Имя в чате</span>
-                  <span class=${styles.value}>{{display_name}}</span>
+                  {{#if display_name}}
+                    <span class=${styles.value}>{{display_name}}</span>
+                  {{else}}
+                    <span class=${styles.value}>Неопознанный единорог</span>
+                  {{/if}}
               </div>
 
               <div class=${styles.line}>
