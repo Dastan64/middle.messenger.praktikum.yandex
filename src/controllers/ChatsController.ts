@@ -1,5 +1,7 @@
 import chatsAPI from '../api/ChatsAPI.ts';
 import store from '../core/Store.ts';
+import { Chat } from '../types/types.ts';
+import { MessagesController } from './MessagesController.ts';
 
 export class ChatsController {
   static async create(title: string) {
@@ -14,6 +16,10 @@ export class ChatsController {
   static async getChatsList() {
     try {
       const chats = await chatsAPI.getChats();
+      chats.map(async (chat: Chat) => {
+        const { token } = await this.getToken(chat.id);
+        await MessagesController.connect(chat.id, token);
+      });
       store.set('chats', chats);
     } catch (error) {
       console.log(error, 'get chats list error');
@@ -40,5 +46,9 @@ export class ChatsController {
 
   static selectChat(id: number) {
     store.set('selectedChat', id);
+  }
+
+  static async getToken(chatId: number) {
+    return chatsAPI.getToken(chatId);
   }
 }

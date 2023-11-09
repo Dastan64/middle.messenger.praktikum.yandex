@@ -2,6 +2,8 @@ import Block from '../../../../core/Block.ts';
 import { tmpl } from './chat-message-form-tmpl.ts';
 import { ChatMessageFormProps } from './types.ts';
 import { validateFormSubmit } from '../../../../utils/validateFormSubmit.ts';
+import { MessagesController } from '../../../../controllers/MessagesController.ts';
+import store from '../../../../core/Store.ts';
 
 export class ChatMessageForm extends Block {
   constructor(props: ChatMessageFormProps) {
@@ -10,7 +12,14 @@ export class ChatMessageForm extends Block {
       events: {
         submit: (event: SubmitEvent) => {
           event.preventDefault();
-          validateFormSubmit(event.target as HTMLFormElement, this.children.input as Block[]);
+          const target = event.target as HTMLFormElement;
+          const data = validateFormSubmit(target, this.children.input as Block[]);
+          if (data) {
+            const { message } = data;
+            const chatId = store.getState().selectedChat!;
+            MessagesController.sendMessage(chatId, message);
+            target.reset();
+          }
         },
       },
     });

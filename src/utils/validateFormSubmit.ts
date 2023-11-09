@@ -12,9 +12,7 @@ export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMes
   });
 
   const fieldsValidationErrors: Record<string, string> = validate(formFields);
-  const areAllFieldsValid = Object.values(fieldsValidationErrors).every((value) => {
-    return value === '';
-  });
+  const areAllFieldsValid = Object.values(fieldsValidationErrors).every((value) => value === '');
 
   if (areAllFieldsValid) {
     if (formFields['confirm-password']) {

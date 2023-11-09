@@ -34,6 +34,10 @@ class ChatsAPI extends BaseAPI {
       },
     });
   }
+
+  getToken(chatId: number) {
+    return this.http.post(`/token/${chatId}`);
+  }
 }
 
 export default new ChatsAPI();

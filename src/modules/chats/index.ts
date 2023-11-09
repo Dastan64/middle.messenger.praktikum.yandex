@@ -37,7 +37,6 @@ export class BaseChats extends Block {
     });
 
     this.children.avatar = new Avatar({
-      withName: false,
       avatar: this.props.avatar,
       size: '48',
     });
@@ -194,6 +193,7 @@ export class BaseChats extends Block {
         },
       }),
     );
+
     return true;
   }
 
@@ -210,6 +210,7 @@ const mapStateToProps = (state: State) => ({
   chats: state.chats,
   avatar: state.user?.avatar,
   selectedChat: state.selectedChat,
+  messages: state.messages,
 });
 
 export const Chats = withStore(mapStateToProps)(BaseChats);
