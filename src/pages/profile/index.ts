@@ -8,6 +8,7 @@ import { tmpl } from './profile.tmpl.ts';
 import { AuthController } from '../../controllers/AuthController.ts';
 import { withStore } from '../../hocs/withStore.ts';
 import { State } from '../../core/Store.ts';
+import { Routes } from '../../types/types.ts';
 
 export class BaseProfile extends Block {
   constructor() {
@@ -25,15 +26,15 @@ export class BaseProfile extends Block {
     });
     this.children.links = [
       new Link({
-        to: '/edit-profile',
+        to: Routes.EditProfile,
         text: 'Изменить данные',
       }),
       new Link({
-        to: '/edit-password',
+        to: Routes.EditPassword,
         text: 'Изменить пароль',
       }),
       new Link({
-        to: '/chats',
+        to: Routes.Chats,
         text: 'К чатам',
       }),
     ];

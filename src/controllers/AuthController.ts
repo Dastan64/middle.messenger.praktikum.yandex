@@ -1,5 +1,7 @@
 import authAPI from '../api/AuthAPI.ts';
-import { SignInData, SignUpData, UserInfo } from '../types/types.ts';
+import {
+  Routes, SignInData, SignUpData, UserInfo,
+} from '../types/types.ts';
 import store from '../core/Store.ts';
 import router from '../core/Router.ts';
 
@@ -8,7 +10,7 @@ export class AuthController {
     try {
       await authAPI.signin(data);
       await this.fetchUser();
-      router.go('/profile');
+      router.go(Routes.Chats);
     } catch (error) {
       console.log(error, 'sign in error');
     }
@@ -18,7 +20,7 @@ export class AuthController {
     try {
       await authAPI.signup(data);
       await this.fetchUser();
-      router.go('/profile');
+      router.go(Routes.Profile);
     } catch (error) {
       console.log(error, 'sign up error');
     }
@@ -28,7 +30,7 @@ export class AuthController {
     try {
       await authAPI.logout();
       store.set('user', undefined);
-      router.go('/');
+      router.go(Routes.Login);
     } catch (error) {
       console.log(error, 'log out error');
     }

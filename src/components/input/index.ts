@@ -8,7 +8,7 @@ export class Input extends Block {
     super(props);
   }
 
-  protected componentDidMount() {
+  componentDidMount() {
     const element = this.element as HTMLInputElement;
     if (this.props.isOutlined) {
       element.classList.add(styles.outlined);

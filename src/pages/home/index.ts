@@ -9,9 +9,7 @@ export class HomePage extends Block {
   }
 
   init() {
-    this.children.links = links.map((link) => {
-      return new Link(link);
-    });
+    this.children.links = links.map((link) => new Link(link));
   }
 
   render() {

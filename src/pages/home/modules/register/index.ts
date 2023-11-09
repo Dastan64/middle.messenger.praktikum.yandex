@@ -6,6 +6,7 @@ import { InputContainer } from '../../../../components/input-container/index.ts'
 import { InputContainerProps } from '../../../../components/input-container/types.ts';
 import { RegistrationForm } from '../../../../modules/registration-form/index.ts';
 import { fields } from './register.fields.ts';
+import { Routes } from '../../../../types/types.ts';
 
 export class Register extends Block {
   constructor() {
@@ -14,16 +15,14 @@ export class Register extends Block {
 
   init() {
     this.children.registrationForm = new RegistrationForm({
-      inputs: fields.map((field) => {
-        return new InputContainer(field as InputContainerProps);
-      }),
+      inputs: fields.map((field) => new InputContainer(field as InputContainerProps)),
       submitButton: new Button({
         type: 'submit',
         text: 'Зарегистрироваться',
       }),
       link: new Link({
-        to: '/',
-        text: 'На главную',
+        to: Routes.Login,
+        text: 'Уже зарегистрированы?',
       }),
     });
   }

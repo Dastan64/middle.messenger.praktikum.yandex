@@ -43,9 +43,7 @@ export class ChangeProfileData extends Block {
     });
 
     this.children.editProfileForm = new EditProfileForm({
-      inputs: fields.map((field) => {
-        return new InputContainer(field as InputContainerProps);
-      }),
+      inputs: fields.map((field) => new InputContainer(field as InputContainerProps)),
       submitButton: new Button({
         type: 'submit',
         text: 'Сохранить',

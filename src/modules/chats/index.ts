@@ -15,6 +15,7 @@ import { ChatThumb } from './components/chat-thumb/index.ts';
 import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
 import { ClosePopupButton } from '../../components/close-popup-button/index.ts';
 import { DeleteUserPopup } from '../../components/popups/delete-user-popup/index.ts';
+import { MessagesWindow } from './components/messages-window/index.ts';
 
 // Modules
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
@@ -23,7 +24,6 @@ import { AddUserForm } from './modules/add-user-form/index.ts';
 import { DeleteUserForm } from './modules/delete-user-form/index.ts';
 import { Avatar } from '../../components/avatar/index.ts';
 import { MessagesController } from '../../controllers/MessagesController.ts';
-import { MessagesWindow } from './components/messages-window';
 
 export class BaseChats extends Block {
   constructor() {

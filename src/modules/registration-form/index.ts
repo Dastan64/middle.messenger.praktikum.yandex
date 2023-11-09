@@ -14,15 +14,7 @@ export class RegistrationForm extends Block {
           event.preventDefault();
           const data = validateFormSubmit(event.target as HTMLFormElement, this.children.inputs as Block[]);
           if (data) {
-            const signUpData: SignUpData = {
-              email: data.email,
-              first_name: data.first_name,
-              login: data.login,
-              password: data.password,
-              phone: data.phone,
-              second_name: data.second_name,
-            };
-            AuthController.signup(signUpData);
+            AuthController.signup(data as unknown as SignUpData);
           }
         },
       },

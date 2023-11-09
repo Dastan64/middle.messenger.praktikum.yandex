@@ -14,11 +14,7 @@ export class LoginForm extends Block {
           event.preventDefault();
           const data = validateFormSubmit(event.target as HTMLFormElement, this.children.inputs as Block[]);
           if (data) {
-            const signInData: SignInData = {
-              login: data.login,
-              password: data.password,
-            };
-            AuthController.signin(signInData);
+            AuthController.signin(data as unknown as SignInData);
           }
         },
       },
