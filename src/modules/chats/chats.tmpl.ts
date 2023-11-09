@@ -39,10 +39,6 @@ export const tmpl = `
                     <p>...или создай новый</p>
                     {{{createChatButton}}}
                   {{/unless}}
-<!--                  -->
-<!--                  {{#if messages}}-->
-<!--                    {{{messages}}}-->
-<!--                  {{/if}}-->
 
                   {{#if isCreateChatPopupOpen}}
                     {{{createChatPopup}}}
@@ -57,6 +53,7 @@ export const tmpl = `
                   {{/if}}
               </div>
               {{#if selectedChat}}
+              {{{messagesWindow}}}
                 {{{form}}}
               {{/if}}
           </div>

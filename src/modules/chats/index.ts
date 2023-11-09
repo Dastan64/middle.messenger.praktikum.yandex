@@ -22,6 +22,8 @@ import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { AddUserForm } from './modules/add-user-form/index.ts';
 import { DeleteUserForm } from './modules/delete-user-form/index.ts';
 import { Avatar } from '../../components/avatar/index.ts';
+import { MessagesController } from '../../controllers/MessagesController.ts';
+import { MessagesWindow } from './components/messages-window';
 
 export class BaseChats extends Block {
   constructor() {
@@ -179,6 +181,8 @@ export class BaseChats extends Block {
         },
       },
     });
+
+    this.children.messagesWindow = new MessagesWindow({});
   }
 
   componentDidUpdate() {
@@ -187,6 +191,7 @@ export class BaseChats extends Block {
         chat,
         onClick: (id: number) => {
           ChatsController.selectChat(id);
+          MessagesController.findMessages(id);
           this.setProps({
             selectedChat: store.getState().chats?.find((chat) => chat.id === id),
           });
@@ -211,6 +216,7 @@ const mapStateToProps = (state: State) => ({
   avatar: state.user?.avatar,
   selectedChat: state.selectedChat,
   messages: state.messages,
+  currentMessages: state.currentMessages,
 });
 
 export const Chats = withStore(mapStateToProps)(BaseChats);

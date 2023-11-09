@@ -1,6 +1,7 @@
 import store from '../core/Store.ts';
 import { WebSocketEvents, WebSocketTransport } from '../utils/WebSocketTransport.ts';
 import { MessageData } from '../types/types.ts';
+import { ChatsController } from './ChatsController.ts';
 
 export class MessagesController {
   private static transports: Map<number, WebSocketTransport> = new Map();
@@ -45,14 +46,24 @@ export class MessagesController {
     });
   }
 
-  static handleMessages(messages: MessageData[] | [], chatId: number) {
+  static handleMessages(messages: MessageData[] | MessageData, chatId: number) {
+    const incomingMessages = Array.isArray(messages) ? messages.reverse() : [messages];
     const currentMessages = store.getState().messages?.[chatId] ?? [];
-    const allMessages = [...messages, ...currentMessages];
+    const allMessages = [...currentMessages, ...incomingMessages];
     store.set(`messages.${chatId}`, allMessages);
+    ChatsController.getChatsList();
     console.log(store);
   }
 
+  static findMessages(chatId: number) {
+    const messages = store.getState().messages?.[chatId];
+    store.set('currentMessages', messages);
+  }
+
   static subscribe(transport: WebSocketTransport, chatId: number) {
-    transport.on(WebSocketEvents.Message, (data) => this.handleMessages(data, chatId));
+    transport.on(WebSocketEvents.Message, (data) => {
+      console.log(data);
+      this.handleMessages(data, chatId);
+    });
   }
 }
