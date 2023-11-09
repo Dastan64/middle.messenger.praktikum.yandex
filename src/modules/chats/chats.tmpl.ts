@@ -6,9 +6,7 @@ export const tmpl = `
     <section class=${styles.section}>
         <div class=${styles.container}>
           <div class=${styles.panel}>
-              <img width="48" height="48"
-                   src="https://w.forfun.com/fetch/78/788f71a40bf9ad697b38b57c343ca234.jpeg" alt=""
-                   class=${styles.avatar}>
+              {{{avatar}}}
           </div>
           <div class=${styles.sidebar}>
               <div class=${styles.searchContainer}>

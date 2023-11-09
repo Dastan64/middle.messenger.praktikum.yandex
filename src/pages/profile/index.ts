@@ -21,8 +21,7 @@ export class BaseProfile extends Block {
   init() {
     this.children.avatar = new Avatar({
       avatar,
-      first_name: 'Дастан',
-      second_name: 'Жамекешев',
+      size: '130',
     });
     this.children.links = [
       new Link({

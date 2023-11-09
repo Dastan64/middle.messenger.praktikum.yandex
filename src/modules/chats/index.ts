@@ -21,6 +21,7 @@ import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { AddUserForm } from './modules/add-user-form/index.ts';
 import { DeleteUserForm } from './modules/delete-user-form/index.ts';
+import { Avatar } from '../../components/avatar/index.ts';
 
 export class BaseChats extends Block {
   constructor() {
@@ -33,6 +34,12 @@ export class BaseChats extends Block {
       id: 'search',
       name: 'search',
       type: 'text',
+    });
+
+    this.children.avatar = new Avatar({
+      withName: false,
+      avatar: this.props.avatar,
+      size: '48',
     });
 
     this.children.chats = [];
@@ -176,19 +183,17 @@ export class BaseChats extends Block {
   }
 
   componentDidUpdate() {
-    this.children.chats = this.props.chats.map((chat: Chat) => {
-      return new ChatThumb({
+    this.children.chats = this.props.chats.map(
+      (chat: Chat) => new ChatThumb({
         chat,
         onClick: (id: number) => {
           ChatsController.selectChat(id);
           this.setProps({
-            selectedChat: store.getState().chats?.find((chat) => {
-              return chat.id === id;
-            }),
+            selectedChat: store.getState().chats?.find((chat) => chat.id === id),
           });
         },
-      });
-    });
+      }),
+    );
     return true;
   }
 
@@ -201,11 +206,10 @@ export class BaseChats extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => {
-  return {
-    chats: state.chats,
-    selectedChat: state.selectedChat,
-  };
-};
+const mapStateToProps = (state: State) => ({
+  chats: state.chats,
+  avatar: state.user?.avatar,
+  selectedChat: state.selectedChat,
+});
 
 export const Chats = withStore(mapStateToProps)(BaseChats);
