@@ -16,10 +16,10 @@ export class ManageUserForm extends Block {
 
           if (data) {
             const userId = data['user-id'].split(',').map((n) => +n);
-            const chatId = store.getState().selectedChat;
+            const chatId = store.getState().selectedChat?.[0].id;
             if (chatId && userId) {
               ChatsController.addUserToChat(chatId, userId);
-              this.props.o;
+              this.props.onSubmit();
               this.props.onClose();
             }
           }

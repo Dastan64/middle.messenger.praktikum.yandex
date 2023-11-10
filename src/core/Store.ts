@@ -6,7 +6,7 @@ export interface State {
   chats?: Chat[];
   currentMessages?: MessageData[];
   messages?: Record<number, MessageData[]>;
-  selectedChat?: number;
+  selectedChat?: Chat[] | null;
   user?: UserInfo;
 }
 

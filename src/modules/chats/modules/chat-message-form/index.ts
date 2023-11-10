@@ -16,9 +16,11 @@ export class ChatMessageForm extends Block {
           const data = validateFormSubmit(target, this.children.input as Block[]);
           if (data) {
             const { message } = data;
-            const chatId = store.getState().selectedChat!;
-            MessagesController.sendMessage(chatId, message);
-            target.reset();
+            const chatId = store.getState().selectedChat?.[0].id;
+            if (chatId) {
+              MessagesController.sendMessage(chatId, message);
+              target.reset();
+            }
           }
         },
       },

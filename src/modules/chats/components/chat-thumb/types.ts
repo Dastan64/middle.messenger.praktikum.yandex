@@ -5,5 +5,5 @@ export interface ChatThumbProps {
   events?: {
     click: () => void;
   };
-  onClick?: (id: number) => void;
+  onClick?: (chatId: number) => void;
 }

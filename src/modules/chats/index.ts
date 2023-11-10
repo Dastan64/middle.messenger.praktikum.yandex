@@ -3,8 +3,7 @@ import { tmpl } from './chats.tmpl.ts';
 import Block from '../../core/Block.ts';
 import { withStore } from '../../hocs/withStore.ts';
 import { ChatsController } from '../../controllers/ChatsController.ts';
-import { MessagesController } from '../../controllers/MessagesController.ts';
-import store, { State } from '../../core/Store.ts';
+import { State } from '../../core/Store.ts';
 import { Chat } from '../../types/types.ts';
 
 // Components
@@ -102,7 +101,7 @@ export class BaseChats extends Block {
           text: 'Добавить',
         }),
         onSubmit: (userId: number[]) => {
-          ChatsController.addUserToChat(store.getState().selectedChat!, userId);
+          ChatsController.addUserToChat(this.props.selectedChat, userId);
         },
         onClose: () => {
           this.setProps({
@@ -135,7 +134,7 @@ export class BaseChats extends Block {
           text: 'Удалить',
         }),
         onSubmit: (userId: number[]) => {
-          ChatsController.deleteUserFromChat(store.getState().selectedChat!, userId);
+          ChatsController.deleteUserFromChat(this.props.selectedChat, userId);
         },
         onClose: () => {
           this.setProps({
@@ -193,12 +192,9 @@ export class BaseChats extends Block {
       this.children.chats = this.props.chats.map(
         (chat: Chat) => new ChatThumb({
           chat,
-          onClick: (id: number) => {
-            ChatsController.selectChat(id);
-            MessagesController.findMessages(id);
-            this.setProps({
-              selectedChat: store.getState().chats?.find((chat) => chat.id === id),
-            });
+          onClick: (chatId: number) => {
+            ChatsController.selectChat(chatId);
+            // MessagesController.findMessages(chatId);
           },
         }),
       );
@@ -218,7 +214,7 @@ export class BaseChats extends Block {
 
 const mapStateToProps = (state: State) => ({
   chats: state.chats,
-  selectedChat: state.selectedChat,
+  selectedChat: state.selectedChat?.[0],
 });
 
 export const Chats = withStore(mapStateToProps)(BaseChats);

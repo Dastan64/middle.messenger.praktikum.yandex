@@ -44,8 +44,9 @@ export class ChatsController {
     }
   }
 
-  static selectChat(id: number) {
-    store.set('selectedChat', id);
+  static selectChat(chatId: number) {
+    const target = store.getState().chats?.find((chat) => chat.id === chatId);
+    store.set('selectedChat', [target]);
   }
 
   static async getToken(chatId: number) {
