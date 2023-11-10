@@ -17,7 +17,9 @@ export const tmpl = `
       </div>
       <div class=${styles.extra}>
           <span class=${styles.time}>{{chat.last_message.time}}</span>
-          <span class=${styles.numberOfMessages}>{{chat.unread_count}}</span>
+          {{#if chat.unread_count}}
+            <span class=${styles.numberOfMessages}>{{chat.unread_count}}</span>
+          {{/if}}
       </div>
     </div>
   </li>

@@ -17,12 +17,13 @@ import { InputContainer } from '../../components/input-container/index.ts';
 import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
 import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
 import { Input } from '../../components/input/index.ts';
+import { OptionsButton } from '../../components/options-button/index.ts';
+import { ChatOptions } from './components/chat-options/index.ts';
 
 // Modules
-import { DeleteUserForm } from './modules/delete-user-form/index.ts';
-import { AddUserForm } from './modules/add-user-form/index.ts';
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
+import { ManageUserForm } from './modules/manage-user-form/index.ts';
 
 export class BaseChats extends Block {
   constructor() {
@@ -30,13 +31,13 @@ export class BaseChats extends Block {
   }
 
   init() {
-    this.children.input = new Input({
+    this.children.searchInput = new Input({
       placeholder: 'Поиск...',
       id: 'search',
       name: 'search',
       type: 'text',
     });
-    this.children.form = new ChatMessageForm({
+    this.children.messageForm = new ChatMessageForm({
       inputs: [
         new Input({
           placeholder: 'Написать сообщение...',
@@ -87,7 +88,7 @@ export class BaseChats extends Block {
           },
         },
       }),
-      form: new AddUserForm({
+      form: new ManageUserForm({
         inputs: [
           new InputContainer({
             label: 'ID пользователя (если несколько, укажите через запятую)',
@@ -100,6 +101,9 @@ export class BaseChats extends Block {
           type: 'submit',
           text: 'Добавить',
         }),
+        onSubmit: (userId: number[]) => {
+          ChatsController.addUserToChat(store.getState().selectedChat!, userId);
+        },
         onClose: () => {
           this.setProps({
             isAddUserPopupOpen: false,
@@ -117,7 +121,7 @@ export class BaseChats extends Block {
           },
         },
       }),
-      form: new DeleteUserForm({
+      form: new ManageUserForm({
         inputs: [
           new InputContainer({
             label: 'ID пользователя (если несколько, укажите через запятую)',
@@ -130,35 +134,15 @@ export class BaseChats extends Block {
           type: 'submit',
           text: 'Удалить',
         }),
+        onSubmit: (userId: number[]) => {
+          ChatsController.deleteUserFromChat(store.getState().selectedChat!, userId);
+        },
         onClose: () => {
           this.setProps({
             isDeleteUserPopupOpen: false,
           });
         },
       }),
-    });
-
-    this.children.addUserButton = new Button({
-      text: 'Добавить пользователя',
-      type: 'button',
-      events: {
-        click: () => {
-          this.setProps({
-            isAddUserPopupOpen: true,
-          });
-        },
-      },
-    });
-    this.children.deleteUserButton = new Button({
-      text: 'Удалить пользователя',
-      type: 'button',
-      events: {
-        click: () => {
-          this.setProps({
-            isDeleteUserPopupOpen: true,
-          });
-        },
-      },
     });
 
     this.children.createChatButton = new Button({
@@ -173,6 +157,35 @@ export class BaseChats extends Block {
       },
     });
     this.children.messagesWindow = new MessagesWindow({});
+    this.children.options = new ChatOptions({
+      buttons: [
+        new Button({
+          text: 'Добавить пользователя',
+          type: 'button',
+          events: {
+            click: () => {
+              this.setProps({
+                isAddUserPopupOpen: true,
+              });
+            },
+          },
+        }),
+        new Button({
+          text: 'Удалить пользователя',
+          type: 'button',
+          events: {
+            click: () => {
+              this.setProps({
+                isDeleteUserPopupOpen: true,
+              });
+            },
+          },
+        }),
+      ],
+    });
+    this.children.optionsButton = new OptionsButton({
+      onClick: () => this.setProps({ optionsVisible: !this.props.optionsVisible }),
+    });
   }
 
   componentDidUpdate() {

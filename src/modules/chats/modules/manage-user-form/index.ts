@@ -1,14 +1,12 @@
 import Block from '../../../../core/Block.ts';
-import { tmpl } from './add-user-form.tmpl.ts';
+import { tmpl } from './manage-user-form.tmpl.ts';
 import { validateFormSubmit } from '../../../../utils/validateFormSubmit.ts';
-import { AddUserFormProps } from './types.ts';
+import { ManageUserFormProps } from './types.ts';
 import store from '../../../../core/Store.ts';
 import { ChatsController } from '../../../../controllers/ChatsController.ts';
 
-// import { ChatsController } from '../../../../controllers/ChatsController.ts';
-
-export class AddUserForm extends Block {
-  constructor(props: AddUserFormProps) {
+export class ManageUserForm extends Block {
+  constructor(props: ManageUserFormProps) {
     super({
       ...props,
       events: {
@@ -19,9 +17,9 @@ export class AddUserForm extends Block {
           if (data) {
             const userId = data['user-id'].split(',').map((n) => +n);
             const chatId = store.getState().selectedChat;
-            console.log(chatId, userId);
             if (chatId && userId) {
               ChatsController.addUserToChat(chatId, userId);
+              this.props.o;
               this.props.onClose();
             }
           }

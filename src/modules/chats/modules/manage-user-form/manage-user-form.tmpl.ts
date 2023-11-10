@@ -1,9 +1,9 @@
-import styles from './delete-user-form.module.scss';
+import styles from './manage-user-form.module.scss';
 
 export const tmpl = `
   <form class=${styles.form}>
     {{#each inputs}}
-        {{{this}}}
+      {{{this}}}
     {{/each}}
     {{{submitButton}}}
   </form>

@@ -10,7 +10,7 @@ export const tmpl = `
           </div>
           <div class=${styles.sidebar}>
               <div class=${styles.searchContainer}>
-                  {{{input}}}
+                  {{{searchInput}}}
               </div>
               <ul class=${styles.chats}>
                 {{#each chats}}
@@ -24,11 +24,10 @@ export const tmpl = `
                   <div class=${styles.topInfo}>
                       <span class=${styles.talkerName}>{{selectedChat.title}}</span>
                       <span class=${styles.status}>В сети</span>
-                      <button class=${styles.settingsBtn}></button>
-                      <div class=${styles.options}>
-                        {{{addUserButton}}}
-                        {{{deleteUserButton}}}
-                      </div>
+                      {{{optionsButton}}}
+                      {{#if optionsVisible}}
+                        {{{options}}}
+                      {{/if}}
                   </div>
                 </div>
             {{/if}}
@@ -54,7 +53,7 @@ export const tmpl = `
               </div>
               {{#if selectedChat}}
               {{{messagesWindow}}}
-                {{{form}}}
+                {{{messageForm}}}
               {{/if}}
           </div>
       </div>
