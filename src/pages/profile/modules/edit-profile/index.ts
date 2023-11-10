@@ -3,8 +3,6 @@ import { Avatar } from '../../../../components/avatar/index.ts';
 import { AvatarInput } from '../../../../components/avatar-input/index.ts';
 import { InputContainer } from '../../../../components/input-container/index.ts';
 import { EditProfileForm } from '../../../../modules/edit-profile-form/index.ts';
-
-import avatar from '../../../../assets/images/avatar.jpeg';
 import Block from '../../../../core/Block.ts';
 import { InputContainerProps } from '../../../../components/input-container/types.ts';
 import { fields } from './edit-profile.fields.ts';
@@ -18,16 +16,12 @@ export class ChangeProfileData extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      avatar,
-      first_name: 'Дастан',
-      second_name: 'Жамекешев',
+      size: '130',
     });
 
     this.children.avatarInput = new AvatarInput({
       avatar: new Avatar({
-        avatar,
-        first_name: 'Дастан',
-        second_name: 'Жамекешев',
+        size: '130',
       }),
       events: {
         change: (event: Event) => {

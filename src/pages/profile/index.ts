@@ -1,27 +1,21 @@
 import { Link } from '../../components/link/index.ts';
 import { Avatar } from '../../components/avatar/index.ts';
 import { Button } from '../../components/button/index.ts';
-
-import avatar from '../../assets/images/avatar.jpeg';
 import Block from '../../core/Block.ts';
 import { tmpl } from './profile.tmpl.ts';
 import { AuthController } from '../../controllers/AuthController.ts';
 import { withStore } from '../../hocs/withStore.ts';
 import { State } from '../../core/Store.ts';
 import { Routes } from '../../types/types.ts';
+import { ProfileProps } from './types.ts';
 
 export class BaseProfile extends Block {
-  constructor() {
-    super({});
-  }
-
-  protected componentDidMount() {
-    AuthController.fetchUser();
+  constructor(props: ProfileProps) {
+    super(props);
   }
 
   init() {
     this.children.avatar = new Avatar({
-      avatar,
       size: '130',
     });
     this.children.links = [
@@ -52,6 +46,6 @@ export class BaseProfile extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({ ...state.user });
+const mapStateToProps = (state: State) => ({ user: state.user });
 
 export const Profile = withStore(mapStateToProps)(BaseProfile);

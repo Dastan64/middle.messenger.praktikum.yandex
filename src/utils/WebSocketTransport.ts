@@ -50,7 +50,6 @@ export class WebSocketTransport extends EventBus {
 
   private addEventListeners(socket: WebSocket) {
     socket.addEventListener(WebSocketEvents.Open, () => {
-      console.log('Соединение установлено');
       this.emit(WebSocketEvents.Connect);
     });
 

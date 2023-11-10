@@ -18,7 +18,6 @@ export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMes
     if (formFields['confirm-password']) {
       delete formFields['confirm-password'];
     }
-    console.log(formFields);
     return formFields;
   }
 

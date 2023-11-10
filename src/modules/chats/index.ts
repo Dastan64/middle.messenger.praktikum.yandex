@@ -3,27 +3,26 @@ import { tmpl } from './chats.tmpl.ts';
 import Block from '../../core/Block.ts';
 import { withStore } from '../../hocs/withStore.ts';
 import { ChatsController } from '../../controllers/ChatsController.ts';
+import { MessagesController } from '../../controllers/MessagesController.ts';
 import store, { State } from '../../core/Store.ts';
 import { Chat } from '../../types/types.ts';
 
 // Components
-import { Input } from '../../components/input/index.ts';
-import { Button } from '../../components/button/index.ts';
-import { InputContainer } from '../../components/input-container/index.ts';
-import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
 import { ChatThumb } from './components/chat-thumb/index.ts';
-import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
+import { MessagesWindow } from './components/messages-window/index.ts';
+import { Button } from '../../components/button/index.ts';
 import { ClosePopupButton } from '../../components/close-popup-button/index.ts';
 import { DeleteUserPopup } from '../../components/popups/delete-user-popup/index.ts';
-import { MessagesWindow } from './components/messages-window/index.ts';
+import { InputContainer } from '../../components/input-container/index.ts';
+import { AddUserPopup } from '../../components/popups/add-user-popup/index.ts';
+import { CreateChatPopup } from '../../components/popups/create-chat-popup/index.ts';
+import { Input } from '../../components/input/index.ts';
 
 // Modules
-import { ChatMessageForm } from './modules/chat-message-form/index.ts';
-import { CreateChatForm } from './modules/create-chat-form/index.ts';
-import { AddUserForm } from './modules/add-user-form/index.ts';
 import { DeleteUserForm } from './modules/delete-user-form/index.ts';
-import { Avatar } from '../../components/avatar/index.ts';
-import { MessagesController } from '../../controllers/MessagesController.ts';
+import { AddUserForm } from './modules/add-user-form/index.ts';
+import { CreateChatForm } from './modules/create-chat-form/index.ts';
+import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 
 export class BaseChats extends Block {
   constructor() {
@@ -37,14 +36,6 @@ export class BaseChats extends Block {
       name: 'search',
       type: 'text',
     });
-
-    this.children.avatar = new Avatar({
-      avatar: this.props.avatar,
-      size: '48',
-    });
-
-    this.children.chats = [];
-
     this.children.form = new ChatMessageForm({
       inputs: [
         new Input({
@@ -181,23 +172,24 @@ export class BaseChats extends Block {
         },
       },
     });
-
     this.children.messagesWindow = new MessagesWindow({});
   }
 
   componentDidUpdate() {
-    this.children.chats = this.props.chats.map(
-      (chat: Chat) => new ChatThumb({
-        chat,
-        onClick: (id: number) => {
-          ChatsController.selectChat(id);
-          MessagesController.findMessages(id);
-          this.setProps({
-            selectedChat: store.getState().chats?.find((chat) => chat.id === id),
-          });
-        },
-      }),
-    );
+    if (this.props.chats) {
+      this.children.chats = this.props.chats.map(
+        (chat: Chat) => new ChatThumb({
+          chat,
+          onClick: (id: number) => {
+            ChatsController.selectChat(id);
+            MessagesController.findMessages(id);
+            this.setProps({
+              selectedChat: store.getState().chats?.find((chat) => chat.id === id),
+            });
+          },
+        }),
+      );
+    }
 
     return true;
   }
@@ -213,10 +205,7 @@ export class BaseChats extends Block {
 
 const mapStateToProps = (state: State) => ({
   chats: state.chats,
-  avatar: state.user?.avatar,
   selectedChat: state.selectedChat,
-  messages: state.messages,
-  currentMessages: state.currentMessages,
 });
 
 export const Chats = withStore(mapStateToProps)(BaseChats);

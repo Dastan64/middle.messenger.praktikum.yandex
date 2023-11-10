@@ -51,8 +51,10 @@ export class MessagesController {
     const currentMessages = store.getState().messages?.[chatId] ?? [];
     const allMessages = [...currentMessages, ...incomingMessages];
     store.set(`messages.${chatId}`, allMessages);
+    if (!Array.isArray(messages)) {
+      this.findMessages(chatId);
+    }
     ChatsController.getChatsList();
-    console.log(store);
   }
 
   static findMessages(chatId: number) {
@@ -62,7 +64,6 @@ export class MessagesController {
 
   static subscribe(transport: WebSocketTransport, chatId: number) {
     transport.on(WebSocketEvents.Message, (data) => {
-      console.log(data);
       this.handleMessages(data, chatId);
     });
   }
