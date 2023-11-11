@@ -10,6 +10,8 @@ import { Chats } from '../modules/chats/index.ts';
 import { ChangePassword } from '../pages/profile/modules/edit-password/index.ts';
 import { ChangeProfileData } from '../pages/profile/modules/edit-profile/index.ts';
 import { Profile } from '../pages/profile/index.ts';
+import { NotFoundPage } from '../pages/not-found-page/index.ts';
+import { ErrorPage } from '../pages/error-page/index.ts';
 
 window.addEventListener('DOMContentLoaded', async () => {
   router
@@ -19,7 +21,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Chats, Chats)
     .use(Routes.EditPassword, ChangePassword)
     .use(Routes.EditProfile, ChangeProfileData)
-    .use(Routes.Profile, Profile);
+    .use(Routes.Profile, Profile)
+    .use(Routes.NotFound, NotFoundPage)
+    .use(Routes.Error, ErrorPage);
 
   let isProtectedRoute = true;
 
