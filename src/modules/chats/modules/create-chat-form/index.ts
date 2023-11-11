@@ -16,6 +16,7 @@ export class CreateChatForm extends Block {
           if (data) {
             const title = data['new-chat'];
             ChatsController.create(title);
+            this.props.onSubmit();
           }
         },
       },

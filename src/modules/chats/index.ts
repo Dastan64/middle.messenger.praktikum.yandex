@@ -71,6 +71,11 @@ export class BaseChats extends Block {
           type: 'submit',
           text: 'Создать',
         }),
+        onSubmit: () => {
+          this.setProps({
+            isCreateChatPopupOpen: false,
+          });
+        },
       }),
       button: new ClosePopupButton({
         events: {
@@ -157,7 +162,7 @@ export class BaseChats extends Block {
       events: {
         click: () => {
           this.setProps({
-            isCreateChatPopupOpen: false,
+            isCreateChatPopupOpen: true,
           });
         },
       },
