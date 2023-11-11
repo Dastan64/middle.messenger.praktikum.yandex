@@ -22,9 +22,6 @@ export class Input extends Block {
     if (this.props.name === 'search') {
       element.classList.add(styles.type_search);
     }
-    if (this.props.placeholder) {
-      element.placeholder = this.props.placeholder;
-    }
   }
 
   render() {

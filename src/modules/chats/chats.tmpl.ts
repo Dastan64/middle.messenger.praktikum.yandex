@@ -6,7 +6,7 @@ export const tmpl = `
     <section class=${styles.section}>
         <div class=${styles.container}>
           <div class=${styles.panel}>
-              {{{avatar}}}
+              {{{avatarLink}}}
           </div>
           <div class=${styles.sidebar}>
               <div class=${styles.searchContainer}>
@@ -34,29 +34,30 @@ export const tmpl = `
                   </div>
                 </div>
             {{/if}}
-              <div class=${styles.conversation}>
-                  {{#unless selectedChat}}
-                    <p>Выбери чат, чтобы отправить сообщение</p>
-                    <img width="120" height="120" src=${chat} alt="">
-                    <p>...или создай новый</p>
-                  {{/unless}}
 
-                  {{#if isCreateChatPopupOpen}}
-                    {{{createChatPopup}}}
-                  {{/if}}
+            {{#unless selectedChat}}
+              <div class=${styles.instruction}>
+              <p>Выбери чат, чтобы отправить сообщение</p>
+              <img width="120" height="120" src=${chat} alt="">
+              <p>...или создай новый</p>
+          </div>
+            {{/unless}}
 
-                  {{#if isAddUserPopupOpen}}
-                    {{{addUserPopup}}}
-                  {{/if}}
+            {{#if isCreateChatPopupOpen}}
+              {{{createChatPopup}}}
+            {{/if}}
 
-                  {{#if isDeleteUserPopupOpen}}
-                    {{{deleteUserPopup}}}
-                  {{/if}}
-              </div>
-              {{#if selectedChat}}
+            {{#if isAddUserPopupOpen}}
+              {{{addUserPopup}}}
+            {{/if}}
+
+            {{#if isDeleteUserPopupOpen}}
+              {{{deleteUserPopup}}}
+            {{/if}}
+            {{#if selectedChat}}
               {{{messagesWindow}}}
-                {{{messageForm}}}
-              {{/if}}
+              {{{messageForm}}}
+            {{/if}}
           </div>
       </div>
   </section>

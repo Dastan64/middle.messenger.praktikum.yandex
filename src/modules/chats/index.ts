@@ -4,7 +4,7 @@ import Block from '../../core/Block.ts';
 import { withStore } from '../../hocs/withStore.ts';
 import { ChatsController } from '../../controllers/ChatsController.ts';
 import { State } from '../../core/Store.ts';
-import { Chat } from '../../types/types.ts';
+import { Chat, Routes } from '../../types/types.ts';
 import { MessagesController } from '../../controllers/MessagesController.ts';
 
 // Components
@@ -20,6 +20,7 @@ import { Input } from '../../components/input/index.ts';
 import { OptionsButton } from '../../components/options-button/index.ts';
 import { ChatOptions } from './components/chat-options/index.ts';
 import { Avatar } from '../../components/avatar/index.ts';
+import { Link } from '../../components/link/index.ts';
 
 // Modules
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
@@ -32,8 +33,11 @@ export class BaseChats extends Block {
   }
 
   init() {
-    this.children.avatar = new Avatar({
-      size: '48',
+    this.children.avatarLink = new Link({
+      to: Routes.Profile,
+      content: new Avatar({
+        size: '48',
+      }),
     });
     this.children.searchInput = new Input({
       placeholder: 'Поиск...',

@@ -29,49 +29,41 @@ export class HTTPTransport {
     this.endpoint = `${this.API_URL}${endpoint}`;
   }
 
-  get: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      this.endpoint + url,
-      {
-        ...options,
-        method: METHODS.GET,
-      },
-      options.timeout,
-    );
-  };
+  get: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
+    {
+      ...options,
+      method: METHODS.GET,
+    },
+    options.timeout,
+  );
 
-  post: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      this.endpoint + url,
-      {
-        ...options,
-        method: METHODS.POST,
-      },
-      options.timeout,
-    );
-  };
+  post: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
+    {
+      ...options,
+      method: METHODS.POST,
+    },
+    options.timeout,
+  );
 
-  put: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      this.endpoint + url,
-      {
-        ...options,
-        method: METHODS.PUT,
-      },
-      options.timeout,
-    );
-  };
+  put: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
+    {
+      ...options,
+      method: METHODS.PUT,
+    },
+    options.timeout,
+  );
 
-  delete: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      this.endpoint + url,
-      {
-        ...options,
-        method: METHODS.DELETE,
-      },
-      options.timeout,
-    );
-  };
+  delete: HTTPMethod = (url, options = {}) => this.request(
+    this.endpoint + url,
+    {
+      ...options,
+      method: METHODS.DELETE,
+    },
+    options.timeout,
+  );
 
   request<Response>(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<Response> {
     const { data, headers = {}, method } = options;

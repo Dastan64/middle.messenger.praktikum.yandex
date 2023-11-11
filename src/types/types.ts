@@ -43,15 +43,15 @@ export interface PasswordData {
 }
 
 export enum Routes {
-  Chats = '/chats',
+  Chats = '/messenger',
   EditPassword = '/edit-password',
-  EditProfile = '/edit-profile',
+  EditProfile = '/settings',
   Error = '/500',
   Home = '/',
   Login = '/login',
   NotFound = '/404',
   Profile = '/profile',
-  Register = '/register',
+  Register = '/sign-up',
 }
 
 export interface Chat {

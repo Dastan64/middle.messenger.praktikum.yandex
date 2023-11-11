@@ -1,8 +1,10 @@
+import Block from '../../core/Block.ts';
+
 export interface LinkProps {
-  className?: string;
+  content?: Block;
   events?: {
     click: (event: Event) => void;
   };
-  text: string;
+  text?: string;
   to: string;
 }
