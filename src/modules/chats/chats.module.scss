@@ -37,13 +37,21 @@
   align-items: center;
 }
 
+.createChatButtonContainer {
+  padding-top: 16px;
+  padding-bottom: 6px;
+
+  text-align: center;
+}
+
 .option {
   font-size: 1rem;
   color: var(--color-text);
 
+  cursor: pointer;
+
   background-color: transparent;
   border: none;
-  cursor: pointer;
 }
 
 .talkerName {

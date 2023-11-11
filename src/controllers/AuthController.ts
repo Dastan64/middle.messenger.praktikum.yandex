@@ -20,7 +20,7 @@ export class AuthController {
     try {
       await authAPI.signup(data);
       await this.fetchUser();
-      router.go(Routes.Profile);
+      router.go(Routes.Chats);
     } catch (error) {
       console.log(error, 'sign up error');
     }

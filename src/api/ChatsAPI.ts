@@ -18,7 +18,7 @@ class ChatsAPI extends BaseAPI {
   }
 
   addUsers(users: number[], chatId: number) {
-    return this.http.delete('/users', {
+    return this.http.put('/users', {
       data: {
         users,
         chatId,

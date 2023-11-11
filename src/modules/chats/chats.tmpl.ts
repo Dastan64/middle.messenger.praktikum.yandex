@@ -12,6 +12,9 @@ export const tmpl = `
               <div class=${styles.searchContainer}>
                   {{{searchInput}}}
               </div>
+              <div class=${styles.createChatButtonContainer}>
+                {{{createChatButton}}}
+              </div>
               <ul class=${styles.chats}>
                 {{#each chats}}
                     {{{this}}}
@@ -36,7 +39,6 @@ export const tmpl = `
                     <p>Выбери чат, чтобы отправить сообщение</p>
                     <img width="120" height="120" src=${chat} alt="">
                     <p>...или создай новый</p>
-                    {{{createChatButton}}}
                   {{/unless}}
 
                   {{#if isCreateChatPopupOpen}}

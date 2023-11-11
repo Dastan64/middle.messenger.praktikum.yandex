@@ -5,6 +5,7 @@ import { withStore } from '../../hocs/withStore.ts';
 import { ChatsController } from '../../controllers/ChatsController.ts';
 import { State } from '../../core/Store.ts';
 import { Chat } from '../../types/types.ts';
+import { MessagesController } from '../../controllers/MessagesController.ts';
 
 // Components
 import { ChatThumb } from './components/chat-thumb/index.ts';
@@ -18,6 +19,7 @@ import { CreateChatPopup } from '../../components/popups/create-chat-popup/index
 import { Input } from '../../components/input/index.ts';
 import { OptionsButton } from '../../components/options-button/index.ts';
 import { ChatOptions } from './components/chat-options/index.ts';
+import { Avatar } from '../../components/avatar/index.ts';
 
 // Modules
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
@@ -30,6 +32,9 @@ export class BaseChats extends Block {
   }
 
   init() {
+    this.children.avatar = new Avatar({
+      size: '48',
+    });
     this.children.searchInput = new Input({
       placeholder: 'Поиск...',
       id: 'search',
@@ -100,12 +105,13 @@ export class BaseChats extends Block {
           type: 'submit',
           text: 'Добавить',
         }),
-        onSubmit: (userId: number[]) => {
-          ChatsController.addUserToChat(this.props.selectedChat, userId);
+        onSubmit: (chatId: number, userId: number[]) => {
+          ChatsController.addUserToChat(chatId, userId);
         },
         onClose: () => {
           this.setProps({
             isAddUserPopupOpen: false,
+            optionsVisible: false,
           });
         },
       }),
@@ -133,12 +139,13 @@ export class BaseChats extends Block {
           type: 'submit',
           text: 'Удалить',
         }),
-        onSubmit: (userId: number[]) => {
-          ChatsController.deleteUserFromChat(this.props.selectedChat, userId);
+        onSubmit: (chatId: number, userId: number[]) => {
+          ChatsController.deleteUserFromChat(chatId, userId);
         },
         onClose: () => {
           this.setProps({
             isDeleteUserPopupOpen: false,
+            optionsVisible: false,
           });
         },
       }),
@@ -150,7 +157,7 @@ export class BaseChats extends Block {
       events: {
         click: () => {
           this.setProps({
-            isCreateChatPopupOpen: true,
+            isCreateChatPopupOpen: false,
           });
         },
       },
@@ -194,7 +201,8 @@ export class BaseChats extends Block {
           chat,
           onClick: (chatId: number) => {
             ChatsController.selectChat(chatId);
-            // MessagesController.findMessages(chatId);
+            MessagesController.findMessages(chatId);
+            this.setProps({ optionsVisible: false });
           },
         }),
       );

@@ -1,4 +1,5 @@
 import '../styles/style.scss';
+
 // Pages
 import router from '../core/Router.ts';
 import { Login } from '../pages/home/modules/login/index.ts';

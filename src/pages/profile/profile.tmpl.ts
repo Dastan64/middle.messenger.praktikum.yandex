@@ -8,17 +8,22 @@ export const tmpl = `
 
           <div class=${styles.container}>
               <div class=${styles.line}>
-                  <span class=${styles.role}>Логин</span>
+                  <span class=${styles.role}>ID:</span>
+                  <span class=${styles.value}>{{user.id}}</span>
+              </div>
+
+              <div class=${styles.line}>
+                  <span class=${styles.role}>Логин:</span>
                   <span class=${styles.value}>{{user.login}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>E-mail</span>
+                  <span class=${styles.role}>E-mail:</span>
                   <span class=${styles.value}>{{user.email}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Имя</span>
+                  <span class=${styles.role}>Имя:</span>
                   <span class=${styles.value}>{{user.first_name}}</span>
               </div>
 
@@ -28,7 +33,7 @@ export const tmpl = `
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Имя в чате</span>
+                  <span class=${styles.role}>Имя в чате:</span>
                   {{#if display_name}}
                     <span class=${styles.value}>{{user.display_name}}</span>
                   {{else}}
@@ -37,7 +42,7 @@ export const tmpl = `
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Телефон</span>
+                  <span class=${styles.role}>Телефон:</span>
                   <span class=${styles.value}>{{user.phone}}</span>
               </div>
           </div>
