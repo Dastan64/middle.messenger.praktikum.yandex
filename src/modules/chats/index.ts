@@ -97,6 +97,7 @@ export class BaseChats extends Block {
           click: () => {
             this.setProps({
               isAddUserPopupOpen: false,
+              optionsVisible: false,
             });
           },
         },
@@ -131,6 +132,7 @@ export class BaseChats extends Block {
           click: () => {
             this.setProps({
               isDeleteUserPopupOpen: false,
+              optionsVisible: false,
             });
           },
         },

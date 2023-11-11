@@ -17,11 +17,15 @@ export class ManageUserForm extends Block {
           if (data) {
             const userId = data['user-id'].split(',').map((n) => +n);
             const chatId = store.getState().selectedChat?.[0].id;
-            console.log(userId, chatId);
             if (chatId && userId) {
               this.props.onSubmit(chatId, userId);
               target.reset();
-              this.props.onClose();
+              this.setProps({
+                success: true,
+              });
+              setTimeout(() => {
+                this.props.onClose();
+              }, 1000);
             }
           }
         },

@@ -6,5 +6,8 @@ export const tmpl = `
       {{{this}}}
     {{/each}}
     {{{submitButton}}}
+    {{#if success}}
+      <span class=${styles['success-notification']}>Успешно!</span>
+    {{/if}}
   </form>
 `;
