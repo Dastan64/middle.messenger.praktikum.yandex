@@ -1,16 +1,12 @@
 import { merge } from './merge.ts';
 
-type Indexed<T = any> = {
+type Indexed<T = Record<string, unknown>> = {
   [key in string]: T;
 };
 
 export const set = (object: Indexed | unknown, path: string, value: unknown): Indexed | unknown => {
   if (typeof object !== 'object' || object === null) {
     return object;
-  }
-
-  if (typeof path !== 'string') {
-    throw new Error('path must be string');
   }
 
   const result = path.split('.').reduceRight<Indexed>(

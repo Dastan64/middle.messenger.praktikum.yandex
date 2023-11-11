@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus.ts';
 
-class Block<P extends Record<string, any> = any> {
+class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -137,7 +137,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   protected compile(template: string) {
-    const contextAndStubs = { ...this.props } as Record<string, any>;
+    const contextAndStubs = { ...this.props } as Record<string, unknown>;
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
         contextAndStubs[name] = component.map((comp) => `<div data-id="${comp.id}"></div>`);

@@ -6,7 +6,7 @@ export const tmpl = `
     <div class=${styles.thumb}>
       <div>
       {{#if chat.avatar}}
-        <img width="48" height="48" class=${styles.avatar} src="{{chat.avatar}}" alt="">
+        <img width="48" height="48" class=${styles.avatar} src="https://ya-praktikum.tech/api/v2/resources{{chat.avatar}}" alt="">
       {{else}}
         <img width="48" height="48" class=${styles.avatar} src=${chat} alt="">
       </div>

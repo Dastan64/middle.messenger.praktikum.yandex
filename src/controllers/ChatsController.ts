@@ -49,6 +49,16 @@ export class ChatsController {
     store.set('selectedChat', [target]);
   }
 
+  static async deleteChat(chatId: number) {
+    try {
+      await chatsAPI.delete(chatId);
+      store.set('selectedChat', undefined);
+      await this.getChatsList();
+    } catch (error) {
+      console.log(error, 'delete the chat error');
+    }
+  }
+
   static async getToken(chatId: number) {
     return chatsAPI.getToken(chatId);
   }

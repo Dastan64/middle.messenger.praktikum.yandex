@@ -3,7 +3,7 @@ import Block from '../core/Block.ts';
 import { isEqual } from '../utils/isEqual.ts';
 
 export const withStore = (mapStateToProps: (state: State) => any) => <P extends Record<string, unknown>>(Component: typeof Block<P>) => class extends Component {
-  constructor(props: any) {
+  constructor(props: P) {
     let state = mapStateToProps(store.getState());
     super({ ...props, ...mapStateToProps(store.getState()) });
     store.on(StoreEvents.Updated, () => {

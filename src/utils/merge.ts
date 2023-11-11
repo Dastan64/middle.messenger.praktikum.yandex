@@ -1,4 +1,4 @@
-type Indexed<T = any> = {
+type Indexed<T = Record<string, unknown>> = {
   [key in string]: T;
 };
 

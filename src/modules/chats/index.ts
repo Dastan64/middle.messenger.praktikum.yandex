@@ -196,6 +196,18 @@ export class BaseChats extends Block {
             },
           },
         }),
+        new Button({
+          text: 'Удалить чат',
+          type: 'button',
+          events: {
+            click: () => {
+              ChatsController.deleteChat(this.props.selectedChat.id);
+              this.setProps({
+                optionsVisible: false,
+              });
+            },
+          },
+        }),
       ],
     });
     this.children.optionsButton = new OptionsButton({
