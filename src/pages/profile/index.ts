@@ -46,6 +46,6 @@ export class BaseProfile extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({ user: state.user });
+const mapStateToProps = (state: State) => ({ ...state.user });
 
 export const Profile = withStore(mapStateToProps)(BaseProfile);
