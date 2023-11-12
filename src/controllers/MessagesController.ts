@@ -49,7 +49,7 @@ export class MessagesController {
   static handleMessages(messages: MessageData[] | MessageData, chatId: number) {
     const incomingMessages = Array.isArray(messages) ? messages.reverse() : [messages];
     const currentMessages = store.getState().messages?.[chatId] ?? [];
-    const allMessages = [...currentMessages, ...incomingMessages];
+    const allMessages = [...currentMessages, ...incomingMessages].filter((message) => message.type === 'message');
     store.set(`messages.${chatId}`, allMessages);
     if (!Array.isArray(messages)) {
       this.findMessages(chatId);

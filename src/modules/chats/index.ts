@@ -26,6 +26,9 @@ import { Link } from '../../components/link/index.ts';
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 import { ManageUserForm } from './modules/manage-user-form/index.ts';
+import { ChangeChatAvatarPopup } from '../../components/popups/change-chat-avatar-popup';
+import { ChangeAvatarForm } from './modules/change-avatar-form';
+import { FileInput } from '../../components/file-input';
 
 export class BaseChats extends Block {
   constructor() {
@@ -161,6 +164,38 @@ export class BaseChats extends Block {
         },
       }),
     });
+    this.children.changeChatAvatarPopup = new ChangeChatAvatarPopup({
+      button: new ClosePopupButton({
+        events: {
+          click: () => {
+            this.setProps({
+              isChatAvatarPopupOpen: false,
+              optionsVisible: false,
+            });
+          },
+        },
+      }),
+      form: new ChangeAvatarForm({
+        inputs: [
+          new FileInput({
+            onChange: (event) => {
+              const target = event.target as HTMLInputElement;
+              if (target.files) {
+                const file = target.files[0];
+                const formData = new FormData();
+                formData.append('chatId', this.props.selectedChat.id);
+                formData.append('avatar', file);
+                ChatsController.editChatAvatar(formData);
+                this.setProps({
+                  isChatAvatarPopupOpen: false,
+                  optionsVisible: false,
+                });
+              }
+            },
+          }),
+        ],
+      }),
+    });
 
     this.children.createChatButton = new Button({
       text: 'Создать чат',
@@ -205,6 +240,19 @@ export class BaseChats extends Block {
             click: () => {
               ChatsController.deleteChat(this.props.selectedChat.id);
               this.setProps({
+                optionsVisible: false,
+              });
+            },
+          },
+        }),
+        new Button({
+          text: 'Сменить фото чата',
+          type: 'button',
+          events: {
+            click: () => {
+              // ChatsController.deleteChat(this.props.selectedChat.id);
+              this.setProps({
+                isChatAvatarPopupOpen: true,
                 optionsVisible: false,
               });
             },

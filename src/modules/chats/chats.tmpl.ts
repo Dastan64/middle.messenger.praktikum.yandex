@@ -54,6 +54,11 @@ export const tmpl = `
             {{#if isDeleteUserPopupOpen}}
               {{{deleteUserPopup}}}
             {{/if}}
+
+            {{#if isChatAvatarPopupOpen}}
+              {{{changeChatAvatarPopup}}}
+            {{/if}}
+
             {{#if selectedChat}}
               {{{messagesWindow}}}
               {{{messageForm}}}

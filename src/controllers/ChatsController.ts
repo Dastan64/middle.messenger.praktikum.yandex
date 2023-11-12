@@ -60,7 +60,6 @@ export class ChatsController {
           members: nonAdminMembers,
         },
       ]);
-      console.log(store);
     } catch (error) {
       console.log(error, 'get chat users error');
     }
@@ -73,6 +72,33 @@ export class ChatsController {
       await this.getChatsList();
     } catch (error) {
       console.log(error, 'delete the chat error');
+    }
+  }
+
+  static async editChatAvatar(data: FormData) {
+    try {
+      const response = await chatsAPI.changeChatAvatar(data);
+      const { avatar, id } = response;
+
+      const { chats, selectedChat } = store.getState();
+      const updatedChats = chats?.map((chat) => (chat.id !== id
+        ? chat
+        : {
+          ...chat,
+          avatar,
+        }));
+
+      if (updatedChats) {
+        store.set('chats', updatedChats);
+      }
+      store.set('selectedChat', [
+        {
+          ...selectedChat?.[0],
+          avatar,
+        },
+      ]);
+    } catch (error) {
+      console.log(error, 'edit chat avatar error');
     }
   }
 
