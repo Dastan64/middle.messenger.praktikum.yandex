@@ -15,7 +15,7 @@ export class ChatsController {
 
   static async getChatsList() {
     try {
-      const chats = await chatsAPI.getChats();
+      const chats = await chatsAPI.getChats({ limit: 50 });
       chats.map(async (chat: Chat) => {
         const { token } = await this.getToken(chat.id);
         await MessagesController.connect(chat.id, token);

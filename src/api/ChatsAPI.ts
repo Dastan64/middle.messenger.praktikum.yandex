@@ -13,8 +13,8 @@ class ChatsAPI extends BaseAPI {
     });
   }
 
-  getChats() {
-    return this.http.get('/');
+  getChats(data: Record<string, any>) {
+    return this.http.get('/', { data });
   }
 
   addUsers(users: number[], chatId: number) {
