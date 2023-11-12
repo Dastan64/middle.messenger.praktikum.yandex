@@ -23,6 +23,10 @@ export interface UserInfo {
   second_name: string;
 }
 
+export interface ChatMember extends Omit<UserInfo, 'phone' | 'email'> {
+  role?: string;
+}
+
 export interface ProfileData {
   display_name: string;
   email: string;

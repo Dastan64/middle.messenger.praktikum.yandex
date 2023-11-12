@@ -35,6 +35,10 @@ class ChatsAPI extends BaseAPI {
     });
   }
 
+  getChatUsers(chatId: number) {
+    return this.http.get(`/${chatId}/users`);
+  }
+
   delete(chatId: number) {
     return this.http.delete('/', {
       data: {

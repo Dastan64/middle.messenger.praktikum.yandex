@@ -9,8 +9,8 @@ export const tmpl = `
         <img width="48" height="48" class=${styles.avatar} src="https://ya-praktikum.tech/api/v2/resources{{chat.avatar}}" alt="">
       {{else}}
         <img width="48" height="48" class=${styles.avatar} src=${chat} alt="">
-      </div>
       {{/if}}
+      </div>
       <div class=${styles.info}>
           <span class=${styles.name}>{{chat.title}}</span>
           <span class=${styles.message}>{{chat.last_message.content}}</span>

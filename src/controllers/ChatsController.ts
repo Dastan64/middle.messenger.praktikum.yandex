@@ -1,6 +1,6 @@
 import chatsAPI from '../api/ChatsAPI.ts';
 import store from '../core/Store.ts';
-import { Chat } from '../types/types.ts';
+import { Chat, ChatMember } from '../types/types.ts';
 import { MessagesController } from './MessagesController.ts';
 
 export class ChatsController {
@@ -47,6 +47,23 @@ export class ChatsController {
   static selectChat(chatId: number) {
     const target = store.getState().chats?.find((chat) => chat.id === chatId);
     store.set('selectedChat', [target]);
+    this.fetchChatUsers(chatId);
+  }
+
+  static async fetchChatUsers(chatId: number) {
+    try {
+      const chatMembers: ChatMember[] = await chatsAPI.getChatUsers(chatId);
+      const nonAdminMembers = chatMembers.filter((user) => user.role !== 'admin');
+      store.set('selectedChat', [
+        {
+          ...store.getState().selectedChat?.[0],
+          members: nonAdminMembers,
+        },
+      ]);
+      console.log(store);
+    } catch (error) {
+      console.log(error, 'get chat users error');
+    }
   }
 
   static async deleteChat(chatId: number) {
