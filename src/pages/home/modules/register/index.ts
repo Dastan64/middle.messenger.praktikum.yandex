@@ -6,10 +6,11 @@ import { InputContainer } from '../../../../components/input-container/index.ts'
 import { InputContainerProps } from '../../../../components/input-container/types.ts';
 import { RegistrationForm } from '../../../../modules/registration-form/index.ts';
 import { fields } from './register.fields.ts';
+import { Routes } from '../../../../types/types.ts';
 
 export class Register extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {
@@ -20,8 +21,8 @@ export class Register extends Block {
         text: 'Зарегистрироваться',
       }),
       link: new Link({
-        to: '/',
-        text: 'На главную',
+        to: Routes.Login,
+        text: 'Уже зарегистрированы?',
       }),
     });
   }

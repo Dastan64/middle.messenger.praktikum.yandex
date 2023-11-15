@@ -1,0 +1,22 @@
+.button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 24px;
+  height: 24px;
+
+  background-color: transparent;
+  background-image: url("/src/assets/images/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 0;
+
+  transition: opacity .2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

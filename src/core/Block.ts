@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus.ts';
 
-class Block<P extends Record<string, any> = any> {
+class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -21,17 +21,10 @@ class Block<P extends Record<string, any> = any> {
 
   private _element: HTMLElement | null = null;
 
-  private readonly _meta: { props: P; tagName: string };
-
-  constructor(tagName = 'div', propsWithChildren: P) {
+  constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 
     const { children, props } = this._getChildrenAndProps(propsWithChildren);
-
-    this._meta = {
-      tagName,
-      props: props as P,
-    };
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -82,14 +75,7 @@ class Block<P extends Record<string, any> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
-
   private _init() {
-    this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -138,16 +124,20 @@ class Block<P extends Record<string, any> = any> {
 
   private _render() {
     const fragment = this.render();
-    this._removeEvents();
-    this._element!.innerHTML = '';
+    const newElement = fragment.firstElementChild as HTMLElement;
 
-    this._element!.append(fragment);
+    if (this._element && newElement) {
+      this._element.replaceWith(newElement);
+    }
+
+    this._element = newElement;
+    this._removeEvents();
 
     this._addEvents();
   }
 
   protected compile(template: string) {
-    const contextAndStubs = { ...this.props } as Record<string, any>;
+    const contextAndStubs = { ...this.props } as Record<string, unknown>;
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
         contextAndStubs[name] = component.map((comp) => `<div data-id="${comp.id}"></div>`);
@@ -159,7 +149,6 @@ class Block<P extends Record<string, any> = any> {
     const html = Handlebars.compile(template)(contextAndStubs);
     const temp = document.createElement('template');
     temp.innerHTML = html;
-
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
         const stubs = component.map((comp) => temp.content.querySelector(`[data-id="${comp.id}"]`));
@@ -214,16 +203,13 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  _createDocumentElement(tagName: string) {
-    return document.createElement(tagName);
-  }
-
-  show() {
-    this.getContent()!.style.display = 'block';
+  show(query: string, render: (query: string, block: Block) => void) {
+    this.eventBus().emit(Block.EVENTS.INIT);
+    render(query, this);
   }
 
   hide() {
-    this.getContent()!.style.display = 'none';
+    this.getContent()!.remove();
   }
 }
 

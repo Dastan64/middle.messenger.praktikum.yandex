@@ -4,16 +4,10 @@ import Block from '../../core/Block.ts';
 
 export class Button extends Block {
   constructor(props: ButtonProps) {
-    super('button', props);
-  }
-
-  init() {
-    const element = this.element as HTMLButtonElement;
-    element.className = styles.button;
-    element.type = this.props.type;
+    super(props);
   }
 
   render() {
-    return this.compile('{{text}}');
+    return this.compile(`<button class=${styles.button} type="{{type}}">{{text}}</button>`);
   }
 }

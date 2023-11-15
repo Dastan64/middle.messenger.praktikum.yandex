@@ -1,45 +1,54 @@
 import styles from './profile.module.scss';
 
 export const tmpl = `
-  <section class=${styles.section}>
+  <main>
+    <section class=${styles.section}>
       <div class="wrapper">
           {{{avatar}}}
 
           <div class=${styles.container}>
               <div class=${styles.line}>
-                  <span class=${styles.role}>Логин</span>
-                  <span class=${styles.value}>@dastan64</span>
+                  <span class=${styles.role}>ID:</span>
+                  <span class=${styles.value}>{{id}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>E-mail</span>
-                  <span class=${styles.value}>dastanz64@yandex.kz</span>
+                  <span class=${styles.role}>Логин:</span>
+                  <span class=${styles.value}>{{login}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Имя</span>
-                  <span class=${styles.value}>Дастан</span>
+                  <span class=${styles.role}>E-mail:</span>
+                  <span class=${styles.value}>{{email}}</span>
+              </div>
+
+              <div class=${styles.line}>
+                  <span class=${styles.role}>Имя:</span>
+                  <span class=${styles.value}>{{first_name}}</span>
               </div>
 
               <div class=${styles.line}>
                   <span class=${styles.role}>Фамилия</span>
-                  <span class=${styles.value}>Жамекешев</span>
+                  <span class=${styles.value}>{{second_name}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Имя в чате</span>
-                  <span class=${styles.value}>Dastan Z</span>
+                  <span class=${styles.role}>Имя в чате:</span>
+                  <span class=${styles.value}>{{lookupOrDefault this 'display_name' 'Неопознанный единорог'}}</span>
               </div>
 
               <div class=${styles.line}>
-                  <span class=${styles.role}>Телефон</span>
-                  <span class=${styles.value}>+7-123-456-78-90</span>
+                  <span class=${styles.role}>Телефон:</span>
+                  <span class=${styles.value}>{{phone}}</span>
               </div>
           </div>
           <div class=${styles.links}>
-              {{{editProfileLink}}}
-              {{{editPasswordLink}}}
+                {{#each links}}
+                  {{{this}}}
+                {{/each}}
           </div>
+          {{{logoutButton}}}
       </div>
   </section>
+  </main>
 `;

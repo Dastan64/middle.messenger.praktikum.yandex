@@ -1,4 +1,4 @@
 export interface AvatarProps {
-  url: string;
-  username: string;
+  avatar: string;
+  size: string;
 }

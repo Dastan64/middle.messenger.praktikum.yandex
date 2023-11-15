@@ -4,19 +4,16 @@ import { Button } from '../../../../components/button/index.ts';
 import { Avatar } from '../../../../components/avatar/index.ts';
 import { InputContainer } from '../../../../components/input-container/index.ts';
 import { EditPasswordForm } from '../../../../modules/edit-password-form/index.ts';
-
-import avatar from '../../../../assets/images/avatar.jpeg';
 import Block from '../../../../core/Block.ts';
 
 export class ChangePassword extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {
     this.children.avatar = new Avatar({
-      url: avatar,
-      username: 'Дастан Жамекешев',
+      size: '130',
     });
 
     this.children.editPasswordForm = new EditPasswordForm({

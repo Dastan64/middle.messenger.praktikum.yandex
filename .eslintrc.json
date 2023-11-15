@@ -35,7 +35,7 @@
   "rules": {
     "max-len": [
       "error",
-      120
+      150
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -47,25 +47,18 @@
     "sort-destructure-keys/sort-destructure-keys": 2,
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
-    "import/prefer-default-export": "off",
     "semi": "error",
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allowAfterThis": true
-      }
-    ],
-    "class-methods-use-this": "off",
-    "no-param-reassign": [
-      "error",
-      {
-        "props": true,
-        "ignorePropertyModificationsFor": [
-          "target"
-        ]
-      }
-    ],
+    "import/prefer-default-export": "off",
     "default-param-last": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-constructor-return": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-useless-constructor": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "no-continue": "off",
+    "no-prototype-builtins": "off",
     "no-shadow": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",

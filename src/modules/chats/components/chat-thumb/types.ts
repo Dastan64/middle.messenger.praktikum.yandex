@@ -1,8 +1,9 @@
+import { Chat } from '../../../../types/types.ts';
+
 export interface ChatThumbProps {
-  avatar: string;
-  message: string;
-  messagesNumber?: number;
-  name: string;
-  time: string;
-  url: string;
+  chat: Chat;
+  events?: {
+    click: () => void;
+  };
+  onClick?: (chatId: number) => void;
 }

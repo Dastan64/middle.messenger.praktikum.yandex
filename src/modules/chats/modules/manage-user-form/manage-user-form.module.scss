@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+}
+
+.success-notification {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  font-size: 0.875rem;
+  color: var(--color-success);
+  text-align: center;
+}

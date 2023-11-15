@@ -6,7 +6,8 @@
 
 * регистрировать аккаунт;
 * обмениваться сообщениями с другими пользователями;
-* изменять данные профиля (включая пароль);
+* чаты: создавать и удалять чаты, добавлять и удалять пользователей, менять аватар чата;
+* изменять данные профиля и пароль;
 
 ## Инструкция
 
@@ -16,16 +17,28 @@
 
 `npm run build` - сборка проекта
 
+## Технологии:
+
+* HTML5;
+* CSS3;
+* SCSS Modules;
+* JavaScript (стандарт ES6);
+* TypeScript;
+* XMLHttpRequest;
+* Handlebars;
+* Express JS;
+* Vite;
+
 ## Ссылки проекта:
 
 * https://luminous-fudge-423881.netlify.app/login - окно авторизации
-* https://luminous-fudge-423881.netlify.app/register - окно регистрации
+* https://luminous-fudge-423881.netlify.app/sign-up - окно регистрации
 * https://luminous-fudge-423881.netlify.app/404 - страница "Не найдено"
 * https://luminous-fudge-423881.netlify.app/500 - страница с 5XX ошибкой
 * https://luminous-fudge-423881.netlify.app/profile - профиль
-* https://luminous-fudge-423881.netlify.app/change-profile-data - изменение данных профиля
-* https://luminous-fudge-423881.netlify.app/change-password - изменение пароля
-* https://luminous-fudge-423881.netlify.app/chats - список чатов и переписка
+* https://luminous-fudge-423881.netlify.app/settings - изменение данных профиля
+* https://luminous-fudge-423881.netlify.app/edit-password - изменение пароля
+* https://luminous-fudge-423881.netlify.app/messenger - список чатов и переписка
 
 ---
 

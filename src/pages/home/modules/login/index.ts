@@ -5,10 +5,11 @@ import { Link } from '../../../../components/link/index.ts';
 import Block from '../../../../core/Block.ts';
 import { InputContainer } from '../../../../components/input-container/index.ts';
 import { LoginForm } from '../../../../modules/login-form/index.ts';
+import { Routes } from '../../../../types/types.ts';
 
 export class Login extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {
@@ -32,7 +33,7 @@ export class Login extends Block {
         text: 'Войти',
       }),
       link: new Link({
-        to: '/register',
+        to: Routes.Register,
         text: 'Зарегистрироваться',
       }),
     });

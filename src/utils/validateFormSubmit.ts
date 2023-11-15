@@ -13,15 +13,19 @@ export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMes
 
   const fieldsValidationErrors: Record<string, string> = validate(formFields);
   const areAllFieldsValid = Object.values(fieldsValidationErrors).every((value) => value === '');
+
   if (areAllFieldsValid) {
-    console.log(formFields);
-  } else {
-    inputs.forEach((input) => {
-      if (!isMessage) {
-        (input.children.error as Block).setProps({
-          text: input.element!.dataset.name && fieldsValidationErrors[input.element!.dataset.name],
-        });
-      }
-    });
+    if (formFields['confirm-password']) {
+      delete formFields['confirm-password'];
+    }
+    return formFields;
   }
+
+  inputs.forEach((input) => {
+    if (!isMessage) {
+      (input.children.error as Block).setProps({
+        text: input.element!.dataset.name && fieldsValidationErrors[input.element!.dataset.name],
+      });
+    }
+  });
 };

@@ -1,11 +1,11 @@
-import styles from './error-page.module.scss';
-
 export const tmpl = `
-  <section class=${styles.page}>
-      <h1 class=${styles.title}>{{statusCode}}</h1>
-      <p class=${styles.message}>{{message}}</p>
+  <main>
+    <section class='error-page'>
+      <h1 class='error-page__title'>500</h1>
+      <p class='error-page__message'>Мы уже фиксим</p>
       <div>
-          {{{mainPageLink}}}
+          {{{link}}}
       </div>
-  </section>
+    </section>
+  </main>
 `;

@@ -1,25 +1,33 @@
 import Block from '../../../../core/Block.ts';
-import styles from './chat-message-form.module.scss';
 import { tmpl } from './chat-message-form-tmpl.ts';
 import { ChatMessageFormProps } from './types.ts';
 import { validateFormSubmit } from '../../../../utils/validateFormSubmit.ts';
+import { MessagesController } from '../../../../controllers/MessagesController.ts';
+import store from '../../../../core/Store.ts';
 
 export class ChatMessageForm extends Block {
   constructor(props: ChatMessageFormProps) {
-    super('form', {
+    super({
       ...props,
       events: {
         submit: (event: SubmitEvent) => {
           event.preventDefault();
-          validateFormSubmit(event.target as HTMLFormElement, this.children.input as Block[]);
+          const target = event.target as HTMLFormElement;
+          const data = validateFormSubmit(target, this.children.input as Block[]);
+          if (data) {
+            const { message } = data;
+            const chatId = store.getState().selectedChat?.[0].id;
+            if (chatId) {
+              MessagesController.sendMessage(chatId, message);
+              target.reset();
+            }
+          }
         },
       },
     });
   }
 
   init() {
-    const element = this.element as HTMLFormElement;
-    element.className = styles.form;
     this.children.inputs = this.props.inputs;
   }
 
