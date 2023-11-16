@@ -5,6 +5,7 @@ import { Button } from './index.ts';
 describe('Button component', () => {
   it('should be clickable', () => {
     const callback = sinon.stub();
+    console.log(callback);
     const button = new Button({
       text: 'button',
       type: 'button',
