@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { Input } from './index.ts';
 import '../../utils/registerHelpers.ts';
 
-describe.only('Input component', () => {
+describe('Input component', () => {
   it('should fire callback on blur', () => {
     const callback = sinon.stub();
     const input = new Input({
