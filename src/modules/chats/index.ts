@@ -26,9 +26,9 @@ import { Link } from '../../components/link/index.ts';
 import { CreateChatForm } from './modules/create-chat-form/index.ts';
 import { ChatMessageForm } from './modules/chat-message-form/index.ts';
 import { ManageUserForm } from './modules/manage-user-form/index.ts';
-import { ChangeChatAvatarPopup } from '../../components/popups/change-chat-avatar-popup';
-import { ChangeAvatarForm } from './modules/change-avatar-form';
-import { FileInput } from '../../components/file-input';
+import { ChangeChatAvatarPopup } from '../../components/popups/change-chat-avatar-popup/index.ts';
+import { ChangeAvatarForm } from './modules/change-avatar-form/index.ts';
+import { FileInput } from '../../components/file-input/index.ts';
 
 export class BaseChats extends Block {
   constructor() {

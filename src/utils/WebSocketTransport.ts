@@ -30,6 +30,7 @@ export class WebSocketTransport extends EventBus {
   }
 
   private setPing() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     this.interval = setInterval(() => {
       this.send({ type: 'ping' });

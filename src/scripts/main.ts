@@ -1,6 +1,6 @@
 import '../styles/style.scss';
 
-import router from '../core/Router.ts';
+import { Router } from '../core/Router.ts';
 import { Routes } from '../types/types.ts';
 import { AuthController } from '../controllers/AuthController.ts';
 import '../utils/registerHelpers.ts';
@@ -16,7 +16,7 @@ import { NotFoundPage } from '../pages/not-found-page/index.ts';
 import { ErrorPage } from '../pages/error-page/index.ts';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  router
+  Router.getInstance()
     .use(Routes.Home, Login)
     .use(Routes.Login, Login)
     .use(Routes.Register, Register)
@@ -39,14 +39,14 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await AuthController.fetchUser();
-    router.start();
+    Router.getInstance().start();
     if (!isProtectedRoute) {
-      router.go(Routes.Profile);
+      Router.getInstance().go(Routes.Profile);
     }
   } catch (error) {
-    router.start();
+    Router.getInstance().start();
     if (isProtectedRoute) {
-      router.go(Routes.Home);
+      Router.getInstance().go(Routes.Home);
     }
   }
 });

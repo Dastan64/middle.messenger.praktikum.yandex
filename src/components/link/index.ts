@@ -1,6 +1,6 @@
 import { LinkProps } from './types.ts';
 import Block from '../../core/Block.ts';
-import router from '../../core/Router.ts';
+import { Router } from '../../core/Router.ts';
 import { tmpl } from './link.tmpl.ts';
 
 export class Link extends Block {
@@ -10,7 +10,7 @@ export class Link extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
-          router.go(this.props.to);
+          Router.getInstance().go(this.props.to);
         },
       },
     });
