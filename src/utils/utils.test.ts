@@ -21,6 +21,33 @@ describe('set function', () => {
     expect(fn).to.throw(Error);
   });
 
+  it('should throw an error if path param it not passed', () => {
+    const obj = { a: 123, b: { a: 345 } };
+    const path = undefined;
+    const value = 123;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    const fn = () => set(obj, path, value);
+
+    expect(fn).to.throw(Error);
+  });
+
+  it('should not overwrite existing properties when setting a nested property', () => {
+    const obj = { user: { name: 'John' } };
+    const path = 'user.profile.age';
+    const value = 25;
+    const result = set(obj, path, value) as { user: { name: string; profile: { age: number } } };
+    expect(result.user).to.have.property('name').that.equals('John');
+  });
+
+  it('should properly perform multiple set operations', () => {
+    const obj = {};
+    set(obj, 'user.name', 'John');
+    set(obj, 'user.age', 25);
+    expect(obj).to.deep.equal({ user: { name: 'John', age: 25 } });
+  });
+
   it('should set value by path', () => {
     const obj = { a: 123, b: { a: 345 } };
     const path = 'b.a';
