@@ -17,6 +17,8 @@
 
 `npm run build` - сборка проекта
 
+`npm run test` - запуск тестов
+
 ## Технологии:
 
 * HTML5;
@@ -28,6 +30,7 @@
 * Handlebars;
 * Express JS;
 * Vite;
+* Mocha, Chai, Sinon
 
 ## Ссылки проекта:
 
