@@ -6,6 +6,7 @@
     "node": "18.14.1"
   },
   "scripts": {
+    "prepare": "husky install",
     "start": "npm run build && node server.js",
     "dev": "vite --open",
     "build": "vite build",
