@@ -1,6 +1,7 @@
 import chatsAPI from '../api/ChatsAPI.ts';
 import store from '../core/Store.ts';
 import { Chat, ChatMember } from '../types/types.ts';
+// eslint-disable-next-line import/no-cycle
 import { MessagesController } from './MessagesController.ts';
 
 export class ChatsController {

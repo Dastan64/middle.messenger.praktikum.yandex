@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus.ts';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
     INIT: 'init',
