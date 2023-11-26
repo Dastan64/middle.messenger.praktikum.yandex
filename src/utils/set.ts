@@ -13,6 +13,7 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
     (acc, key) => ({
       [key]: acc,
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value as any,
   );
   return merge(object as Indexed, result);

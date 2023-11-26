@@ -13,7 +13,7 @@ class ChatsAPI extends BaseAPI {
     });
   }
 
-  getChats(data: Record<string, any>) {
+  getChats(data: Record<string, number>) {
     return this.http.get('/', { data });
   }
 

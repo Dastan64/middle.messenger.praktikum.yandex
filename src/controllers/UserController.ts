@@ -1,7 +1,7 @@
 import { ExtendedProfileData, PasswordData, ProfileData } from '../types/types.ts';
 import userAPI from '../api/UserAPI.ts';
 import store from '../core/Store.ts';
-import router from '../core/Router.ts';
+import { Router } from '../core/Router.ts';
 import { AuthController } from './AuthController.ts';
 
 export class UserController {
@@ -9,7 +9,7 @@ export class UserController {
     try {
       const newProfileData: ExtendedProfileData = await userAPI.changeProfile(data);
       store.set('user', newProfileData);
-      router.go('/profile');
+      Router.getInstance().go('/profile');
     } catch (error) {
       console.log(error, 'change profile error');
     }
@@ -27,7 +27,7 @@ export class UserController {
   static async changePassword(data: PasswordData) {
     try {
       await userAPI.changePassword(data);
-      router.go('/profile');
+      Router.getInstance().go('/profile');
     } catch (error) {
       console.log(error, 'change password error');
     }

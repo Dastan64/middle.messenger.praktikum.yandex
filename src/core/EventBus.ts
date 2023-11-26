@@ -3,6 +3,7 @@ type MapInterface<P> = P[keyof P];
 
 export class EventBus<
   E extends Record<string, string> = Record<string, string>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Args extends Record<MapInterface<E>, unknown[]> = Record<string, any[]>
 > {
   private readonly listeners: {

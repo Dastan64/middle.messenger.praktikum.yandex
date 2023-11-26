@@ -42,7 +42,6 @@ export class Route {
       render(this._props.rootQuery, this._block as Block);
       return;
     }
-
     this._block.show(this._props.rootQuery, render);
   }
 }

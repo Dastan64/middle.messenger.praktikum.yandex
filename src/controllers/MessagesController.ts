@@ -1,6 +1,7 @@
 import store from '../core/Store.ts';
 import { WebSocketEvents, WebSocketTransport } from '../utils/WebSocketTransport.ts';
 import { MessageData } from '../types/types.ts';
+// eslint-disable-next-line import/no-cycle
 import { ChatsController } from './ChatsController.ts';
 
 export class MessagesController {

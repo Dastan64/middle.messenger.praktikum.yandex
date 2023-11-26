@@ -1,10 +1,10 @@
 import Block from './Block.ts';
 import { Route } from './Route.ts';
 
-class Router {
-  private routes: Route[] = [];
+export class Router {
+  private readonly routes: Route[] = [];
 
-  private static _instance: Router;
+  private static _instance: Router | null = null;
 
   private readonly _rootQuery: string = '';
 
@@ -13,15 +13,21 @@ class Router {
   private history = window.history;
 
   constructor(rootQuery: string) {
-    if (Router._instance) {
-      return Router._instance;
-    }
     this.routes = [];
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
+  }
 
-    Router._instance = this;
+  static getInstance() {
+    if (!this._instance) {
+      this._instance = new Router('#app');
+    }
+    return this._instance;
+  }
+
+  static destroy() {
+    this._instance = null;
   }
 
   public use(pathname: string, block: typeof Block) {
@@ -43,7 +49,6 @@ class Router {
     if (this._currentRoute) {
       this._currentRoute.leave();
     }
-
     this._currentRoute = route;
     route.render();
   }
@@ -65,5 +70,3 @@ class Router {
     return this.routes.find((route) => route.match(pathname))!;
   }
 }
-
-export default new Router('#app');

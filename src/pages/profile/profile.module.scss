@@ -7,8 +7,7 @@
 
   grid-template-columns: repeat(2, 300px);
 
-  row-gap: 24px;
-  column-gap: 48px;
+  gap: 24px 48px;
 
   margin: 24px 0 48px;
 }
@@ -39,10 +38,11 @@
 }
 
 .links {
-  margin-bottom: 60px;
   display: flex;
 
   flex-wrap: wrap;
 
   gap: 16px;
+
+  margin-bottom: 60px;
 }

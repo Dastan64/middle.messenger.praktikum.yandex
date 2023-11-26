@@ -1,6 +1,7 @@
 import { validate } from './validate.ts';
 import Block from '../core/Block.ts';
 
+// eslint-disable-next-line consistent-return
 export const validateFormSubmit = (form: HTMLFormElement, inputs: Block[], isMessage = false) => {
   const formData = new FormData(form);
   const formFields: Record<string, string> = {};

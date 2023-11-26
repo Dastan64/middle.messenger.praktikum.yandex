@@ -118,7 +118,9 @@ export const validate = (input: validateParams) => {
         errors[name] = validateMessage(value);
         break;
       case NAMES.DISPLAY_NAME:
-        errors[name] = validateLogin(value);
+        if (value.length === 0) {
+          errors[name] = 'Имя в чате не может быть пустым';
+        }
         break;
       case NAMES.NEW_CHAT:
         if (value.length === 0) {

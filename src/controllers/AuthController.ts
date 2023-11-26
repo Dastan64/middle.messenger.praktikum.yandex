@@ -3,14 +3,14 @@ import {
   Routes, SignInData, SignUpData, UserInfo,
 } from '../types/types.ts';
 import store from '../core/Store.ts';
-import router from '../core/Router.ts';
+import { Router } from '../core/Router.ts';
 
 export class AuthController {
   static async signin(data: SignInData) {
     try {
       await authAPI.signin(data);
       await this.fetchUser();
-      router.go(Routes.Chats);
+      Router.getInstance().go(Routes.Chats);
     } catch (error) {
       console.log(error, 'sign in error');
     }
@@ -20,7 +20,7 @@ export class AuthController {
     try {
       await authAPI.signup(data);
       await this.fetchUser();
-      router.go(Routes.Chats);
+      Router.getInstance().go(Routes.Chats);
     } catch (error) {
       console.log(error, 'sign up error');
     }
@@ -30,7 +30,7 @@ export class AuthController {
     try {
       await authAPI.logout();
       store.set('user', undefined);
-      router.go(Routes.Login);
+      Router.getInstance().go(Routes.Login);
     } catch (error) {
       console.log(error, 'log out error');
     }
